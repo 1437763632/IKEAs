@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2048
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IKEA.Model", "IKEA.Model\IKEA.Model.csproj", "{96B93B8C-C067-4F4E-B049-010AC6972C4C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IKEA.IServices", "IKEA.IServices\IKEA.IServices.csproj", "{72493A3C-CA89-43AA-9217-E33B5E842532}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IKEA.Services", "IKEA.Services\IKEA.Services.csproj", "{A50F4042-56E4-4402-8F65-B4C8D5079D24}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IKEA.Cache", "IKEA.Cache\IKEA.Cache.csproj", "{BA4826BC-F1FC-4EBB-8156-4CEE61F3FE03}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IKEA.Common", "IKEA.Common\IKEA.Common.csproj", "{1F382DFF-B5BC-4DEB-992F-71A21EFEBCD4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IKEA.Api", "IKEA.Api\IKEA.Api.csproj", "{2BC2B330-509C-4D6F-96A3-DB11F7EC3B71}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{96B93B8C-C067-4F4E-B049-010AC6972C4C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{96B93B8C-C067-4F4E-B049-010AC6972C4C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{96B93B8C-C067-4F4E-B049-010AC6972C4C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{96B93B8C-C067-4F4E-B049-010AC6972C4C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{72493A3C-CA89-43AA-9217-E33B5E842532}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{72493A3C-CA89-43AA-9217-E33B5E842532}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{72493A3C-CA89-43AA-9217-E33B5E842532}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{72493A3C-CA89-43AA-9217-E33B5E842532}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A50F4042-56E4-4402-8F65-B4C8D5079D24}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A50F4042-56E4-4402-8F65-B4C8D5079D24}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A50F4042-56E4-4402-8F65-B4C8D5079D24}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A50F4042-56E4-4402-8F65-B4C8D5079D24}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BA4826BC-F1FC-4EBB-8156-4CEE61F3FE03}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BA4826BC-F1FC-4EBB-8156-4CEE61F3FE03}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BA4826BC-F1FC-4EBB-8156-4CEE61F3FE03}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BA4826BC-F1FC-4EBB-8156-4CEE61F3FE03}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1F382DFF-B5BC-4DEB-992F-71A21EFEBCD4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1F382DFF-B5BC-4DEB-992F-71A21EFEBCD4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1F382DFF-B5BC-4DEB-992F-71A21EFEBCD4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1F382DFF-B5BC-4DEB-992F-71A21EFEBCD4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2BC2B330-509C-4D6F-96A3-DB11F7EC3B71}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2BC2B330-509C-4D6F-96A3-DB11F7EC3B71}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2BC2B330-509C-4D6F-96A3-DB11F7EC3B71}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2BC2B330-509C-4D6F-96A3-DB11F7EC3B71}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {12D852E0-CC6F-4C3A-BDB0-B1148A38EEAD}
+	EndGlobalSection
+EndGlobal
