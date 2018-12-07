@@ -31,13 +31,13 @@ namespace IKEA.IServices
         /// <returns></returns>
         int Update(TProduct_Size product_Size);
         /// <summary>
-        /// 获取单个产品尺寸信息
+        /// 获取单个材质信息
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
         TProduct_Size GetProduct_Size(int id);
         /// <summary>
-        /// 获取所有产品尺寸信息
+        /// 获取所有材质信息
         /// </summary>
         /// <returns></returns>
         IEnumerable<TProduct_Size> GetProduct_Sizes();
