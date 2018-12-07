@@ -12,7 +12,7 @@ namespace IKEA.Services
     using Dapper;
     using MySql.Data.MySqlClient;
 
-    public class ProductTextureServices : IProductTextureServices
+    public class ProductTextureServices : IProduct_Texture_Services
     {
         /// <summary>
         /// 添加材质信息
