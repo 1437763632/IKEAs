@@ -15,7 +15,7 @@ namespace IKEA.Services
     class ProductSizeServices : IProduct_Size_Services
     {
         /// <summary>
-        /// 添加材质信息
+        /// 添加产品尺寸信息
         /// </summary>
         /// <param name="product_Texture"></param>
         /// <returns></returns>
@@ -31,7 +31,7 @@ namespace IKEA.Services
         }
 
         /// <summary>
-        /// 删除
+        /// 删除产品尺寸信息
         /// </summary>
         /// <returns></returns>
         public int Delete(int id)
@@ -78,7 +78,7 @@ namespace IKEA.Services
         }
 
         /// <summary>
-        /// 修改
+        /// 修改产品尺寸信息
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
