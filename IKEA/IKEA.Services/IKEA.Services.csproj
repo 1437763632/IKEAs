@@ -31,7 +31,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Dapper">
+      <HintPath>..\..\..\..\..\张黎锋demo\DapperTest\lib\Dapper.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data, Version=6.9.9.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -45,6 +50,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\IKEA.Common\IKEA.Common.csproj">
+      <Project>{1f382dff-b5bc-4deb-992f-71a21efebcd4}</Project>
+      <Name>IKEA.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\IKEA.IServices\IKEA.IServices.csproj">
       <Project>{72493a3c-ca89-43aa-9217-e33b5e842532}</Project>
       <Name>IKEA.IServices</Name>

@@ -12,20 +12,20 @@ namespace IKEA.Services
     using Dapper;
     using MySql.Data.MySqlClient;
 
-    public class ProductTextureServices : IProductTextureServices
+    class ProductSizeServices : IProductSizeServices
     {
         /// <summary>
         /// 添加材质信息
         /// </summary>
         /// <param name="product_Texture"></param>
         /// <returns></returns>
-        public int Add(TProduct_Texture product_Texture)
+        public int Add(TProduct_Size product_Size)
         {
             using (System.Data.IDbConnection conn = DapperHelper.GetConnString())
             {
 
-                string sql = string.Format("insert into TProduct_Texture(Texture) value(@Texture)");
-                int i = conn.Execute(sql, product_Texture);
+                string sql = string.Format("insert into TProduct_Size (ProductSize) value(@ProductSize)");
+                int i = conn.Execute(sql, product_Size);
                 return i;
             }
         }
@@ -38,8 +38,8 @@ namespace IKEA.Services
         {
             using (System.Data.IDbConnection conn = DapperHelper.GetConnString())
             {
-                
-                string sql = string.Format("delete  Product(Id) where id=@Id");
+
+                string sql = string.Format("delete  TProduct_Size(Id) where id=@Id");
                 int i = conn.Execute(sql, id);
                 return i;
             }
@@ -50,13 +50,13 @@ namespace IKEA.Services
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public TProduct_Texture GetProduct_Texture(int id)
+        public TProduct_Size GetProduct_Size(int id)
         {
             using (System.Data.IDbConnection conn = DapperHelper.GetConnString())
             {
-                MySqlParameter mySqlParameters = new MySqlParameter("@Id",id);
-                string sql = string.Format("select * from TProduct_Texture where id=@Id");
-                var i = conn.Query<TProduct_Texture>(sql, mySqlParameters).FirstOrDefault();
+                MySqlParameter mySqlParameters = new MySqlParameter("@Id", id);
+                string sql = string.Format("select * from TProduct_Size where id=@Id");
+                var i = conn.Query<TProduct_Size>(sql, mySqlParameters).FirstOrDefault();
                 return i;
             }
         }
@@ -66,13 +66,13 @@ namespace IKEA.Services
         /// </summary>
         /// <param name="product_Texture"></param>
         /// <returns></returns>
-        public IEnumerable<TProduct_Texture> GetProduct_Textures()
+        public IEnumerable<TProduct_Size> GetProduct_Sizes()
         {
             using (System.Data.IDbConnection conn = DapperHelper.GetConnString())
             {
                 //MySqlParameter mySqlParameters = new MySqlParameter("@Id", id);
-                string sql = string.Format("select * from TProduct_Texture ");
-                var i = conn.Query<TProduct_Texture>(sql, null).ToList();
+                string sql = string.Format("select * from TProduct_Size ");
+                var i = conn.Query<TProduct_Size>(sql, null).ToList();
                 return i;
             }
         }
@@ -82,14 +82,16 @@ namespace IKEA.Services
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public int Update(TProduct_Texture product_Texture)
+        public int Update(TProduct_Size product_Size)
         {
             using (System.Data.IDbConnection conn = DapperHelper.GetConnString())
             {
-                string sql = string.Format("update TProduct_Texture set Texture=@Texture where Id=@Id");
-                var i = conn.Execute(sql, product_Texture);
+                string sql = string.Format("update TProduct_Size set ProductSize=@ProductSize where Id=@Id");
+                var i = conn.Execute(sql, product_Size);
                 return i;
             }
         }
+
+
     }
 }
