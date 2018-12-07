@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace IKEA.Model
 {
     /// <summary>
-    /// 
+    /// 购物车表
     /// </summary>
     public class TTrolley
     {
