@@ -8,6 +8,10 @@ namespace IKEA.Services
 {
     using Model;
     using IServices;
+    using Common;
+    using Dapper;
+    using MySql.Data.MySqlClient;
+
     public class ProductTextureServices : IProductTextureServices
     {
         /// <summary>
@@ -17,17 +21,28 @@ namespace IKEA.Services
         /// <returns></returns>
         public int Add(TProduct_Texture product_Texture)
         {
-            string sql = string.Format("insert into TProduct_Texture(Texture) value(@Texture)");
-            return 1;
+            using (System.Data.IDbConnection conn = DapperHelper.GetConnString())
+            {
+
+                string sql = string.Format("insert into TProduct_Texture(Texture) value(@Texture)");
+                int i = conn.Execute(sql, product_Texture);
+                return i;
+            }
         }
 
         /// <summary>
-        /// 获取所有材质信息
+        /// 删除
         /// </summary>
         /// <returns></returns>
         public int Delete(int id)
         {
-            throw new NotImplementedException();
+            using (System.Data.IDbConnection conn = DapperHelper.GetConnString())
+            {
+                
+                string sql = string.Format("delete  Product(Id) where id=@Id");
+                int i = conn.Execute(sql, id);
+                return i;
+            }
         }
 
         /// <summary>
@@ -37,27 +52,44 @@ namespace IKEA.Services
         /// <returns></returns>
         public TProduct_Texture GetProduct_Texture(int id)
         {
-            throw new NotImplementedException();
+            using (System.Data.IDbConnection conn = DapperHelper.GetConnString())
+            {
+                MySqlParameter mySqlParameters = new MySqlParameter("@Id",id);
+                string sql = string.Format("select * from TProduct_Texture where id=@Id");
+                var i = conn.Query<TProduct_Texture>(sql, mySqlParameters).FirstOrDefault();
+                return i;
+            }
         }
 
         /// <summary>
-        /// 修改
+        /// 获取所有材质信息
         /// </summary>
         /// <param name="product_Texture"></param>
         /// <returns></returns>
         public IEnumerable<TProduct_Texture> GetProduct_Textures()
         {
-            throw new NotImplementedException();
+            using (System.Data.IDbConnection conn = DapperHelper.GetConnString())
+            {
+                //MySqlParameter mySqlParameters = new MySqlParameter("@Id", id);
+                string sql = string.Format("select * from TProduct_Texture ");
+                var i = conn.Query<TProduct_Texture>(sql, null).ToList();
+                return i;
+            }
         }
 
         /// <summary>
-        /// 删除
+        /// 修改
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
         public int Update(TProduct_Texture product_Texture)
         {
-            throw new NotImplementedException();
+            using (System.Data.IDbConnection conn = DapperHelper.GetConnString())
+            {
+                string sql = string.Format("update TProduct_Texture set Texture=@Texture where Id=@Id");
+                var i = conn.Execute(sql, product_Texture);
+                return i;
+            }
         }
     }
 }

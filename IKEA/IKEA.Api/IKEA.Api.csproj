@@ -142,6 +142,16 @@
     <Folder Include="Controllers\" />
     <Folder Include="Models\" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\IKEA.IServices\IKEA.IServices.csproj">
+      <Project>{72493a3c-ca89-43aa-9217-e33b5e842532}</Project>
+      <Name>IKEA.IServices</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IKEA.Services\IKEA.Services.csproj">
+      <Project>{a50f4042-56e4-4402-8f65-b4c8d5079d24}</Project>
+      <Name>IKEA.Services</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
