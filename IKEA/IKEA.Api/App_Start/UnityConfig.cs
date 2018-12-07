@@ -44,7 +44,7 @@ namespace IKEA.Api
 
             // TODO: Register your type's mappings here.
             // container.RegisterType<IProductRepository, ProductRepository>();
-            container.RegisterType<IProductTextureServices, ProductTextureServices>();
+            container.RegisterType<IProduct_Texture_Services, ProductTextureServices>();
         }
     }
 }
