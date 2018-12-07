@@ -12,7 +12,7 @@ namespace IKEA.Services
     using Dapper;
     using MySql.Data.MySqlClient;
 
-    class ProductSizeServices : IProduct_Size_Services
+   public class ProductSizeServices : IProductSizeServices
     {
         /// <summary>
         /// 添加产品尺寸信息

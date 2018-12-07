@@ -11,7 +11,7 @@ namespace IKEA.Services
     using Common;
     using Dapper;
     using MySql.Data.MySqlClient;
-    class ColorServices : IColorServices
+  public  class ColorServices : IColorServices
     {
         /// <summary>
         /// 添加颜色
