@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 namespace IKEA.IServices
 {
     using IKEA.Model;
+    /// <summary>
+    /// 地址接口层
+    /// </summary>
     public interface IAddressServices
     {
         /// <summary>
