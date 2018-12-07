@@ -47,6 +47,9 @@
     <Compile Include="IEvaluateServices.cs" />
     <Compile Include="IImageServices.cs" />
     <Compile Include="ILogServices.cs" />
+    <Compile Include="IManagerServices.cs" />
+    <Compile Include="IManageServices.cs" />
+    <Compile Include="IManage_RoleServices.cs" />
     <Compile Include="IOrderDetailServices.cs" />
     <Compile Include="IOrderServices.cs" />
     <Compile Include="IPaymentServices.cs" />
@@ -55,6 +58,10 @@
     <Compile Include="IProductSizeServices.cs" />
     <Compile Include="IProductTextureServices.cs" />
     <Compile Include="IRightServices.cs" />
+    <Compile Include="IRoleServices.cs" />
+    <Compile Include="IRole_RightServices.cs" />
+    <Compile Include="ITrolleyDetail.cs" />
+    <Compile Include="ITrolleyServices.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

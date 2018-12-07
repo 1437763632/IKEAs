@@ -40,7 +40,7 @@ namespace IKEA.Services
             using (System.Data.IDbConnection conn = DapperHelper.GetConnString())
             {
 
-                string sql = string.Format("delete  tColor(Id) where id=@Id");
+                string sql = string.Format("delete from tColor where id=@Id");
                 int i = conn.Execute(sql, id);
                 return i;
             }
