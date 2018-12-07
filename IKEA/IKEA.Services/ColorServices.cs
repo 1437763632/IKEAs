@@ -6,7 +6,13 @@ using System.Threading.Tasks;
 
 namespace IKEA.Services
 {
-    class ColorServices
+    using Model;
+    using IServices;
+    using Common;
+    using Dapper;
+    using MySql.Data.MySqlClient;
+    class ColorServices:IColorServices
     {
+
     }
 }
