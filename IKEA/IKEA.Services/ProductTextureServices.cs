@@ -18,7 +18,7 @@ namespace IKEA.Services
         public int Add(TProduct_Texture product_Texture)
         {
             string sql = string.Format("insert into TProduct_Texture(Texture) value(@Texture)");
-
+            return 1;
         }
 
         /// <summary>
