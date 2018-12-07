@@ -4,6 +4,8 @@ using Unity;
 
 namespace IKEA.Api
 {
+    using IKEA.IServices;
+    using IKEA.Services;
     /// <summary>
     /// Specifies the Unity configuration for the main container.
     /// </summary>
