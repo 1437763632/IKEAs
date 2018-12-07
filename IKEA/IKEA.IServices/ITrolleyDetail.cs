@@ -8,38 +8,38 @@ namespace IKEA.IServices
 {
     using IKEA.Model;
     /// <summary>
-    /// 购物车服务接口
+    /// 购物车详情接口
     /// </summary>
-    public  interface ITrolleyServices
+    public interface ITrolleyDetail
     {
         /// <summary>
-        /// 添加购物车
+        /// 添加购物车详情
         /// </summary>
-        /// <param name="trolley"></param>
+        /// <param name="trolleyDetail"></param>
         /// <returns></returns>
-        int Add(TTrolley trolley);
+        int Add(TTrolleyDetail trolleyDetail );
         /// <summary>
-        /// 修改购物车
+        /// 修改购物车详情
         /// </summary>
-        /// <param name="trolley"></param>
+        /// <param name="trolleyDetail"></param>
         /// <returns></returns>
-        int Update(TTrolley trolley);
+        int Update(TTrolleyDetail trolleyDetail);
         /// <summary>
-        /// 删除购物车
+        /// 获取单个购物车详情
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        TRole GetRole(int id);
+        /// <summary>
+        /// 删除购物车详情
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
         int Delete(int id);
         /// <summary>
-        /// 获取单个购物车信息
-        /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
-        TTrolley GetTrolley(int id);
-        /// <summary>
-        /// 获取购物车信息
+        /// 获取所有购物车详情信息
         /// </summary>
         /// <returns></returns>
-        IEnumerable<TTrolley> GetTrolleys();
+        IEnumerable<TTrolleyDetail> GetTrolleyDetails();
     }
 }
