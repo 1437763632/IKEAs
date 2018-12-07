@@ -12,7 +12,7 @@ namespace IKEA.Services
     using Dapper;
     using MySql.Data.MySqlClient;
 
-    class ProductSizeServices : IProduct_Size_Services
+   public class ProductSizeServices : IProductSizeServices
     {
         /// <summary>
         /// 添加产品尺寸信息
@@ -39,7 +39,7 @@ namespace IKEA.Services
             using (System.Data.IDbConnection conn = DapperHelper.GetConnString())
             {
 
-                string sql = string.Format("delete  TProduct_Size(Id) where id=@Id");
+                string sql = string.Format("delete from TProduct_Size where id=@Id");
                 int i = conn.Execute(sql, id);
                 return i;
             }
