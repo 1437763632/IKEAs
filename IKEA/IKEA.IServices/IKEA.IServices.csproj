@@ -45,6 +45,11 @@
     <Compile Include="IColorServices.cs" />
     <Compile Include="IDisCountServices.cs" />
     <Compile Include="IEvaluateServices.cs" />
+    <Compile Include="IImageServices.cs" />
+    <Compile Include="ILogServices.cs" />
+    <Compile Include="IOrderDetailServices.cs" />
+    <Compile Include="IOrderServices.cs" />
+    <Compile Include="IPaymentServices.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
