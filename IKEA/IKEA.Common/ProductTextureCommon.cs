@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace IKEA.Common
 {
-    public class Class1
+    public class ProductTextureCommon
     {
     }
 }

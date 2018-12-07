@@ -17,7 +17,8 @@ namespace IKEA.Services
         /// <returns></returns>
         public int Add(TProduct_Texture product_Texture)
         {
-            throw new NotImplementedException();
+            string sql = string.Format("insert into TProduct_Texture(Texture) value(@Texture)");
+
         }
 
         /// <summary>
