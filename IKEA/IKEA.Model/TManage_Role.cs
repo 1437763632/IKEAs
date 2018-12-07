@@ -9,7 +9,7 @@ namespace IKEA.Model
     /// <summary>
     /// 用户角色表
     /// </summary>
-    public class TUser_Role
+    public class TManage_Role
     {
         /// <summary>
         /// 自增ID
@@ -18,7 +18,7 @@ namespace IKEA.Model
         /// <summary>
         /// 用户ID
         /// </summary>
-        public int UserID { get; set; }
+        public int ManageID { get; set; }
         /// <summary>
         /// 角色ID
         /// </summary>

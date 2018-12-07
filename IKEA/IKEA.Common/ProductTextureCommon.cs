@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace IKEA.Services
+namespace IKEA.Common
 {
-    public class Class1
+    public class ProductTextureCommon
     {
     }
 }

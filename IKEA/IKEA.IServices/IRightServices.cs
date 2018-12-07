@@ -18,6 +18,7 @@ namespace IKEA.IServices
         /// <param name="right"></param>
         /// <returns></returns>
         int Add(TRight right);
+
         /// <summary>
         /// 修改权限信息
         /// </summary>
@@ -30,5 +31,6 @@ namespace IKEA.IServices
         /// <param name="id"></param>
         /// <returns></returns>
         TRight GetRight(int id);
+
     }
 }

@@ -50,6 +50,11 @@
     <Compile Include="IOrderDetailServices.cs" />
     <Compile Include="IOrderServices.cs" />
     <Compile Include="IPaymentServices.cs" />
+    <Compile Include="IProductDetailServices.cs" />
+    <Compile Include="IProductServices.cs" />
+    <Compile Include="IProductSizeServices.cs" />
+    <Compile Include="IProductTextureServices.cs" />
+    <Compile Include="IRightServices.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

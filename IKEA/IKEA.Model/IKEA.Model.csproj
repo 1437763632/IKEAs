@@ -48,6 +48,7 @@
     <Compile Include="TImage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TLog.cs" />
+    <Compile Include="TManage.cs" />
     <Compile Include="TOrder.cs" />
     <Compile Include="TOrderDetail.cs" />
     <Compile Include="TPayment.cs" />
@@ -62,7 +63,7 @@
     <Compile Include="TTrolley.cs" />
     <Compile Include="TTrolleyDetail.cs" />
     <Compile Include="TUser.cs" />
-    <Compile Include="TUser_Role.cs" />
+    <Compile Include="TManage_Role.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
