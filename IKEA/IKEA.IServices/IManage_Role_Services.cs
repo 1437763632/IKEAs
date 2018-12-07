@@ -10,7 +10,7 @@ namespace IKEA.IServices
     /// <summary>
     /// 管理员角色服务接口
     /// </summary>
-    public  interface IManage_RoleServices
+    public  interface IManage_Role_Services
     {
         /// <summary>
         /// 添加

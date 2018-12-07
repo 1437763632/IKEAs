@@ -10,7 +10,7 @@ namespace IKEA.IServices
     /// <summary>
     /// 地址接口层
     /// </summary>
-    public interface IAddressServices
+    public interface IAddress_Services
     {
         /// <summary>
         /// 获取用户地址

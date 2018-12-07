@@ -10,7 +10,7 @@ namespace IKEA.IServices
     /// <summary>
     /// 管理员服务接口
     /// </summary>
-    public interface IManagerServices
+    public interface IManager_Services
     {
         /// <summary>
         /// 添加管理员

@@ -10,7 +10,7 @@ namespace IKEA.IServices
     /// <summary>
     /// 评价服务接口
     /// </summary>
-    public interface IEvaluateServices
+    public interface IEvaluate_Services
     {
         /// <summary>
         /// 添加评价

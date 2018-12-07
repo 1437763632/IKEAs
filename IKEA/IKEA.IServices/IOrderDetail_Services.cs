@@ -10,7 +10,7 @@ namespace IKEA.IServices
     /// <summary>
     /// 订单详情接口
     /// </summary>
-    public interface IOrderDetailServices
+    public interface IOrderDetail_Services
     {
         /// <summary>
         /// 根据订单id获取所有订单详情

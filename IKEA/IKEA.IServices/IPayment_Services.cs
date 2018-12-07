@@ -10,7 +10,7 @@ namespace IKEA.IServices
     /// <summary>
     /// 支付服务接口
     /// </summary>
-    public interface IPaymentServices
+    public interface IPayment_Services
     {
         /// <summary>
         /// 添加支付

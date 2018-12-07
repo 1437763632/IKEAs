@@ -10,7 +10,7 @@ namespace IKEA.IServices
     /// <summary>
     /// 产品服务接口
     /// </summary>
-    public interface IProductServices
+    public interface IProduct_Services
     {
         /// <summary>
         /// 添加产品

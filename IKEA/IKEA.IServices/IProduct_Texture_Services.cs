@@ -10,7 +10,7 @@ namespace IKEA.IServices
     /// <summary>
     /// 产品材质服务接口
     /// </summary>
-    public interface IProductTextureServices
+    public interface IProduct_Texture_Services
     {
         /// <summary>
         /// 添加材质信息

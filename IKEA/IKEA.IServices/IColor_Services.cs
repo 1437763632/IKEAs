@@ -10,7 +10,7 @@ namespace IKEA.IServices
     /// <summary>
     /// 颜色服务接口
     /// </summary>
-    public interface IColorServices
+    public interface IColor_Services
     {
         /// <summary>
         /// 获取所有颜色

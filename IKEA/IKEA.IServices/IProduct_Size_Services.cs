@@ -10,7 +10,7 @@ namespace IKEA.IServices
     /// <summary>
     /// 产品尺寸服务接口
     /// </summary>
-    public interface IProductSizeServices
+    public interface IProduct_Size_Services
     {
         /// <summary>
         /// 添加产品尺寸信息

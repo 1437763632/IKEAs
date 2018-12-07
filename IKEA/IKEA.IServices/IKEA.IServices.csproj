@@ -41,20 +41,27 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IAddressServices.cs" />
-    <Compile Include="IColorServices.cs" />
-    <Compile Include="IDisCountServices.cs" />
-    <Compile Include="IEvaluateServices.cs" />
-    <Compile Include="IImageServices.cs" />
+    <Compile Include="IAddress_Services.cs" />
+    <Compile Include="IColor_Services.cs" />
+    <Compile Include="IDisCount_Services.cs" />
+    <Compile Include="IEvaluate_Services.cs" />
+    <Compile Include="IImage_Services.cs" />
     <Compile Include="ILogServices.cs" />
-    <Compile Include="IOrderDetailServices.cs" />
-    <Compile Include="IOrderServices.cs" />
-    <Compile Include="IPaymentServices.cs" />
-    <Compile Include="IProductDetailServices.cs" />
-    <Compile Include="IProductServices.cs" />
-    <Compile Include="IProductSizeServices.cs" />
-    <Compile Include="IProductTextureServices.cs" />
-    <Compile Include="IRightServices.cs" />
+    <Compile Include="IManager_Services.cs" />
+    <Compile Include="IManage_Role_Services.cs" />
+    <Compile Include="IOrderDetail_Services.cs" />
+    <Compile Include="IOrder_Services.cs" />
+    <Compile Include="IPayment_Services.cs" />
+    <Compile Include="IProductDetail_Services.cs" />
+    <Compile Include="IProductType_Services.cs" />
+    <Compile Include="IProduct_Services.cs" />
+    <Compile Include="IProduct_Size_Services.cs" />
+    <Compile Include="IProduct_Texture_Services.cs" />
+    <Compile Include="IRight_Services.cs" />
+    <Compile Include="IRole_Services.cs" />
+    <Compile Include="IRole_Right_Services.cs" />
+    <Compile Include="ITrolleyDetail_Services.cs" />
+    <Compile Include="ITrolley_Services.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

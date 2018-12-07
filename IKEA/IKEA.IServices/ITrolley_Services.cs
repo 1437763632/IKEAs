@@ -10,7 +10,7 @@ namespace IKEA.IServices
     /// <summary>
     /// 购物车服务接口
     /// </summary>
-    public  interface ITrolleyServices
+    public  interface ITrolley_Services
     {
         /// <summary>
         /// 添加购物车

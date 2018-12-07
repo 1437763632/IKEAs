@@ -10,7 +10,7 @@ namespace IKEA.IServices
     /// <summary>
     /// 图片服务
     /// </summary>
-    public interface IImageServices
+    public interface IImage_Services
     {
         /// <summary>
         /// 添加图片

@@ -10,7 +10,7 @@ namespace IKEA.IServices
     /// <summary>
     /// 角色权限关联接口
     /// </summary>
-    public interface IRole_RightServices
+    public interface IRole_Right_Services
     {
         /// <summary>
         /// 添加关联表

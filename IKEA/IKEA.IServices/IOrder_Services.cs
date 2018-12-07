@@ -10,7 +10,7 @@ namespace IKEA.IServices
     /// <summary>
     /// 订单服务接口
     /// </summary>
-    public interface IOrderServices
+    public interface IOrder_Services
     {
         /// <summary>
         /// 添加订单

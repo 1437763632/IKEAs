@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace IKEA.IServices
 {
     using IKEA.Model;
-    public interface IRoleServices
+    public interface IRole_Services
     {
         /// <summary>
         /// 添加角色

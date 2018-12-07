@@ -10,7 +10,7 @@ namespace IKEA.IServices
     /// <summary>
     /// 权限管理接口
     /// </summary>
-    public interface IRightServices
+    public interface IRight_Services
     {
         /// <summary>
         /// 添加权限

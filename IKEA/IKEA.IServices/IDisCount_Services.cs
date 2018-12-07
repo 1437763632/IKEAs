@@ -10,7 +10,7 @@ namespace IKEA.IServices
     /// <summary>
     /// 优惠券服务接口
     /// </summary>
-    public interface IDisCountServices
+    public interface IDisCount_Services
     {
         /// <summary>
         /// 添加优惠券

@@ -123,6 +123,7 @@
     <Compile Include="App_Start\UnityConfig.cs" />
     <Compile Include="App_Start\UnityWebApiActivator.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -139,13 +140,24 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Controllers\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\IKEA.Cache\IKEA.Cache.csproj">
+      <Project>{ba4826bc-f1fc-4ebb-8156-4cee61f3fe03}</Project>
+      <Name>IKEA.Cache</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IKEA.Common\IKEA.Common.csproj">
+      <Project>{1f382dff-b5bc-4deb-992f-71a21efebcd4}</Project>
+      <Name>IKEA.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\IKEA.IServices\IKEA.IServices.csproj">
       <Project>{72493a3c-ca89-43aa-9217-e33b5e842532}</Project>
       <Name>IKEA.IServices</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IKEA.Model\IKEA.Model.csproj">
+      <Project>{96b93b8c-c067-4f4e-b049-010ac6972c4c}</Project>
+      <Name>IKEA.Model</Name>
     </ProjectReference>
     <ProjectReference Include="..\IKEA.Services\IKEA.Services.csproj">
       <Project>{a50f4042-56e4-4402-8f65-b4c8d5079d24}</Project>

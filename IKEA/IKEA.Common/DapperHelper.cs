@@ -11,7 +11,7 @@ namespace IKEA.Common
 {
    public class DapperHelper
     {
-        string connectionString = "Database=dappers;Data Source=127.0.0.1;User Id=root;Password=111111;CharSet=utf8;port=3306";
+       
         public static string connString = ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString;
 
 
