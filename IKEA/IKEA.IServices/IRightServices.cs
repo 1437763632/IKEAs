@@ -8,10 +8,11 @@ namespace IKEA.IServices
 {
     using IKEA.Model;
     /// <summary>
-    /// 
+    /// 权限表接口
     /// </summary>
     public interface IRightServices
     {
         int Add(TRight right);
+        
     }
 }
