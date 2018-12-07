@@ -57,7 +57,7 @@ namespace IKEA.Services
             {
                 MySqlParameter mySqlParameters = new MySqlParameter("@Id", id);
                 string sql = string.Format("select * from tColor where id=@Id");
-                var i = conn.Query<TProduct_Size>(sql, mySqlParameters).FirstOrDefault();
+                var i = conn.Query<TColor>(sql, mySqlParameters).FirstOrDefault();
                 return i;
             }
         }
@@ -72,7 +72,7 @@ namespace IKEA.Services
             {
                 //MySqlParameter mySqlParameters = new MySqlParameter("@Id", id);
                 string sql = string.Format("select * from tColor ");
-                var i = conn.Query<TProduct_Size>(sql, null).ToList();
+                var i = conn.Query<TColor>(sql, null).ToList();
                 return i;
             }
         }
