@@ -17,14 +17,21 @@ namespace IKEA.Api.Controllers
     [RoutePrefix("Home")]
     public class HomeController : ApiController
     {
+        /// <summary>
+        /// 属性实例化
+        /// </summary>
         [Dependency]
-        IImage_Services image_Services { get; set; }
+        public  IImage_Services image_Services { get; set; }
 
+        /// <summary>
+        /// 构造函数实例化
+        /// </summary>
         IColor_Services color_Services = null;
         public HomeController(IColor_Services _color_Services)
         {
             color_Services = _color_Services;
         }
+
 
         [HttpGet]
         [Route("GetUsers")]

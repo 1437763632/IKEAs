@@ -52,10 +52,10 @@ namespace IKEA.Services
         /// <returns>TProduct</returns>
         public TProductDetail GetTProductDetailId(int id)
         {
-            using (System.Data.IDbConnection conn = DapperHelper.GetConnString())
+            using (MySqlConnection conn = DapperHelper.GetConnString())
             {
-                MySqlParameter mySqlParameters = new MySqlParameter("@Id", id);
-                string sql = string.Format("select * from TProductDetail where Id=@Id");
+                MySqlParameter mySqlParameters = new MySqlParameter("@id", id);
+                string sql = string.Format("select * from TProductDetail where id=@id");
                 var i = conn.Query<TProductDetail>(sql, mySqlParameters).FirstOrDefault();
                 return i;
             }
@@ -66,7 +66,7 @@ namespace IKEA.Services
         /// </summary> 
         /// <param name="productID"></param>
         /// <returns> IEnumerable<TProduct></returns>
-        public IEnumerable<TProductDetail> GetTProductDetail(int productID)
+        public TProductDetail GetTProductDetail(int productID)
         {
             using (System.Data.IDbConnection conn = DapperHelper.GetConnString())
             {

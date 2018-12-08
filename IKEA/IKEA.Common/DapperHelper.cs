@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 
 using System.Data;
 using System.Configuration;
-
 namespace IKEA.Common
 {
    public class DapperHelper
