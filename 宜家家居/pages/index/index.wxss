@@ -1,0 +1,76 @@
+.container {
+    width: 100%;
+    padding:0;
+    margin: 0;
+    background-color: #fff;
+}
+.scroll-container{
+    width:100%;
+}
+.tabbar-border{
+    width:100%;
+    height:1px;
+    position: fixed;
+    bottom: 0;
+    background-color: #ccc;
+}
+.slide-image{
+    width:100%;
+}
+.category-panel{
+    height:90px;
+    width:100%;
+    display:flex;
+    color:#666666;
+    flex-direction:row;
+    font-size:11px;
+    justify-content: space-around;
+    border-bottom: 1px solid #f1eeec;
+}
+.category-item{
+    display:flex;
+    width:60px;
+    text-align: center;
+    flex-direction:column;
+}
+.category-item-image{
+    width:50px;
+    height:50px;
+    overflow:unset;
+    padding:10px 15px 0 10px;
+}
+
+
+
+/* 商品样式 */
+.listMall{
+  display:-webkit-flex;
+	display:flex;
+	width:100%;
+  flex-wrap:wrap; 
+}
+.listMall view{
+    width: 340rpx; 
+    margin-top: 10rpx;
+    margin-left: 15rpx;
+}
+.listMall .img{
+  text-align:center;
+}
+.listMall view image{
+    width: 300rpx;
+    height: 300rpx;
+    
+}
+.listMall .name{
+  font-size: 30rpx;
+  height: 25px;
+  color: #9A9A9A;
+  overflow : hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  line-height: 20px;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  margin-left: 30rpx;
+}

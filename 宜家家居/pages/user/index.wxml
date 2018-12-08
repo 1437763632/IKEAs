@@ -1,0 +1,34 @@
+<view class="user-head">
+    <view class="center" bindtap = "userdata">
+        <view class="user-img">
+            <image src="{{userInfo.avatarUrl}}"/>
+        </view>
+        <view class="user-text">
+            <text class="text">{{userInfo.nickName}}</text>
+        </view>
+    </view>
+</view>
+
+<view class="list">
+  <view class="item" bindtap="collect_shouchang">
+        <image src="../../images/收藏.png"/>我的收藏
+        <text class="jump">〉</text>
+    </view>
+      <view class="item" bindtap="my_coupon_youhuiquan">
+        <image src="../../images/我的优惠券.png"/>我的优惠券
+        <text class="jump">〉</text>
+    </view>
+    <view class="item" bindtap="order">
+        <image src="/images/dingdan.png"/>我的订单
+        <text class="jump">〉</text>
+    </view>
+    <view class="item" bindtap="address">
+        <image src="../../images/我的地址.png"/>我的地址
+        <text class="jump">〉</text>
+    </view>
+      <view class="item" bindtap="address">
+        <image src="../../images/关于我们.png"/>关于我们
+        <text class="jump">〉</text>
+    </view>
+    
+</view>

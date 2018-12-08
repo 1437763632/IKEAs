@@ -1,0 +1,24 @@
+/* pages/coupon_youhui/index.wxss */
+
+
+
+.list .item{
+  padding:10px 15px;
+   width:750rpx;
+  font-size: 14px;
+  color:#333;
+  position: relative;
+  display: flex;
+  flex-direction:row;
+  border-bottom: 1px solid #f3f3f3;
+}
+.item image {
+  width:600rpx;
+  height:170rpx;
+  display: inline-block;
+  vertical-align:middle;
+  margin:0 18rpx 0 9rpx;
+}
+.lable{
+  padding:35px 25px 30px 5px;
+}
