@@ -91,6 +91,9 @@ namespace IKEA.Services
             }
         }
 
-        
+        TProductDetail IProductDetail_Services.GetTProductDetail(int productID)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
