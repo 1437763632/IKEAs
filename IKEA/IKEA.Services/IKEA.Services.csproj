@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ColorServices.cs" />
+    <Compile Include="ProductDetail_Services.cs" />
     <Compile Include="Role_Services.cs" />
     <Compile Include="ProductSizeServices.cs" />
     <Compile Include="ProductTextureServices.cs" />

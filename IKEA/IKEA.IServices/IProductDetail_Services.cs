@@ -35,12 +35,12 @@ namespace IKEA.IServices
         /// </summary>
         /// <param name="id"></param>
         /// <returns>TProduct</returns>
-        TProduct GetProduct(int id);
+        TProductDetail GetTProductDetailId(int id);
         /// <summary>
-        /// 获取所有产品详情
+        /// 获取产品详情
         /// </summary> 
         /// <param name="productID"></param>
         /// <returns> IEnumerable<TProduct></returns>
-        IEnumerable<TProduct> GetProducts(int productID);
+        IEnumerable<TProductDetail> GetTProductDetail(int productID);
     }
 }
