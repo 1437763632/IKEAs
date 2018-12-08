@@ -18,7 +18,7 @@ namespace IKEA.Api.Controllers
     public class TProductDetailController : ApiController
     {
         [Dependency]
-       public IProductDetail_Services productDetail { get; set; }
+        public IProductDetail_Services product { get; set; }
 
         /// <summary>
         /// 添加产品详情
@@ -29,7 +29,7 @@ namespace IKEA.Api.Controllers
         [HttpPost]
         public int Add(TProductDetail productDetail)
         {
-            var i = this.productDetail.Add(productDetail);
+            var i = this.product.Add(productDetail);
             return i;
         }
 
@@ -39,10 +39,10 @@ namespace IKEA.Api.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [Route("Delete")]
-        [HttpDelete]
+        [HttpGet]
         public int Delete(int id)
         {
-            var i = this.productDetail.Delete(id);
+            var i = this.product.Delete(id);
             return i;
         }
 
@@ -55,7 +55,7 @@ namespace IKEA.Api.Controllers
         [HttpGet]
         public TProductDetail GetTProductDetailId(int id)
         {
-            var count = this.productDetail.GetTProductDetailId(id);
+            var count = this.product.GetTProductDetailId(id);
             return count;
         }
 
@@ -69,7 +69,7 @@ namespace IKEA.Api.Controllers
         [HttpGet]
         public TProductDetail GetTProductDetail(int productID)
         {
-            var resault = productDetail.GetTProductDetail(productID);
+            var resault = product.GetTProductDetail(productID);
             return resault;
         }
 
@@ -83,7 +83,7 @@ namespace IKEA.Api.Controllers
         public int Update(TProductDetail productDetail)
         {
 
-            var count = this.productDetail.Update(productDetail);
+            var count = this.product.Update(productDetail);
             return count;
         }
 

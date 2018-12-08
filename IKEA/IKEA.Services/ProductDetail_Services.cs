@@ -39,9 +39,9 @@ namespace IKEA.Services
             using (System.Data.IDbConnection conn = DapperHelper.GetConnString())
             {
 
-                string sql = string.Format("delete from TProductDetail where Id=@id");
-                int i = conn.Execute(sql, id);
-                return i;
+                string sql = string.Format("delete from TProductDetail where Id=@Id");
+                int resaut = conn.Execute(sql, new { Id = id });
+                return resaut;
             }
         }
 
@@ -54,10 +54,10 @@ namespace IKEA.Services
         {
             using (MySqlConnection conn = DapperHelper.GetConnString())
             {
-                MySqlParameter mySqlParameters = new MySqlParameter("@id", id);
-                string sql = string.Format("select * from TProductDetail where id=@id");
-                var i = conn.Query<TProductDetail>(sql, mySqlParameters).FirstOrDefault();
-                return i;
+                
+                string sql = string.Format("select Id, ProductID, ProductTypeID, ProductSizeID, ProductTextureID, colorID, Price, RealPrice, Inventory, ReservedInventory from TProductDetail where Id = @Id");
+                var resaut = conn.Query<TProductDetail>(sql, new { Id=id}).SingleOrDefault();
+                return resaut;
             }
         }
 
@@ -70,9 +70,8 @@ namespace IKEA.Services
         {
             using (System.Data.IDbConnection conn = DapperHelper.GetConnString())
             {
-                MySqlParameter mySqlParameters = new MySqlParameter("@ProductID", productID);
-                string sql = string.Format("select * from TProductDetail where ProductID=@ProductID");
-                var i = conn.Query<TProductDetail>(sql, mySqlParameters).FirstOrDefault();
+                string sql = string.Format("select Id, ProductID, ProductTypeID, ProductSizeID, ProductTextureID, colorID, Price, RealPrice, Inventory, ReservedInventory from TProductDetail where ProductID=@ProductID");
+                var i = conn.Query<TProductDetail>(sql, new { ProductID= productID }).SingleOrDefault();
                 return i;
             }
         }
