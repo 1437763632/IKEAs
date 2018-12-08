@@ -29,7 +29,7 @@ namespace IKEA.IServices
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        TRole GetRole(int id);
+        TRole_Right GetTRole_Right(int id);
         /// <summary>
         /// 删除关联信息
         /// </summary>

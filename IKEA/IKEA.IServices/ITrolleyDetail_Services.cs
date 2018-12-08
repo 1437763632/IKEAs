@@ -29,7 +29,7 @@ namespace IKEA.IServices
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        TRole GetRole(int id);
+        TTrolleyDetail GetTTrolleyDetail(int id);
         /// <summary>
         /// 删除购物车详情
         /// </summary>

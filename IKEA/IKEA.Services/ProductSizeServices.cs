@@ -39,7 +39,7 @@ namespace IKEA.Services
             using (System.Data.IDbConnection conn = DapperHelper.GetConnString())
             {
 
-                string sql = string.Format("delete from TProduct_Size where id=@Id");
+                string sql = string.Format("delete from TProduct_Size where Id=@id");
                 int i = conn.Execute(sql, id);
                 return i;
             }
@@ -55,7 +55,7 @@ namespace IKEA.Services
             using (System.Data.IDbConnection conn = DapperHelper.GetConnString())
             {
                 MySqlParameter mySqlParameters = new MySqlParameter("@Id", id);
-                string sql = string.Format("select * from TProduct_Size where id=@Id");
+                string sql = string.Format("select * from TProduct_Size where Id=@Id");
                 var i = conn.Query<TProduct_Size>(sql, mySqlParameters).FirstOrDefault();
                 return i;
             }

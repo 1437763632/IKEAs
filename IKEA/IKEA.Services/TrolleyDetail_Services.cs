@@ -11,29 +11,25 @@ namespace IKEA.Services
     using Common;
     using Dapper;
     using MySql.Data.MySqlClient;
-
-   public class ColorServices : IColor_Services
-
+    public class TrolleyDetail_Services : ITrolleyDetail_Services
     {
         /// <summary>
-        /// 添加颜色
+        /// 添加购物车详情
         /// </summary>
-        /// <param name="color"></param>
+        /// <param name="trolleyDetail"></param>
         /// <returns></returns>
-        public int Add(TColor color)
+        public int Add(TTrolleyDetail trolleyDetail)
         {
             using (System.Data.IDbConnection conn = DapperHelper.GetConnString())
             {
-
-                string sql = string.Format("insert into tColor(Colorname) value(@Colorname)");
-                int i = conn.Execute(sql, color);
+                string sql = string.Format("insert into TTrolleyDetail(TrolleyID,ProductID,ProductDetailID,BuyNumber,Price,RealPrice,Consume) value(@TrolleyID,@ProductID,@ProductDetailID,@BuyNumber,@Price,@RealPrice,@Consume)");
+                int i = conn.Execute(sql, trolleyDetail);
                 return i;
             }
         }
 
-
         /// <summary>
-        /// 删除颜色
+        /// 删除购物车详情
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
@@ -42,54 +38,54 @@ namespace IKEA.Services
             using (System.Data.IDbConnection conn = DapperHelper.GetConnString())
             {
 
-                string sql = string.Format("delete from tColor where Id=@id");
+                string sql = string.Format("delete from TTrolleyDetail where Id=@id");
                 int i = conn.Execute(sql, id);
                 return i;
             }
         }
 
         /// <summary>
-        /// 根据ID找颜色对象
+        /// 获取单个购物车详情
         /// </summary>
-        /// <param name="id">ID</param>
+        /// <param name="id"></param>
         /// <returns></returns>
-        public TColor GetColorById(int id)
+        public TTrolleyDetail GetTTrolleyDetail(int id)
         {
             using (System.Data.IDbConnection conn = DapperHelper.GetConnString())
             {
                 MySqlParameter mySqlParameters = new MySqlParameter("@Id", id);
-                string sql = string.Format("select * from tColor where Id=@Id");
-                var i = conn.Query<TColor>(sql, mySqlParameters).FirstOrDefault();
+                string sql = string.Format("select * from TTrolleyDetail where Id=@Id");
+                var i = conn.Query<TTrolleyDetail>(sql, mySqlParameters).FirstOrDefault();
                 return i;
             }
         }
 
         /// <summary>
-        /// 获取所有颜色
+        /// 获取所有购物车详情信息
         /// </summary>
         /// <returns></returns>
-        public IEnumerable<TColor> GetColors()
+        public IEnumerable<TTrolleyDetail> GetTrolleyDetails()
         {
             using (System.Data.IDbConnection conn = DapperHelper.GetConnString())
             {
                 //MySqlParameter mySqlParameters = new MySqlParameter("@Id", id);
-                string sql = string.Format("select * from tColor ");
-                var i = conn.Query<TColor>(sql, null).ToList();
+                string sql = string.Format("select * from TTrolleyDetail ");
+                var i = conn.Query<TTrolleyDetail>(sql, null).ToList();
                 return i;
             }
         }
 
         /// <summary>
-        /// 修改颜色
+        /// 修改购物车详情
         /// </summary>
-        /// <param name="color">颜色对象</param>
+        /// <param name="trolleyDetail"></param>
         /// <returns></returns>
-        public int Update(TColor color)
+        public int Update(TTrolleyDetail trolleyDetail)
         {
             using (System.Data.IDbConnection conn = DapperHelper.GetConnString())
             {
-                string sql = string.Format("update tColor set Colorname=@Colorname where Id=@Id");
-                var i = conn.Execute(sql, color);
+                string sql = string.Format("update TTrolleyDetail set TrolleyID=@TrolleyID,ProductID=@ProductID,ProductDetailID=@ProductDetailID,BuyNumber=@BuyNumber,Price@Price,RealPrice=@RealPrice,Consume=@Consume where Id=@Id");
+                var i = conn.Execute(sql, trolleyDetail);
                 return i;
             }
         }

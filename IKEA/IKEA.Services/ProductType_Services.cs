@@ -12,84 +12,82 @@ namespace IKEA.Services
     using Dapper;
     using MySql.Data.MySqlClient;
 
-   public class ColorServices : IColor_Services
-
+    public class ProductType_Services : IProductType_Services
     {
         /// <summary>
-        /// 添加颜色
+        /// 添加类别信息
         /// </summary>
-        /// <param name="color"></param>
+        /// <param name="product_Texture"></param>
         /// <returns></returns>
-        public int Add(TColor color)
+        public int Add(TProductType productType)
         {
             using (System.Data.IDbConnection conn = DapperHelper.GetConnString())
             {
 
-                string sql = string.Format("insert into tColor(Colorname) value(@Colorname)");
-                int i = conn.Execute(sql, color);
+                string sql = string.Format("insert into TProductType(ProductTypeName,PID) value(@ProductTypeName,@PID)");
+                int i = conn.Execute(sql, productType);
                 return i;
             }
         }
 
-
         /// <summary>
-        /// 删除颜色
+        /// 删除产品类型
         /// </summary>
-        /// <param name="id"></param>
         /// <returns></returns>
         public int Delete(int id)
         {
             using (System.Data.IDbConnection conn = DapperHelper.GetConnString())
             {
 
-                string sql = string.Format("delete from tColor where Id=@id");
+                string sql = string.Format("delete from TProductType where Id=@id");
                 int i = conn.Execute(sql, id);
                 return i;
             }
         }
 
         /// <summary>
-        /// 根据ID找颜色对象
+        /// 获取单个产品类型
         /// </summary>
-        /// <param name="id">ID</param>
+        /// <param name="id"></param>
         /// <returns></returns>
-        public TColor GetColorById(int id)
+        public TProductType GetProduct(int id)
         {
             using (System.Data.IDbConnection conn = DapperHelper.GetConnString())
             {
                 MySqlParameter mySqlParameters = new MySqlParameter("@Id", id);
-                string sql = string.Format("select * from tColor where Id=@Id");
-                var i = conn.Query<TColor>(sql, mySqlParameters).FirstOrDefault();
+                string sql = string.Format("select * from TProductType where id=@Id");
+                var i = conn.Query<TProductType>(sql, mySqlParameters).FirstOrDefault();
                 return i;
             }
         }
 
         /// <summary>
-        /// 获取所有颜色
+        /// 获取所有产品类型
         /// </summary>
+        /// <param name="product_Texture"></param>
         /// <returns></returns>
-        public IEnumerable<TColor> GetColors()
+        public IEnumerable<TProductType> GetProducts(int pid)
         {
             using (System.Data.IDbConnection conn = DapperHelper.GetConnString())
             {
-                //MySqlParameter mySqlParameters = new MySqlParameter("@Id", id);
-                string sql = string.Format("select * from tColor ");
-                var i = conn.Query<TColor>(sql, null).ToList();
+                MySqlParameter mySqlParameters = new MySqlParameter("@PID", pid);
+                string sql = string.Format("select * from TProductType  where PID=@PID");
+                var i = conn.Query<TProductType>(sql, null).ToList();
                 return i;
             }
         }
 
         /// <summary>
-        /// 修改颜色
+        /// 修改产品类型
         /// </summary>
-        /// <param name="color">颜色对象</param>
+        /// <param name="id"></param>
         /// <returns></returns>
-        public int Update(TColor color)
+        public int Update(TProductType productType)
         {
             using (System.Data.IDbConnection conn = DapperHelper.GetConnString())
             {
-                string sql = string.Format("update tColor set Colorname=@Colorname where Id=@Id");
-                var i = conn.Execute(sql, color);
+                string sql = string.Format("update TProductType set ProductTypeName=@ProductTypeName,PID=@PID where Id=@Id");
+                var i = conn.Execute(sql, productType);
                 return i;
             }
         }

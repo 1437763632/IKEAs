@@ -11,29 +11,26 @@ namespace IKEA.Services
     using Common;
     using Dapper;
     using MySql.Data.MySqlClient;
-
-   public class ColorServices : IColor_Services
-
+    public class Trolley_Services : ITrolley_Services
     {
         /// <summary>
-        /// 添加颜色
+        /// 添加购物车
         /// </summary>
-        /// <param name="color"></param>
+        /// <param name="trolley"></param>
         /// <returns></returns>
-        public int Add(TColor color)
+        public int Add(TTrolley trolley)
         {
             using (System.Data.IDbConnection conn = DapperHelper.GetConnString())
             {
 
-                string sql = string.Format("insert into tColor(Colorname) value(@Colorname)");
-                int i = conn.Execute(sql, color);
+                string sql = string.Format("insert into TTrolley(UserID,SumNumber,p_Sum) value(@UserID,@SumNumber,@p_Sum)");
+                int i = conn.Execute(sql, trolley);
                 return i;
             }
         }
 
-
         /// <summary>
-        /// 删除颜色
+        /// 删除购物车
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
@@ -42,54 +39,54 @@ namespace IKEA.Services
             using (System.Data.IDbConnection conn = DapperHelper.GetConnString())
             {
 
-                string sql = string.Format("delete from tColor where Id=@id");
+                string sql = string.Format("delete from TTrolley where Id=@id");
                 int i = conn.Execute(sql, id);
                 return i;
             }
         }
 
         /// <summary>
-        /// 根据ID找颜色对象
+        /// 获取单个购物车信息
         /// </summary>
-        /// <param name="id">ID</param>
+        /// <param name="id"></param>
         /// <returns></returns>
-        public TColor GetColorById(int id)
+        public TTrolley GetTrolley(int id)
         {
             using (System.Data.IDbConnection conn = DapperHelper.GetConnString())
             {
                 MySqlParameter mySqlParameters = new MySqlParameter("@Id", id);
-                string sql = string.Format("select * from tColor where Id=@Id");
-                var i = conn.Query<TColor>(sql, mySqlParameters).FirstOrDefault();
+                string sql = string.Format("select * from TTrolley where Id=@Id");
+                var i = conn.Query<TTrolley>(sql, mySqlParameters).FirstOrDefault();
                 return i;
             }
         }
 
         /// <summary>
-        /// 获取所有颜色
+        /// 获取购物车信息
         /// </summary>
         /// <returns></returns>
-        public IEnumerable<TColor> GetColors()
+        public IEnumerable<TTrolley> GetTrolleys()
         {
             using (System.Data.IDbConnection conn = DapperHelper.GetConnString())
             {
                 //MySqlParameter mySqlParameters = new MySqlParameter("@Id", id);
-                string sql = string.Format("select * from tColor ");
-                var i = conn.Query<TColor>(sql, null).ToList();
+                string sql = string.Format("select * from TTrolley ");
+                var i = conn.Query<TTrolley>(sql, null).ToList();
                 return i;
             }
         }
 
         /// <summary>
-        /// 修改颜色
+        /// 修改购物车
         /// </summary>
-        /// <param name="color">颜色对象</param>
+        /// <param name="trolley"></param>
         /// <returns></returns>
-        public int Update(TColor color)
+        public int Update(TTrolley trolley)
         {
             using (System.Data.IDbConnection conn = DapperHelper.GetConnString())
             {
-                string sql = string.Format("update tColor set Colorname=@Colorname where Id=@Id");
-                var i = conn.Execute(sql, color);
+                string sql = string.Format("update TTrolley set UserID=@UserID,SumNumber=@SumNumber,p_Sum=@p_Sum where Id=@Id");
+                var i = conn.Execute(sql, trolley);
                 return i;
             }
         }
