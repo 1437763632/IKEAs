@@ -28,7 +28,7 @@ namespace IKEA.IServices
         /// 获取所有管理员角色关系表
         /// </summary>
         /// <returns></returns>
-        IEnumerable<TManage_Role> GetManages();
+        IEnumerable<TManage_Role> GetManages(int ManageID);
         /// <summary>
         /// 修改管理员角色信息表
         /// </summary>

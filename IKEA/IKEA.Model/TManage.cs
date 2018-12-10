@@ -18,15 +18,12 @@ namespace IKEA.Model
         /// <summary>
         /// 用户名
         /// </summary>
-        public string UserName { get; set; }
+        public string ManageName { get; set; }
         /// <summary>
         /// 密码
         /// </summary>
-        public string UserPass { get; set; }
-        /// <summary>
-        /// 昵称
-        /// </summary>
-        public string NickName { get; set; }
+        public string ManagePass { get; set; }
+        
         /// <summary>
         /// 创建时间
         /// </summary>

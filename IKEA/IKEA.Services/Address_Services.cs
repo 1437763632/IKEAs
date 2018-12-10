@@ -53,7 +53,7 @@ namespace IKEA.Services
             using (MySqlConnection conn = DapperHelper.GetConnString())
             {
                 string sql = string.Format("SELECT * from tadderss WHERE Id = @Id");
-                var result = conn.Query<TAdderss>(sql, new { Id = id }).FirstOrDefault();
+                var result = conn.Query<TAdderss>(sql, new { Id = id }).SingleOrDefault();
                 return result;
             }
         }
@@ -67,9 +67,9 @@ namespace IKEA.Services
         {
             using (MySqlConnection conn = DapperHelper.GetConnString())
             {
-                string sql = string.Format("SELECT * from tadderss WHERE userID=@UserID");
-                var result = conn.Query<TAdderss>(sql, UserID).ToList();
-                return result;
+                string sql = string.Format("SELECT * from tadderss WHERE UserID=@UserID");
+                var result = conn.Query<TAdderss>(sql, new { UserID = UserID });
+                return result.ToList<TAdderss>();
             }
         }
         /// <summary>

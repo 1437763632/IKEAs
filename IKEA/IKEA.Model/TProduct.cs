@@ -34,7 +34,7 @@ namespace IKEA.Model
         /// <summary>
         /// 第一张图片
         /// </summary>
-        public int ProductImage { get; set; }
+        public string ProductImage { get; set; }
         /// <summary>
         /// 是否上架
         /// </summary>

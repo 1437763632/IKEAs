@@ -15,7 +15,7 @@ namespace IKEA.Model
         /// <summary>
         ///  //产品类别名称
         /// </summary>
-        public int ProductTypeName { get; set; }   
+        public string ProductTypeName { get; set; }   
         /// <summary>
         /// //产品类别所属
         /// </summary>
