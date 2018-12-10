@@ -62,6 +62,7 @@ namespace IKEA.Services
         }
 
         
+
         public TProductDetail GetTProductDetail(int productID)
         {
             using (System.Data.IDbConnection conn = DapperHelper.GetConnString())
@@ -71,6 +72,8 @@ namespace IKEA.Services
                 return i;
             }
         }
+
+
 
         /// <summary>
         /// 修改产品详情
@@ -92,12 +95,14 @@ namespace IKEA.Services
         /// </summary> 
         /// <param name="productID"></param>
         /// <returns> IEnumerable<TProduct></returns>
+
        public IEnumerable<TProductDetail> GetTProductDetails()
         {
             using (System.Data.IDbConnection conn = DapperHelper.GetConnString())
             {
                 string sql = string.Format("select Id, ProductID, ProductTypeID, ProductSizeID, ProductTextureID, colorID, Price, RealPrice, Inventory, ReservedInventory from TProductDetail");
                 var i = conn.Query<TProductDetail>(sql, null);
+
                 return i;
             }
         }

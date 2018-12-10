@@ -42,9 +42,11 @@ namespace IKEA.Services
         {
             using (System.Data.IDbConnection conn = DapperHelper.GetConnString())
             {
-                MySqlParameter mySqlParameters = new MySqlParameter("@Id",MySql.Data.MySqlClient.MySqlDbType.Int32, id);
-                string sql = string.Format("select * from TManage where Id=@ID");
-                var i = conn.Query<TManage>(sql, new { ID=id}).SingleOrDefault();
+
+                
+                string sql = string.Format("select * from TManage where Id=@Id");
+                var i = conn.Query<TManage>(sql, new { Id= id }).SingleOrDefault();
+
                 return i;
             }
         }
@@ -53,13 +55,13 @@ namespace IKEA.Services
         /// 根据角色获取 
         /// </summary>
         /// <returns></returns>
-        public IEnumerable<TManage> GetManages()
+        public IEnumerable<TManage> GetManages( )
         {
             using (System.Data.IDbConnection conn = DapperHelper.GetConnString())
             {
-                //MySqlParameter mySqlParameters = new MySqlParameter("@RoleID", MySql.Data.MySqlClient.MySqlDbType.Int32, RoleID);
-                string sql = string.Format("select * from TManage");
-                var i = conn.Query<TManage>(sql, null);
+                string sql = string.Format("select * from TManage ");
+                var i = conn.Query<TManage>(sql, null).ToList();
+
                 return i;
             }
         }

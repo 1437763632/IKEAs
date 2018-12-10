@@ -45,7 +45,30 @@ namespace IKEA.Api
 
             // TODO: Register your type's mappings here.
             // container.RegisterType<IProductRepository, ProductRepository>();
+
+            container.RegisterType<IAddress_Services, Address_Services>();
+
             container.RegisterType<IColor_Services, ColorServices>();
+
+            container.RegisterType<IDisCount_Services, DisCount_Services>();
+
+            container.RegisterType<IEvaluate_Services, Evaluate_Services>();
+
+            container.RegisterType<IImage_Services, Image_Services>();
+
+            container.RegisterType<ILogServices, LogServices>();
+
+            container.RegisterType<IManage_Role_Services, Manage_Role_Services>();
+
+            container.RegisterType<IManager_Services, Manager_Services>();
+
+            container.RegisterType<IOrder_Services, Order_Services>();
+
+            container.RegisterType<IOrderDetail_Services, OrderDetail_Services>();
+
+            container.RegisterType<IPayment_Services, Payment_Services>();
+
+            container.RegisterType<IProduct_Services, Product_Services>();
 
             container.RegisterType<IProductDetail_Services, ProductDetail_Services>();
 
@@ -65,7 +88,11 @@ namespace IKEA.Api
 
             container.RegisterType<ITrolleyDetail_Services, TrolleyDetail_Services>();
             container.RegisterType<IManager_Services, Manager_Services>();
+            container.RegisterType<IProduct_Services, Product_Services>();
 
+           
+
+            
         }
     }
 }

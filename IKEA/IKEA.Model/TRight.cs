@@ -19,5 +19,9 @@ namespace IKEA.Model
         /// 权限名称
         /// </summary>
         public string RightName { get; set; }
+        /// <summary>
+        /// 权限路径
+        /// </summary>
+        public string URL { get; set; }
     }
 }

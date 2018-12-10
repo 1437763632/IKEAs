@@ -64,8 +64,8 @@ namespace IKEA.Services
         {
             using (MySqlConnection conn = DapperHelper.GetConnString())
             {
-                string sql = string.Format("SELECT * FROM tevaluate as a JOIN tproduct as b ON a.ShopID= b.Id");
-                var result = conn.Query<Tevaluate>(sql, new { Id = ProductID });
+                string sql = string.Format("SELECT * FROM tevaluate where ProductID=@Id");
+                var result = conn.Query<Tevaluate>(sql, new { Id = ProductID }).ToList();
                 return result;
             }
         }

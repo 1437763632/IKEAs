@@ -54,9 +54,9 @@ namespace IKEA.Services
         {
             using (System.Data.IDbConnection conn = DapperHelper.GetConnString())
             {
-                MySqlParameter mySqlParameters = new MySqlParameter("@Id",id);
+                
                 string sql = string.Format("select * from TProduct_Texture where Id=@Id");
-                var i = conn.Query<TProduct_Texture>(sql, mySqlParameters).FirstOrDefault();
+                var i = conn.Query<TProduct_Texture>(sql, new { Id=id}).FirstOrDefault();
                 return i;
             }
         }
@@ -70,7 +70,7 @@ namespace IKEA.Services
         {
             using (System.Data.IDbConnection conn = DapperHelper.GetConnString())
             {
-                //MySqlParameter mySqlParameters = new MySqlParameter("@Id", id);
+                
                 string sql = string.Format("select Id,Texture from tproduct_texture ");
                 IEnumerable<TProduct_Texture> result = conn.Query<TProduct_Texture>(sql, null);
                 return result.ToList<TProduct_Texture>();

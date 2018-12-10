@@ -88,9 +88,9 @@ namespace IKEA.Api.Controllers
         /// <returns>IEnumerable<TPayment></returns>
         [Route("GetProductchair")]
         [HttpGet]
-        public IEnumerable<TProduct> GetProductchair(int PID)
+        public IEnumerable<TProduct> GetProductchair(int ProductTypeId)
         {
-            var result = this.Product.GetProductchair(PID);
+            var result = this.Product.GetProductchair(ProductTypeId);
             return result;
         }
         [Route("GetCarList")]

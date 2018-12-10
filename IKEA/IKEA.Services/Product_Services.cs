@@ -50,9 +50,11 @@ namespace IKEA.Services
         {
             using (System.Data.IDbConnection conn = DapperHelper.GetConnString())
             {
+
                
                 string sql = string.Format("select * from TProduct where Id=@Id");
                 var i = conn.Query<TProduct>(sql, new {Id=id }).SingleOrDefault();
+
                 return i;
             }
         }
@@ -65,7 +67,7 @@ namespace IKEA.Services
             using (System.Data.IDbConnection conn = DapperHelper.GetConnString())
             {
                 string sql = string.Format("select * from TProduct");
-                var i = conn.Query<TProduct>(sql, null);
+                var i = conn.Query<TProduct>(sql, null).ToList();
                 return i;
             }
         }
@@ -87,13 +89,12 @@ namespace IKEA.Services
         /// 获取所有椅子
         /// </summary>        
         /// <returns>IEnumerable<TPayment></returns>
-        public IEnumerable<TProduct> GetProductchair(int PID)
+        public IEnumerable<TProduct> GetProductchair(int ProductTypeId)
         {
-            using (System.Data.IDbConnection conn = DapperHelper.GetConnString())
+            using (System.Data.IDbConnection conn = DapperHelper.GetConnString())//a,TProductType b where a.ProductTypeID=b.PID=3
             {
-                MySqlParameter mySqlParameters = new MySqlParameter("@PID", MySql.Data.MySqlClient.MySqlDbType.Int32, PID);
-                string sql = string.Format("select a.ProductName from TProduct a,TProductType b where a.ProductTypeID=b.PID");
-                var i = conn.Query<TProduct>(sql, null);
+                string sql = string.Format("select * from TProduct where ProductTypeID =@ProductTypeID");
+                var i = conn.Query<TProduct>(sql, new { ProductTypeID=ProductTypeId}).ToList();
                 return i;
             }
         }
