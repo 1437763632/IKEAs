@@ -45,6 +45,6 @@ namespace IKEA.IServices
         /// 获取所有椅子
         /// </summary>
         /// <returns></returns>
-        IEnumerable<TProduct> GetProductchair(int PID);
+        IEnumerable<TProduct> GetProductchair(int ProductTypeId);
     }
 }

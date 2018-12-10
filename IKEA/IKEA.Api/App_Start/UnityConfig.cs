@@ -65,6 +65,7 @@ namespace IKEA.Api
 
             container.RegisterType<ITrolleyDetail_Services, TrolleyDetail_Services>();
             container.RegisterType<IManager_Services, Manager_Services>();
+            container.RegisterType<IProduct_Services, Product_Services>();
 
         }
     }

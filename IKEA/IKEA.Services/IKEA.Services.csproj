@@ -56,6 +56,7 @@
     <Compile Include="OrderDetail_Services.cs" />
     <Compile Include="Order_Services.cs" />
     <Compile Include="Payment_Services.cs" />
+    <Compile Include="PermissionFive.cs" />
     <Compile Include="ProductDetail_Services.cs" />
     <Compile Include="Product_Services.cs" />
     <Compile Include="Role_Services.cs" />
