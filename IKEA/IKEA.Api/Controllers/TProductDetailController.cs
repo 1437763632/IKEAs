@@ -74,9 +74,9 @@ namespace IKEA.Api.Controllers
         /// <returns> IEnumerable<TProduct></returns>
         [Route("GetproductID")]
         [HttpGet]
-        public TProductDetail GetTProductDetail(int productID)
+        public TProductDetail GetTProductDetail()
         {
-            var resault = product.GetTProductDetail(productID);
+            var resault = product.GetTProductDetails();
             return resault.FirstOrDefault();
         }
 
@@ -102,7 +102,7 @@ namespace IKEA.Api.Controllers
         [HttpGet]
         public IHttpActionResult SSS()
         {
-            var query = from p in product.GetTProductDetail(1)
+            var query = from p in product.GetTProductDetails()
                         join c in color_Services.GetColors()
                         on p.colorID equals c.Id
                         join t in product_Texture_Services.GetProduct_Textures()

@@ -17,6 +17,12 @@ namespace IKEA.Api.Controllers
     {
         [Unity.Attributes.Dependency]
         public IProduct_Services Product { get; set; }
+
+        [Unity.Attributes.Dependency]
+        public IProductDetail_Services ProductDetail { get; set; }
+        [Unity.Attributes.Dependency]
+        public IProduct_Size_Services Product_Sizes{ get; set; }
+
         /// <summary>
         /// 添加产品
         /// </summary>
@@ -86,6 +92,35 @@ namespace IKEA.Api.Controllers
         {
             var result = this.Product.GetProductchair(PID);
             return result;
+        }
+        [Route("GetCarList")]
+        [HttpGet]
+        public IHttpActionResult GetCarList()
+        {
+            var query = from P in Product.GetProducts()
+                        join T in ProductDetail.GetTProductDetails()
+                        on P.id equals T.ProductID
+                        join S in Product_Sizes.GetProduct_Sizes()
+                        on T.ProductSizeID equals S.Id
+                        select new
+                        {
+                            P.IsPutaway,
+                            P.ProductImage,
+                            P.ProductMaxPrice,
+                            P.ProductMinPrice,
+                            P.ProductName,
+                            P.ProductTypeID,
+                            T.Inventory,
+                            T.Price,
+                            T.ProductID,
+                            T.ProductSizeID,
+                            T.ProductTextureID,                            
+                            T.RealPrice,
+                            T.ReservedInventory,
+                            S.ProductSize
+                        };
+            return Json<dynamic>(query);
+
         }
     }
 }

@@ -56,7 +56,7 @@ namespace IKEA.Api
             container.RegisterType<IProductType_Services, ProductType_Services>();
 
             container.RegisterType<IRight_Services, Right_Services>();
-
+            container.RegisterType<IProduct_Services, Product_Services>();
             container.RegisterType<IRole_Right_Services, Role_Right_Services>();
 
             container.RegisterType<IRole_Services, Role_Services>();
