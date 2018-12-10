@@ -17,7 +17,7 @@ namespace IKEA.Api.Controllers
     public class TManagerController : ApiController
     {
         [Unity.Attributes.Dependency]
-        public IManager_Services managerServices { get; set; }
+        public IManager_Services ManagerServices { get; set; }
         /// <summary>
         /// 添加管理员
         /// </summary>
@@ -27,7 +27,7 @@ namespace IKEA.Api.Controllers
         [HttpPost]
         public int Add(TManage manage)
         {
-            var i = this.managerServices.Add(manage);
+            var i = this.ManagerServices.Add(manage);
             return i;
         }
         /// <summary>
@@ -39,7 +39,7 @@ namespace IKEA.Api.Controllers
         [HttpGet]
         public TManage GetManage(int id)  
         {
-            var i = this.managerServices.GetManage(id);
+            var i = this.ManagerServices.GetManage(id);
             return i;
         }
 
@@ -51,7 +51,7 @@ namespace IKEA.Api.Controllers
         [HttpGet]
         public IEnumerable<TManage> GetManages()
         {
-            var result = this.managerServices.GetManages();
+            var result = this.ManagerServices.GetManages();
             return result;
         }
 
@@ -64,7 +64,7 @@ namespace IKEA.Api.Controllers
         [HttpGet]
         public int Update(TManage manage)
         {
-            var i = this.managerServices.Update(manage);
+            var i = this.ManagerServices.Update(manage);
             return i;
         }
     }

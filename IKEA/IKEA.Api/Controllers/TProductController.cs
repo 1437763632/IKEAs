@@ -16,7 +16,7 @@ namespace IKEA.Api.Controllers
     public class TProductController : ApiController
     {
         [Unity.Attributes.Dependency]
-        public IProduct_Services product { get; set; }
+        public IProduct_Services Product { get; set; }
         /// <summary>
         /// 添加产品
         /// </summary>
@@ -26,7 +26,7 @@ namespace IKEA.Api.Controllers
         [HttpPost]
         public int Add(TProduct product)
         {
-            var i = this.product.Add(product);
+            var i = this.Product.Add(product);
             return i;
         }
         /// <summary>
@@ -38,7 +38,7 @@ namespace IKEA.Api.Controllers
         [HttpDelete]
         public int Delete(int id)
         {
-            var i = this.product.Delete(id);
+            var i = this.Product.Delete(id);
             return i;
         }
         /// <summary>
@@ -50,7 +50,7 @@ namespace IKEA.Api.Controllers
         [HttpGet]
         public TProduct GetProduct(int id)
         {
-            var count = this.product.GetProduct(id);
+            var count = this.Product.GetProduct(id);
             return count;
         }
         /// <summary>
@@ -61,7 +61,7 @@ namespace IKEA.Api.Controllers
         [HttpGet]
         public IEnumerable<TProduct> GetProducts()
         {
-            var result = this.product.GetProducts();
+            var result = this.Product.GetProducts();
             return result;
         }
         /// <summary>
@@ -73,7 +73,7 @@ namespace IKEA.Api.Controllers
         [HttpPut]
         public int Update(TProduct product)
         {
-            var count = this.product.Update(product);
+            var count = this.Product.Update(product);
             return count;
         }
         /// <summary>
@@ -84,7 +84,7 @@ namespace IKEA.Api.Controllers
         [HttpGet]
         public IEnumerable<TProduct> GetProductchair(int PID)
         {
-            var result = this.product.GetProductchair(PID);
+            var result = this.Product.GetProductchair(PID);
             return result;
         }
     }

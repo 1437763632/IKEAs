@@ -92,7 +92,7 @@ namespace IKEA.Services
             using (System.Data.IDbConnection conn = DapperHelper.GetConnString())
             {
                 MySqlParameter mySqlParameters = new MySqlParameter("@PID", MySql.Data.MySqlClient.MySqlDbType.Int32, PID);
-                string sql = string.Format("select a.ProductName from TProduct a,TProductType b where a.ProductTypeID=b.PID and PID=@PID");
+                string sql = string.Format("select a.ProductName from TProduct a,TProductType b where a.ProductTypeID=b.PID");
                 var i = conn.Query<TProduct>(sql, null);
                 return i;
             }
