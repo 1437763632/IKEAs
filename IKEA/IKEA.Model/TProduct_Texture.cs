@@ -18,6 +18,6 @@ namespace IKEA.Model
         /// <summary>
         /// 材质名称
         /// </summary>
-        public string Texture { get; set; }
+        public string Texture { get; set; } 
     }
 }
