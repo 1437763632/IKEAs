@@ -41,6 +41,6 @@ namespace IKEA.IServices
         /// </summary> 
         /// <param name="productID"></param>
         /// <returns> IEnumerable<TProduct></returns>
-        TProductDetail GetTProductDetail(int productID);
+       IEnumerable< TProductDetail > GetTProductDetail(int productID);
     }
 }

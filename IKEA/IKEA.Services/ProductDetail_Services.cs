@@ -90,5 +90,15 @@ namespace IKEA.Services
                 return i;
             }
         }
+
+        IEnumerable<TProductDetail> IProductDetail_Services.GetTProductDetail(int productID)
+        {
+            using (System.Data.IDbConnection conn = DapperHelper.GetConnString())
+            {
+                string sql = string.Format("select Id, ProductID, ProductTypeID, ProductSizeID, ProductTextureID, colorID, Price, RealPrice, Inventory, ReservedInventory from TProductDetail where ProductID=@ProductID");
+                var i = conn.Query<TProductDetail>(sql, new { ProductID = productID });
+                return i;
+            }
+        }
     }
 }
