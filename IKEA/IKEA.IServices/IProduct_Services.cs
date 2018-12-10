@@ -41,5 +41,10 @@ namespace IKEA.IServices
         /// </summary>        
         /// <returns>IEnumerable<TPayment></returns>
         IEnumerable<TProduct> GetProducts();
+        /// <summary>
+        /// 获取所有椅子
+        /// </summary>
+        /// <returns></returns>
+        IEnumerable<TProduct> GetProductchair(int PID);
     }
 }

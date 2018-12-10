@@ -1,5 +1,8 @@
-﻿using System;
+﻿using IKEA.Model;
+using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 
@@ -24,6 +27,7 @@ namespace IKEA.Services
         {
             using (System.Data.IDbConnection conn = DapperHelper.GetConnString())
             {
+                
                 string sql = string.Format("insert into TManage (ManageName,ManagePass,CreateTime,LoginTime,LastLoginTime,Count) values(@ManageName,@ManagePass,@CreateTime,@LoginTime,@LastLoginTime,@Count)");
                 int i = conn.Execute(sql, manage);
                 return i;
@@ -38,23 +42,24 @@ namespace IKEA.Services
         {
             using (System.Data.IDbConnection conn = DapperHelper.GetConnString())
             {
-                MySqlParameter mySqlParameters = new MySqlParameter("@Id", id);
-                string sql = string.Format("select * from TManage where Id=@Id");
-                var i = conn.Query<TManage>(sql, mySqlParameters).SingleOrDefault();
+                MySqlParameter mySqlParameters = new MySqlParameter("@Id",MySql.Data.MySqlClient.MySqlDbType.Int32, id);
+                string sql = string.Format("select * from TManage where Id=@ID");
+                var i = conn.Query<TManage>(sql, new { ID=id}).SingleOrDefault();
                 return i;
             }
         }
      
         /// <summary>
-        /// 根据角色获取
+        /// 根据角色获取 
         /// </summary>
         /// <returns></returns>
-        public IEnumerable<TManage> GetManages(int RoleID)
+        public IEnumerable<TManage> GetManages()
         {
             using (System.Data.IDbConnection conn = DapperHelper.GetConnString())
             {
-                string sql = string.Format("select * from TManage where RoleID=@RoleID");
-                var i = conn.Query<TManage>(sql, null).ToList();
+                //MySqlParameter mySqlParameters = new MySqlParameter("@RoleID", MySql.Data.MySqlClient.MySqlDbType.Int32, RoleID);
+                string sql = string.Format("select * from TManage");
+                var i = conn.Query<TManage>(sql, null);
                 return i;
             }
         }
