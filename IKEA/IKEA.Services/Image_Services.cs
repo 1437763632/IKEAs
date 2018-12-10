@@ -51,7 +51,7 @@ namespace IKEA.Services
             using (MySqlConnection conn = DapperHelper.GetConnString())
             {
                 string sql = string.Format("SELECT * FROM timage WHERE Id = @Id");
-                var result = conn.Query<TImage>(sql, new { Id = id }).FirstOrDefault();
+                var result = conn.Query<TImage>(sql, new { Id = id }).SingleOrDefault();
                 return result;
             }
         }
@@ -64,8 +64,8 @@ namespace IKEA.Services
         {
             using (MySqlConnection conn = DapperHelper.GetConnString())
             {
-                string sql = string.Format("SELECT * FROM timage as a JOIN tproductdetail as b on a.Id = b.Id");
-                var result = conn.Query<TImage>(sql, ProductDetailID);
+                string sql = string.Format("SELECT * FROM timage where ProductDetailID=@ProductDetailID");
+                var result = conn.Query<TImage>(sql, new { ProductDetailID = ProductDetailID }).ToList();
                 return result;
             }
         }

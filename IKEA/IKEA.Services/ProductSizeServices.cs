@@ -46,7 +46,7 @@ namespace IKEA.Services
         }
 
         /// <summary>
-        /// 获取单个材质信息
+        /// 获取单个尺寸信息
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
@@ -54,15 +54,15 @@ namespace IKEA.Services
         {
             using (System.Data.IDbConnection conn = DapperHelper.GetConnString())
             {
-                MySqlParameter mySqlParameters = new MySqlParameter("@Id", id);
+                
                 string sql = string.Format("select * from TProduct_Size where Id=@Id");
-                var i = conn.Query<TProduct_Size>(sql, mySqlParameters).FirstOrDefault();
+                var i = conn.Query<TProduct_Size>(sql, new { Id=id}).FirstOrDefault();
                 return i;
             }
         }
 
         /// <summary>
-        /// 获取所有材质信息
+        /// 获取所有尺寸信息
         /// </summary>
         /// <param name="product_Texture"></param>
         /// <returns></returns>

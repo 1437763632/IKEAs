@@ -53,6 +53,7 @@
     <Compile Include="Image_Services.cs" />
     <Compile Include="LogServices.cs" />
     <Compile Include="Manager_Services.cs" />
+    <Compile Include="Manage_Role_Services.cs" />
     <Compile Include="OrderDetail_Services.cs" />
     <Compile Include="Order_Services.cs" />
     <Compile Include="Payment_Services.cs" />
@@ -65,7 +66,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Right_Services.cs" />
     <Compile Include="Role_Right_Services.cs" />
-    <Compile Include="TProductDetailService.cs" />
     <Compile Include="TrolleyDetail_Services.cs" />
     <Compile Include="Trolley_Services.cs" />
   </ItemGroup>

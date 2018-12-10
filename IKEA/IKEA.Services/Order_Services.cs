@@ -50,9 +50,9 @@ namespace IKEA.Services
         {
             using (System.Data.IDbConnection conn = DapperHelper.GetConnString())
             {
-                MySqlParameter mySqlParameters = new MySqlParameter("@Id", id);
+                
                 string sql = string.Format("select * from TOrder where Id=@Id");
-                var i = conn.Query<TOrder>(sql, mySqlParameters).SingleOrDefault();
+                var i = conn.Query<TOrder>(sql, new { Id=id}).SingleOrDefault();
                 return i;
             }
         }
@@ -66,7 +66,7 @@ namespace IKEA.Services
             using (System.Data.IDbConnection conn = DapperHelper.GetConnString())
             {
                 string sql = string.Format("select * from TOrder where UserID=@userID");
-                var i = conn.Query<TOrder>(sql, userID);
+                var i = conn.Query<TOrder>(sql, new { userID=userID}).ToList();
                 return i;
             }
         }

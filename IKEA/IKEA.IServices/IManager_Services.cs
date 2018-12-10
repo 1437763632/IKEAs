@@ -28,7 +28,7 @@ namespace IKEA.IServices
         /// 根据角色获取
         /// </summary>
         /// <returns></returns>
-        IEnumerable<TManage> GetManages(int RoleID);
+        IEnumerable<TManage> GetManages( );
         /// <summary>
         /// 修改管理员信息
         /// </summary>

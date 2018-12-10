@@ -32,8 +32,8 @@ namespace IKEA.Services
         {
             using (MySqlConnection conn = DapperHelper.GetConnString())
             {
-                string sql = string.Format("SELECT * FROM tlog");
-                var result = conn.Query<TLog>(sql, null);
+                string sql = string.Format("SELECT * FROM tlog where Id=@Id");
+                var result = conn.Query<TLog>(sql, new { Id=id}).ToList();
                 return result;
             }
         }

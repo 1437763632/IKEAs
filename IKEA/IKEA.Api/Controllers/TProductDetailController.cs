@@ -19,8 +19,9 @@ namespace IKEA.Api.Controllers
     {
         [Dependency]
         public IProductDetail_Services product { get; set; }
+        [Dependency]
+        public ITrolleyDetail_Services trilley { get; set; }
 
-       
 
         [Dependency]
         public IColor_Services color_Services { get; set; }
@@ -93,31 +94,43 @@ namespace IKEA.Api.Controllers
             var count = this.product.Update(productDetail);
             return count;
         }
+
+
+
+
         /// <summary>
-        /// 修改产品详情
+        /// 查看产品详情
         /// </summary>
         /// <param name="productDetail"></param>
         /// <returns>int</returns>
         [Route("SSS")]
         [HttpGet]
-        public IHttpActionResult SSS()
+        public IHttpActionResult SSS(int productID=1)
         {
-            var query = from p in product.GetTProductDetail(1)
+            var query = from p in product.GetTProductDetail(productID)
                         join c in color_Services.GetColors()
                         on p.colorID equals c.Id
                         join t in product_Texture_Services.GetProduct_Textures()
                         on p.ProductTextureID equals t.Id
-                        
+
                         select new
                         {
-                            Id =p.Id,
-                            Colorname =c.Colorname,
-                            Texture= t.Texture
+                            Id = p.Id,
+                            Colorname = c.Colorname,
+                            Texture = t.Texture
                         };
-           // query.Where(r => r.p.ProductID.Equals(1));
+            // query.Where(r => r.p.ProductID.Equals(1));
             return Json<dynamic>(query);
-            
+
         }
 
+
+        [Route("aaa")]
+        [HttpGet]
+        public IEnumerable<TTrolleyDetail> aaa()
+        {
+            var i = trilley.GetTrolleyDetails();
+            return i;
+        }
     }
 }

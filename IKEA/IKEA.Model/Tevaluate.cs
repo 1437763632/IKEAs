@@ -22,7 +22,7 @@ namespace IKEA.Model
         /// <summary>
         /// 商品ID
         /// </summary>
-        public int ShopID { get; set; }
+        public int ProductID { get; set; }
         /// <summary>
         /// 评价
         /// </summary>

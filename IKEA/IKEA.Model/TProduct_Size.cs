@@ -20,6 +20,6 @@ namespace IKEA.Model
         /// <summary>
         /// 产品尺寸信息
         /// </summary>
-        public int ProductSize { get; set; }
+        public string ProductSize { get; set; }
     }
 }
