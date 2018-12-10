@@ -53,9 +53,9 @@ namespace IKEA.Services
         {
             using (System.Data.IDbConnection conn = DapperHelper.GetConnString())
             {
-                MySqlParameter mySqlParameters = new MySqlParameter("@Id", id);
+                
                 string sql = string.Format("select * from TTrolleyDetail where Id=@Id");
-                var i = conn.Query<TTrolleyDetail>(sql, mySqlParameters).FirstOrDefault();
+                var i = conn.Query<TTrolleyDetail>(sql, new { Id = id }).FirstOrDefault();
                 return i;
             }
         }
