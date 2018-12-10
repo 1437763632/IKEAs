@@ -1,5 +1,8 @@
-﻿using System;
+﻿using IKEA.Model;
+using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 
@@ -24,6 +27,7 @@ namespace IKEA.Services
         {
             using (System.Data.IDbConnection conn = DapperHelper.GetConnString())
             {
+                
                 string sql = string.Format("insert into TManage (ManageName,ManagePass,CreateTime,LoginTime,LastLoginTime,Count) values(@ManageName,@ManagePass,@CreateTime,@LoginTime,@LastLoginTime,@Count)");
                 int i = conn.Execute(sql, manage);
                 return i;
@@ -38,15 +42,17 @@ namespace IKEA.Services
         {
             using (System.Data.IDbConnection conn = DapperHelper.GetConnString())
             {
+
                 
                 string sql = string.Format("select * from TManage where Id=@Id");
                 var i = conn.Query<TManage>(sql, new { Id= id }).SingleOrDefault();
+
                 return i;
             }
         }
      
         /// <summary>
-        /// 根据角色获取
+        /// 根据角色获取 
         /// </summary>
         /// <returns></returns>
         public IEnumerable<TManage> GetManages( )
@@ -55,6 +61,7 @@ namespace IKEA.Services
             {
                 string sql = string.Format("select * from TManage ");
                 var i = conn.Query<TManage>(sql, null).ToList();
+
                 return i;
             }
         }
