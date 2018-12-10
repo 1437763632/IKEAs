@@ -380,10 +380,10 @@ namespace IKEA.Api.Controllers
         /// <param name="productID"></param>
         /// <returns> IEnumerable<TProduct></returns>
         [HttpGet]
-        [Route("GetTProductDetail")]
-        public IEnumerable<TProductDetail> GetTProductDetail(int productID)
+        [Route("GetTProductDetails")]
+        public IEnumerable<TProductDetail> GetTProductDetails()
         {
-            var i = productDetail.GetTProductDetail(productID);
+            var i = productDetail.GetTProductDetails();
             return i;
         }
         #endregion
