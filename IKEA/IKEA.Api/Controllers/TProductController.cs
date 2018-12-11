@@ -93,6 +93,8 @@ namespace IKEA.Api.Controllers
             var result = this.Product.GetProductchair(ProductTypeId);
             return result;
         }
+
+
         [Route("GetCarList")]
         [HttpGet]
         public IHttpActionResult GetCarList()
