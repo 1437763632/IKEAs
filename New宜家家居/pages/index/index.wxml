@@ -1,0 +1,78 @@
+
+
+
+
+
+<!--index.wxml-->
+<view class="container">
+  <scroll-view class="scroll-container" upper-threshold="{{sortPanelDist}}" bindscroll="onToTop" scroll-y="true" style="height:calc(100% - 1px)">
+  <!--轮播图-->
+    <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+        <block wx:for="{{imgUrls}}">
+            <swiper-item>
+                <image src="{{item}}" class="slide-image" style="height:{{windowWidth * 0.375}}px !important"/>
+            </swiper-item>
+        </block>
+    </swiper>
+    <!--页面导航-->
+    <view class="category-panel">
+        <view class="category-item">
+            <image class="category-item-image" bindtap='bed' src="/images/床01.jpg" />
+            <text class="category-item-text">床</text>
+        </view>
+        <view class="category-item">
+            <image class="category-item-image" bindtap='sofa' src="/images/沙发.jpg" />
+            <text class="category-item-text">沙发</text>
+        </view>
+        <view class="category-item">
+            <image class="category-item-image" bindtap='chair_yizi' src="/images/椅子02.jpg" />
+            <text class="category-item-text">椅子</text>
+        </view>
+        <view class="category-item">
+            <image class="category-item-image" bindtap='sale_remai' src="/images/热卖01.jpg" />
+            <text class="category-item-text">热卖产品</text>
+        </view>  
+    </view>
+
+
+</scroll-view>
+ 
+</view>
+
+
+
+
+    <!--<view class="listMall"> 
+         <view>
+            <view class="img"> <image bindtap='product' class="Shop_image" src= 'https://onegoods.nosdn.127.net/resupload/2016/9/19/777e4b1711fb1b0283726cb0b197e8ba.jpg' /></view>
+            <view class="name"> <text>热卖产品</text> </view>             
+        </view>
+        
+    <!--数据信息 begin-->
+  <view class="nav_section">
+    <!-- <view wx:if="{{vabage[curIndex]}}"> -->
+        <block wx:for="{{vabage}}" wx:key="item.Id">
+            <view class="nav_section_items" >
+                <!--image-->
+                <view class="section_image" bindtap="navigateDetail" data-id="{{item.id}}" >
+                <block>
+                    <image  src="{{item.ProductImage}}" ></image>
+                </block>
+                </view>
+                <!--content-->
+                <view class="section_cont" bindtap="navigateDetail" data-aid="{{item.id}}">
+                <view class="section_cont_sub">
+                        <text>{{item.ProductName}}</text>
+                    </view>
+                    <view class="section_cont_price">价格：{{item.ProductMinPrice}}</view>
+                    <!-- <text>{{item.Remark}}</text> -->
+                </view>
+                <!--book-->
+                <view class="section_book" bindtap="bookTap" data-aid="{{item.id}}">
+                <text>添到购物车</text>
+                </view>
+            </view>
+        </block>
+    <!-- </view> -->
+    </view>
+<!--数据信息 end-->

@@ -1,0 +1,7 @@
+
+<view>
+<block wx:for='{{chair}}'>   
+<image src='{{item.ProductImage}}'></image>
+<text>{{item.ProductName}}</text>  
+</block>
+</view>

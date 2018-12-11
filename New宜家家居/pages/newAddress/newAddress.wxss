@@ -1,0 +1,130 @@
+/**index.wxss**/
+.input_note{width:23%;
+	color:#363636;
+	font-size:32rpx;
+}
+.users_detail{
+	width:100%;
+	align-items:center;
+}
+.user_input{
+	height:90rpx;
+	line-height:90rpx;
+	border-bottom:solid 1px #e0e0e0;
+	padding:0px 25rpx;
+	align-items:center;
+	}
+.user_input input{
+	height:32rpx;
+	line-height:32rpx;
+	color:#b2b2b2;
+	font-size:30rpx;
+	width:77%;
+}
+.user_input image{
+	width:11rpx;
+	height:20rpx;
+}
+.address_right text{color:#b2b2b2;font-size:28rpx;}
+.address_right image{margin-left:15rpx;}
+.address_set{width:200rpx;}
+
+.submit_info{
+width:700rpx;
+height:88rpx;
+line-height:88rpx;
+text-align:center;
+font-size:36rpx;
+border-radius:10rpx;
+}
+
+
+/* 滚动条 */
+.page-body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+/* 提示语 */
+.tips {
+  font-size: 28rpx;
+  text-align: center;
+  padding: 50rpx;
+  color: #ccc;
+  display:none;
+}
+
+.tips image {
+  width: 40rpx;
+  height: 40rpx;
+  margin-right: 20rpx;
+}
+
+.tips image,
+.tips text {
+  vertical-align: middle;
+}
+
+/*tip hide*/
+.tip_0,.tip_1,tip_2,tip3{
+    display:block;
+}
+
+
+/*三级联动*/
+.citybody {
+  position: fixed;
+  bottom: 0px;
+}
+
+.cityheader {
+  position: absolute;
+  top:0px;
+  width: 100%;
+  z-index: 4;
+}
+
+.city-cancel {
+  float: left;
+  margin: 20rpx;
+  color: #818181;
+}
+
+.city-true {
+  float: right;
+  margin: 20rpx;
+  color: #2FB42E
+}
+
+.section .picker {
+  background-color: #fff;
+  border-bottom: 1px #d9d9d9 solid;
+  border-top: 1px #d9d9d9 solid;
+  padding: 20rpx;
+}
+.citypickers{
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  min-height: 100%;
+  background-color: red;
+}
+/*三级联动*/
+.header {
+  position: fixed;
+  top: 0px;
+  width: 100%;
+  z-index: 2147483647;
+}
+
+.header:after {
+  content: " ";
+  position: absolute;
+  top: -1px;
+  left: 0;
+  right: 0;
+  height: 1px;
+  border-bottom: 1rpx solid #b2b2b2;
+  color: #d9d9d9;
+}
+

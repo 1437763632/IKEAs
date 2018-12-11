@@ -1,0 +1,15 @@
+<!--pages/bed_chuang/index.wxml-->
+<!--pages/chair_yizi/index.wxml-->
+
+<view>
+<block wx:for='{{chuang}}'>   
+<image src='{{item.ProductImage}}'></image>
+<text>{{item.ProductName}}</text>  
+</block>
+</view>
+
+
+
+        
+        
+

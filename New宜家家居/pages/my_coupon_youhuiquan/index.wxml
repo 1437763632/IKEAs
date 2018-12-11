@@ -1,0 +1,7 @@
+<!--pages/my_coupon_youhuiquan/index.wxml-->
+<text class='coupon'>我的优惠劵</text>
+<view>
+<block>     
+<image src='{{Pricec.Image}}'></image>
+</block>
+</view>
