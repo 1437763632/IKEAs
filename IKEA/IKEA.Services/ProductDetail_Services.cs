@@ -62,15 +62,18 @@ namespace IKEA.Services
         }
 
         
-        //public TProductDetail GetTProductDetail(int productID)
-        //{
-        //    using (System.Data.IDbConnection conn = DapperHelper.GetConnString())
-        //    {
-        //        string sql = string.Format("select Id, ProductID, ProductTypeID, ProductSizeID, ProductTextureID, colorID, Price, RealPrice, Inventory, ReservedInventory from TProductDetail where ProductID=@ProductID");
-        //        var i = conn.Query<TProductDetail>(sql, new { ProductID= productID }).SingleOrDefault();
-        //        return i;
-        //    }
-        //}
+
+        public TProductDetail GetTProductDetail(int productID)
+        {
+            using (System.Data.IDbConnection conn = DapperHelper.GetConnString())
+            {
+                string sql = string.Format("select Id, ProductID, ProductTypeID, ProductSizeID, ProductTextureID, colorID, Price, RealPrice, Inventory, ReservedInventory from TProductDetail where ProductID=@ProductID");
+                var i = conn.Query<TProductDetail>(sql, new { ProductID= productID }).SingleOrDefault();
+                return i;
+            }
+        }
+
+
 
         /// <summary>
         /// 修改产品详情
@@ -86,17 +89,20 @@ namespace IKEA.Services
                 return i;
             }
         }
+
         /// <summary>
         /// 获取所有产品详情
         /// </summary> 
         /// <param name="productID"></param>
         /// <returns> IEnumerable<TProduct></returns>
-        public IEnumerable<TProductDetail> GetTProductDetail(int productID)
+
+       public IEnumerable<TProductDetail> GetTProductDetails()
         {
             using (System.Data.IDbConnection conn = DapperHelper.GetConnString())
             {
-                string sql = string.Format("select Id, ProductID, ProductTypeID, ProductSizeID, ProductTextureID, colorID, Price, RealPrice, Inventory, ReservedInventory from TProductDetail where ProductID=@ProductID");
-                var i = conn.Query<TProductDetail>(sql, new { ProductID = productID }).ToList();
+                string sql = string.Format("select Id, ProductID, ProductTypeID, ProductSizeID, ProductTextureID, colorID, Price, RealPrice, Inventory, ReservedInventory from TProductDetail");
+                var i = conn.Query<TProductDetail>(sql, null).ToList();
+
                 return i;
             }
         }

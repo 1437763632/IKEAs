@@ -380,10 +380,10 @@ namespace IKEA.Api.Controllers
         /// <param name="productID"></param>
         /// <returns> IEnumerable<TProduct></returns>
         [HttpGet]
-        [Route("GetTProductDetail")]
-        public IEnumerable<TProductDetail> GetTProductDetail(int productID)
+        [Route("GetTProductDetails")]
+        public IEnumerable<TProductDetail> GetTProductDetails()
         {
-            var i = productDetail.GetTProductDetail(productID);
+            var i = productDetail.GetTProductDetails();
             return i;
         }
         #endregion
@@ -482,26 +482,112 @@ namespace IKEA.Api.Controllers
         #region 权限
         [Dependency]
         public IRight_Services right { get; set; }
+
+        [HttpGet]
+        [Route("GetRight")]
+        /// <summary>
+        /// 根据ID获取权限信息
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public TRight GetRight(int id)
+        {
+            var i = right.GetRight(id);
+            return i;
+        }
         #endregion
 
         #region 权限角色关联表
         [Dependency]
         public IRole_Right_Services role_Right { get; set; }
+        /// <summary>
+        /// 根据ID获取权限信息
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpGet]
+        [Route("GetTRole_Right")]
+        public TRole_Right GetTRole_Right(int id)
+        {
+            var i = role_Right.GetTRole_Right(id);
+            return i;
+        }
         #endregion
 
         #region 角色
         [Dependency]
         public IRole_Services role { get; set; }
+
+        [HttpGet]
+        [Route("GetRole")]
+        /// <summary>
+        /// 获取单个角色信息
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public TRole GetRole(int id)
+        {
+            var i = role.GetRole(id);
+            return i;
+        }
         #endregion
 
         #region 购物车
         [Dependency]
         public ITrolley_Services trolley { get; set; }
+
+        [HttpGet]
+        [Route("GetTrolley")]
+        /// <summary>
+        /// 获取单个购物车信息
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public TTrolley GetTrolley(int id)
+        {
+            var i = trolley.GetTrolley(id);
+            return i;
+        }
+        [HttpGet]
+        [Route("GetTrolleys")]
+        /// <summary>
+        /// 获取购物车信息
+        /// </summary>
+        /// <returns></returns>
+        public IEnumerable<TTrolley> GetTrolleys()
+        {
+            var i = trolley.GetTrolleys();
+            return i;
+        }
         #endregion
 
         #region 购物车详情
         [Dependency]
         public ITrolleyDetail_Services trolleyDetail { get; set; }
+
+        [HttpGet]
+        [Route("GetTTrolleyDetail")]
+        /// <summary>
+        /// 获取单个购物车详情
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public TTrolleyDetail GetTTrolleyDetail(int id)
+        {
+            var i = trolleyDetail.GetTTrolleyDetail(id);
+            return i;
+        }
+        [HttpGet]
+        [Route("GetTrolleyDetails")]
+        /// <summary>
+        /// 获取所有购物车详情信息
+        /// </summary>
+        /// <returns></returns>
+        public IEnumerable<TTrolleyDetail> GetTrolleyDetails()
+        {
+            var i = trolleyDetail.GetTrolleyDetails();
+            return i;
+        }
         #endregion
 
 
