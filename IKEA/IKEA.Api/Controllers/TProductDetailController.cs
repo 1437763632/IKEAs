@@ -80,6 +80,19 @@ namespace IKEA.Api.Controllers
             var resault = product.GetTProductDetails();
             return resault.FirstOrDefault();
         }
+        /// <summary>
+        /// 获取所有产品详情
+        /// </summary> 
+        /// <param name="productID"></param>
+        /// <returns> IEnumerable<TProduct></returns>
+        [Route("GetTProductDetails")]
+        [HttpGet]
+
+        public IEnumerable<TProductDetail> GetTProductDetails()
+        {
+            var i = product.GetTProductDetails();
+            return i;
+        }
 
         /// <summary>
         /// 修改产品详情

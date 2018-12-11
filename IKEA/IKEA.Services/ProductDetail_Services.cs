@@ -101,7 +101,7 @@ namespace IKEA.Services
             using (System.Data.IDbConnection conn = DapperHelper.GetConnString())
             {
                 string sql = string.Format("select Id, ProductID, ProductTypeID, ProductSizeID, ProductTextureID, colorID, Price, RealPrice, Inventory, ReservedInventory from TProductDetail");
-                var i = conn.Query<TProductDetail>(sql, null);
+                var i = conn.Query<TProductDetail>(sql, null).ToList();
 
                 return i;
             }
