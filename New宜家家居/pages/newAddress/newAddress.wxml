@@ -1,0 +1,69 @@
+<!--manageAddress.wxml-->
+<view class="user_input">
+	<view class="users_detail flexRowBetween">
+		<view class="input_note">收货人:</view>
+		<input placeholder="请输入收货人"></input>
+	</view>
+</view>
+<view class="user_input">
+	<view class="users_detail flexRowBetween">
+		<view class="input_note">手机号码:</view>
+		<input placeholder="请输入手机号码" style="width:64%;"></input>
+		<view class="address_right" style="width:13%;">
+			<text>+86</text>
+			<image src="/images/next_page.jpg"></image>
+		</view>
+	</view>
+</view>
+<view class="user_input">
+	<view class="users_detail flexRowBetween">
+		<view class="input_note">所在地区:</view>
+      <!-- 显示地区 -->
+ <view class="weui-cell__bd">
+          <input placeholder="选择" name="delivery_address" value="{{province}}-{{city}}-{{county}}" focus="{{focus}}" bindfocus="open" />
+    </view>
+  </view>     
+	</view>
+
+
+
+<view class="user_input">
+	<view class="users_detail flexRowBetween">
+		<view class="input_note">详细地址:</view>
+		<input placeholder="如街道，门牌号"></input>
+	</view>
+</view>
+<view class="user_input flexRowBetween">
+	<view class="input_note address_set">设为默认地址</view>
+	<view class="body-view">
+		<switch bindchange="switch2Change"/>
+	</view>
+</view>
+
+
+
+ <!-- 弹出选择地区联动 -->
+   <view wx:if="{{condition}}" class="citypicker">
+  <picker-view indicator-style="height: 50px;" style="width: 100%; height: 300px;" value="{{value}}" bindchange="bindChange" class="citybody">
+   <view class="cityheader">
+      <view bindtap="open" class="city-cancel">取消</view>
+      <view bindtap="open" class="city-true">确定</view>
+    </view>
+    <picker-view-column>
+      <view wx:for="{{provinces}}" wx:key="item" style="line-height: 50px;padding-left:10px;">{{item}}</view>
+    </picker-view-column>
+    <picker-view-column>
+      <view wx:for="{{citys}}" wx:key="item" style="line-height: 50px;padding-left:10px;">{{item}}</view>
+    </picker-view-column>
+    <picker-view-column>
+      <view wx:for="{{countys}}" wx:key="item" style="line-height: 50px;padding-left:10px;">{{item}}</view>
+    </picker-view-column>
+  </picker-view>
+</view>
+<!-- 弹出选择地区联动结束 -->
+
+ <view class="footer">
+<button class="footer-add" bindtap="backAddress" formType="submit">保存</button>
+    </view>
+
+

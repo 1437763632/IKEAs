@@ -91,7 +91,7 @@ namespace IKEA.Services
         /// <returns>IEnumerable<TPayment></returns>
         public IEnumerable<TProduct> GetProductchair(int ProductTypeId)
         {
-            using (System.Data.IDbConnection conn = DapperHelper.GetConnString())//a,TProductType b where a.ProductTypeID=b.PID=3
+            using (System.Data.IDbConnection conn = DapperHelper.GetConnString())
             {
                 string sql = string.Format("select * from TProduct where ProductTypeID =@ProductTypeID");
                 var i = conn.Query<TProduct>(sql, new { ProductTypeID=ProductTypeId}).ToList();
