@@ -1,7 +1,7 @@
 <!--pages/my_coupon_youhuiquan/index.wxml-->
 <text class='coupon'>我的优惠劵</text>
 <view>
-<block>     
-<image src='{{Pricec.Image}}'></image>
+<block wx:for="{{Pricec}}" wx:for-item="item">     
+<image src='{{item.Image}}' class="section_image"></image>
 </block>
 </view>
