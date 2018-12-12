@@ -1,1 +1,123 @@
 /* pages/chair_yizi/index.wxss */
+.container {
+    width: 100%;
+    padding:0;
+    margin: 0;
+    background-color: #fff;
+}
+.scroll-container{
+    width:100%;
+}
+.tabbar-border{
+    width:100%;
+    height:1px;
+    position: fixed;
+    bottom: 0;
+    background-color: #ccc;
+}
+.slide-image{
+    width:100%;
+}
+
+
+.category-panel{
+    height:90px;
+    width:100%;
+    display:flex;
+    color:#666666;
+    flex-direction:row;
+    font-size:11px;
+    justify-content: space-around;
+    border-bottom: 1px solid #f1eeec;
+}
+.category-item{
+    display:flex;
+    width:60px;
+    text-align: center;
+    flex-direction:column;
+}
+.category-item-image{
+    width:50px;
+    height:50px;
+    overflow:unset;
+    padding:10px 15px 0 10px;
+}
+
+
+.listMall .name{
+  font-size: 30rpx;
+  height: 25px;
+  color: #9A9A9A;
+  overflow : hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  line-height: 20px;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  margin-left: 30rpx;
+}
+
+
+/* 数据信息 */
+.nav_section{
+    width:100%;
+}
+.nav_section_items{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding:30rpx;
+    border-bottom:2rpx solid #ddd;
+    position: relative;
+}
+.nav_section_items:active{
+    background:#ddd;
+}
+.nav_section_items .section_image{
+    width:170rpx;
+    height:158rpx;
+}
+.nav_section_items .section_image image{
+    width:100%;
+    height:100%;
+}
+.nav_section_items .section_cont{
+    width:400rpx;
+    font-size:26rpx;
+    color:#a9a9a9;
+    
+}
+.nav_section_items .section_cont view{
+    overflow:hidden;
+    text-overflow: ellipsis;
+    white-space:nowrap;
+    display: block;
+}
+.nav_section_items .section_cont .section_cont_intro{
+    white-space:normal;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+.nav_section_items .section_cont .section_cont_sub{
+    font-size: 30rpx;
+    line-height:60rpx;
+    color:#000;
+    margin-bottom:10rpx;
+}
+.nav_section_items .section_cont .section_cont_price{
+    font-size:32rpx;
+    color:#d24a58;
+}
+.nav_section_items .section_book{
+    margin-left: 30rpx;
+    width:150rpx;
+    height:80rpx;
+    font-size:26rpx;
+    border-radius:100%;
+    background:#d24a58;
+    line-height: 80rpx;
+    color:#fff;
+    text-align: center;
+    margin-top:35rpx;
+}

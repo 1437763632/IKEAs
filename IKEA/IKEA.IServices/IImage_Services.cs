@@ -23,7 +23,7 @@ namespace IKEA.IServices
         /// </summary>
         /// <param name="ProductDetailID">产品详情表ID</param>
         /// <returns></returns>
-        IEnumerable<TImage> GetImages(int ProductDetailID);
+        IEnumerable<TImage> GetImages( );
         /// <summary>
         /// 根据ID获取单个图片
         /// </summary>

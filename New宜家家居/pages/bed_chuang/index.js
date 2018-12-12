@@ -14,7 +14,7 @@ Page({
   onLoad: function () {
     var that = this;
     wx.request({
-      url: 'http://localhost:8765/TProduct/GetProductchair?ProductTypeID=4',
+      url: 'http://localhost:8765/TProduct/GetProductchair?ProductTypeID=2',
       method: 'get',
       success: function (q) {
         console.log(q)
@@ -24,7 +24,13 @@ Page({
       }
     })
   },
-
+  // 跳转至详情页
+  navigateDetail: function (e) {
+    var id = e.currentTarget.dataset.aid;//获取显示界面的Id值
+    wx.navigateTo({
+      url: '../commodity details_spxiangqing/index?id=' + e.currentTarget.dataset.aid
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

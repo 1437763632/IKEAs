@@ -3,9 +3,9 @@
 
 <!-- 轮播图开始位置 -->
 <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
-  <block wx:for="{{itemPrice}}">
+  <block wx:for="{{itemSize}}">
     <swiper-item>
-      <image src="{{itemPrice.ProductImage}}" data-src="{{item}}" bindtap="previewImage"></image>
+      <image src="{{item.imgge}}"></image>
     </swiper-item>
   </block>
 </swiper>
@@ -14,100 +14,107 @@
 
 
 
-<!--detail.wxml-->
+<!--显示数据.wxml-->
 <view id="details">
 
-<view class="detail">
-	<view class="product_top">
-		<view class="name_share flexRowBetween" style="align-items:center;">
-			<view class="product_name avoidOverflow" style="width:80%;">
-		   	 <text>{{goodLists.ProductName}}</text>
+  <view class="detail">
+    <view class="product_top">
+      <view class="name_share flexRowBetween" style="align-items:center;">
+      
+        <view style="width:100%;text-align:center;">
+        <text style='tex'>{{itemSize[0].ProductName}}</text> 
+        </view>
       </view>
-			<view style="width:100%;text-align:center;">
-      <text style='tex'>{{itemPrice.ProductName}}</text> 
-			</view>
-		</view>
-	<view class="guarantee flexRowBetween">
-		 <text>518587188453818</text><text>热卖推荐</text> 	 <!-- 热卖推荐 -->
-		</view> 
-		<view class="price_sale flexRowBetween">
-			<view class="price">
-				¥{{itemPrice.ProductMinPrice}}
-          <p class="product-price-old">原价￥{{itemPrice.ProductMaxPrice}}</p> 
-			</view>
-			<view class="sale">
-				销量2888笔
-			</view>
-		</view>
-	</view>
-	<view class="choose flexRowBetween" bindtap="goBuy">
-		<view class="choose_left flexRowBetween" style="width:80%;overflow:hidden;">
-			<text class="text1" style="{{fonts[2].font}}">请选择</text>
-			<view style="{{fonts[2].font}};color:#666;">尺寸   大小</view>
-		</view>
-		<view class="next_page" style="width:20%;text-align:right;">	
-			<image src="/images/next_page.jpg"></image>
-		</view>
-	</view>
+    <view class="guarantee flexRowBetween">
+      <text>518587188453818</text><text>热卖推荐</text> 	 <!-- 热卖推荐 -->
+      </view> 
+      <view class="price_sale flexRowBetween">
+        <view class="price">
+                ¥{{itemSize[0].RealPrice}}
+            <p class="product-price-old">原价￥{{itemSize[0].Price}}</p> 
+        </view>
+        <view class="sale">
+          销量2888笔
+        </view>
+      </view>
+    </view>
+    <view class="choose flexRowBetween" bindtap="goBuy">
+      <view class="choose_left flexRowBetween" style="width:80%;overflow:hidden;">
+        <text class="text1" style="{{fonts[2].font}}">规格</text>
+        <text style="{{fonts[2].font}};color:#666;">选择  尺寸</text>
+      </view>
+      <view class="next_page" style="width:20%;text-align:right;">	
+        <image src="/images/next_page.jpg"></image>
+      </view>
+    </view>
 
+  <!--详情|评价-->
+    <view>
+    <view class="detail_comment flexRowBetween">
+      <view class="detail  {{tabCurrent == 0?'detail_select':''}}" data-current="0" bindtap="select_this">
+        详情
+      </view>
+      <view class="comment {{tabCurrent == 1?'detail_select':''}}"  data-current="1" bindtap="select_this">
+        评价
+      </view> 
+    </view>
+    
+    
+    
+    <view class="detail_show">
+    <!--详情-->
+      <view id="detail" style="{{tabCurrent == 0?'display:block':'display:none'}}">
+      <block wx:for="{{itemSize}}">
+        <image src="{{item.imgge}}"></image>
+      </block>
+      </view>
+      <!--评论-->
+      <view id="comment" style="{{tabCurrent == 1?'display:block':'display:none'}}">
+        <view class="good_com flexRowBetween">
+          <view class="comment_number">
+            评价(120)
+          </view>
+          <view class="good_percent"> <!--评论信息样式开始-->
+        
+            <image src="/images/next_page.jpg"></image>  	<!-- 跳转评价 -->
+            </view>
+          </view>
+          <view class="comment_list ">
+            <view class="flexRowBetween" style="align-items:center;">
+              <view class="comment_user" style="display:flex;align-items:center;">
+                <view class="user_img">
+                  <image src="/images/user1.jpg"></image>
+                </view>
+                <view class="txts" style="height:58rpx;">
+                  <view class="text1">米桃子</view>
+                  <view class="text2">2015.3.2</view>
+                </view>
+            </view><!--评论信息样式结束-->
 
-	<view class="detail_comment flexRowBetween">
-		<view class="detail  {{tabCurrent == 0?'detail_select':''}}" data-current="0" bindtap="select_this">
-			详情
-		</view>
-	<view class="comment {{tabCurrent == 1?'detail_select':''}}"  data-current="1" bindtap="select_this">
-			评价
-		</view> 
-	</view>
-	<view class="detail_show">
-		<view id="detail" style="{{tabCurrent == 0?'display:block':'display:none'}}">
+              <!-- 评价星级开始位置 -->
+              <view class="star flexRowBetween">
+                <image src="/images/star.jpg"></image>
+                <image src="/images/star.jpg"></image>
+                <image src="/images/star.jpg"></image>
+                <image src="/images/star.jpg"></image>
+                <image src="/images/star.jpg"></image>
+              </view>    
+              <!-- 评价星级结束位置 -->
+          </view>
+          <view class="comment_cont">
+            很满意的一次购物很满意的一次购物很满意的一次购物
+            很满意的一次购物很满意的一次购物很满意的一次购物很满意的一次购物很满意的一次购物很满意的一次购物很满意的一次购物很满意的一次购物很满意的一次购物
+          </view>
+        </view>		
+        
+      </view>
+    </view>
 
+    </view>
+  </view>
 
-		</view>
-		<view id="comment" style="{{tabCurrent == 1?'display:block':'display:none'}}">
-			<view class="good_com flexRowBetween">
-				<view class="comment_number">
-					评价(120)
-				</view>
-				<view class="good_percent"> <!--评论信息样式开始-->
-			
-				<image src="/images/next_page.jpg"></image>  	<!-- 跳转评价 -->
-				</view>
-			</view>
-			<view class="comment_list ">
-				<view class="flexRowBetween" style="align-items:center;">
-					<view class="comment_user" style="display:flex;align-items:center;">
-						<view class="user_img">
-							<image src="/images/user1.jpg"></image>
-						</view>
-						<view class="txts" style="height:58rpx;">
-							<view class="text1">米桃子</view>
-							<view class="text2">2015.3.2</view>
-						</view>
-					</view><!--评论信息样式结束-->
-
-          <!-- 评价星级开始位置 -->
-					<view class="star flexRowBetween">
-						<image src="/images/star.jpg"></image>
-						<image src="/images/star.jpg"></image>
-						<image src="/images/star.jpg"></image>
-						<image src="/images/star.jpg"></image>
-						<image src="/images/star.jpg"></image>
-					</view>    
-          <!-- 评价星级结束位置 -->
-				</view>
-				<view class="comment_cont">
-					很满意的一次购物很满意的一次购物很满意的一次购物
-					很满意的一次购物很满意的一次购物很满意的一次购物很满意的一次购物很满意的一次购物很满意的一次购物很满意的一次购物很满意的一次购物很满意的一次购物
-				</view>
-			</view>		
-			
-		</view>
-	</view>
 </view>
-
-
-</view>
+<!--下列导航-->
 <view id="buy">
 	<view class="buy_click">
 		<view class="consult">
@@ -134,39 +141,39 @@
 
 
 <!-- 加入购物车弹窗开始-->
+
 <view id="choose" class="{{isShow?'sildeIn':'slideOut'}}">
 	<view class="flexRowBetween pricity">
-		<view class="choose_pro">
-			<image src="/images/床02.jpg"></image>
-		</view>
+      <view class="choose_pro">
+        <image src="{{itemSize[0].imgge}}"></image>
+      </view>
 		<view class="product_txt">
 		  	<view class="pro_name">
-      {{itemPrice.ProductName}}
+      {{itemSize[0].ProductName}}
         </view>
-			<view class="pro_type">
-				个性化定制
-			</view>
-			<view class="price_choose">
-			¥{{itemPrice.ProductMinPrice}}
-			</view>
-		</view> 
+        
+        <view class="price_choose">
+        ¥{{itemSize[0].RealPrice}}
+        </view>
+	</view> 
 
-		<view class="close" bindtap="close">
-		<image src="/images/close.jpg"></image>
-		</view>
+  <view class="close" bindtap="close">
+      <image src="/images/close.jpg"></image>
+  </view>
     
 	</view>
+  <!--类型-->
 	<view id="type" class="flexRowBetween">
-		<view class="pro_type"  >	
-			类型
-		</view>
+      <view class="pro_type"  >	
+        类型
+      </view>
     	<bolck wx:for="{{itemType}}" wx:for-index="index" wx:for-item="i" >	 
          <view class="pro_types" data-type="{{index}}"  bindtap="chooseType" style="{{chooseType == index?'background:#21c3d4;color:#fff;':'' }}">	
      		<text >{{i.ProductTypeName}}</text>
 	     	</view>
 	   </bolck> 
-   	</view>
-
+  </view>
+  <!--尺寸-->
 	<view id="type" class="flexRowBetween">
 		<view class="pro_type" >	
 			尺寸
@@ -177,15 +184,17 @@
       </view>	
 		</bolck>  
 	</view>
+  <!--购买数量-->
 	<view class="choose_number flexRowBetween">
 
-   <view class='fouhao'>
-   <view class='num'>购买数量</view>
-      <label class='jian' id="reduce" bindtap="buyCount">-</label>
-          <text>{{buyCount}}</text>
-      <label class='jia' id="add" bindtap="buyCount">+</label>
-  </view>
-	</view>
+    <view class='fouhao'>
+        <view class='num'>购买数量</view>
+          <label class='jian' id="reduce" bindtap="buyCount">-</label>
+              <text>{{buyCount}}</text>
+          <label class='jia' id="add" bindtap="buyCount">+</label>
+        </view>
+    </view>
+  
 </view>
 <!-- 加入购物车弹窗结束 -->
 

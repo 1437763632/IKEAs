@@ -14,6 +14,7 @@
             </swiper-item>
         </block>
     </swiper>
+    
     <!--页面导航-->
     <view class="category-panel">
         <view class="category-item">
@@ -40,14 +41,7 @@
 </view>
 
 
-
-
-    <!--<view class="listMall"> 
-         <view>
-            <view class="img"> <image bindtap='product' class="Shop_image" src= 'https://onegoods.nosdn.127.net/resupload/2016/9/19/777e4b1711fb1b0283726cb0b197e8ba.jpg' /></view>
-            <view class="name"> <text>热卖产品</text> </view>             
-        </view>
-        
+   
     <!--数据信息 begin-->
   <view class="nav_section">
     <!-- <view wx:if="{{vabage[curIndex]}}"> -->

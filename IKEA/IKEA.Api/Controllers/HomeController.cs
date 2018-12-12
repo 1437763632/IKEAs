@@ -45,7 +45,7 @@ namespace IKEA.Api.Controllers
         [Route("GetImages")]
         public IHttpActionResult GetImages()
         {
-            var resault = image_Services.GetImages(1);
+            var resault = image_Services.GetImages();
             return Json<dynamic>(resault);
         }
     }
