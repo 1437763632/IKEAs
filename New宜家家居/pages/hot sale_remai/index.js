@@ -24,7 +24,13 @@ Page({
       }
     })
   },
-
+  // 跳转至详情页
+  navigateDetail: function (e) {
+    var id = e.currentTarget.dataset.aid;//获取显示界面的Id值
+    wx.navigateTo({
+      url: '../commodity details_spxiangqing/index?id=' + e.currentTarget.dataset.aid
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

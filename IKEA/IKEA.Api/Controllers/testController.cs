@@ -156,9 +156,9 @@ namespace IKEA.Api.Controllers
         /// </summary>
         /// <param name="ProductDetailID"></param>
         /// <returns></returns>
-        public IEnumerable<TImage> GetImages(int ProductDetailID)
+        public IEnumerable<TImage> GetImages()
         {
-            var i = image.GetImages(ProductDetailID);
+            var i = image.GetImages();
             return i;
         }
         #endregion
