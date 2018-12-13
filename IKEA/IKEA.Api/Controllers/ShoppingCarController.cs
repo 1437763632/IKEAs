@@ -20,12 +20,26 @@ namespace IKEA.Api.Controllers
     [RoutePrefix("ShoppingCar")]
     public class ShoppingCarController : ApiController
     {
+        /// <summary>
+        /// 产品尺寸
+        /// </summary>
         [Dependency]
         public IProduct_Size_Services product_Size { get; set; }
+        /// <summary>
+        /// 产品
+        /// </summary>
         [Dependency]
         public IProduct_Services product_Services { get; set; }
+        /// <summary>
+        /// 产品类型
+        /// </summary>
         [Dependency]
         public IProductType_Services productType_Services { get; set; }
+        /// <summary>
+        /// 地址
+        /// </summary>
+        [Dependency]
+        public IAddress_Services address { get; set; }
         #region  产品尺寸信息
         /// <summary>
         /// 添加产品尺寸信息
@@ -118,5 +132,61 @@ namespace IKEA.Api.Controllers
         }
         #endregion
 
+        #region
+        /// <summary>
+        /// 添加地址
+        /// </summary>
+        /// <returns></returns>
+        [Route("AddAddress")]
+        [HttpPost]
+        public int AddAddress(TAdderss adderss)
+        {
+            var i = this.address.Add(adderss);
+            return i;
+        }
+        /// <summary>
+        /// 根据用户ID获取地址信息
+        /// </summary>
+        /// <param name="UserID"></param>
+        /// <returns></returns>
+        [Route("GetAddress")]
+        [HttpGet]
+        public IHttpActionResult GetAddress(int UserID)
+        {
+            var address = this.address.GetAddressesByUserID(UserID);
+            return Json<dynamic>(address);
+        }
+        [Route("DelAddress")]
+        [HttpGet]
+        public int DelAddress(int ID)
+        {
+            var i = this.address.Delete(ID);
+            return i;
+        }
+        /// <summary>
+        /// 根据主键ID获取单个地址信息
+        /// </summary>
+        /// <param name="ID"></param>
+        /// <returns></returns>
+        [Route("GetAdderssID")]
+        [HttpGet]
+        public TAdderss GetAdderssID(int ID)
+        {
+            var result = this.address.GetAddressByID(ID);
+            return result;
+        }
+        /// <summary>
+        /// 修改地址
+        /// </summary>
+        /// <param name="uptAddress"></param>
+        /// <returns></returns>
+        [Route("UpdateAddres")]
+        [HttpPost]
+        public int UpdateAddres(TAdderss uptAddress)
+        {
+            var result = this.address.Update(uptAddress);
+            return result;
+        }
+        #endregion
     }
 }

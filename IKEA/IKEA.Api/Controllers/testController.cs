@@ -297,6 +297,61 @@ namespace IKEA.Api.Controllers
             var i = orderDetail.GetOrderDetails(orderID);
             return i;
         }
+        /// <summary>
+        /// 查看所有订单
+        /// </summary>
+        /// <returns></returns>
+        [Route("GetOrderlist")]
+        [HttpGet]
+        public IHttpActionResult GetOrderlist(int userid)
+        {
+            var userOrders = order.GetOrders(userid);
+            var query = from u in userOrders
+                        join d in orderDetail.GetOrderlist()
+                        on u.Id equals d.OrderID
+                        join pro in product.GetProducts()
+                        on d.ProductID equals pro.id
+                        select new
+                        {
+                            u.DisCountD,
+                            u.State,
+                            d.BuyNumber,
+                            d.RealPrice,
+                            d.Consume,
+                            pro.ProductImage,
+                            pro.ProductName,
+                        };
+            return Json<dynamic>(query);
+        }
+        /// <summary>
+        /// 查看所有订单
+        /// </summary>
+        /// <returns></returns>
+        [Route("GetOrdrepayment")]
+        [HttpGet]
+        public IHttpActionResult GetOrdrepayment(int userid,int state)
+        {
+            var userOrders = order.GetOrders(userid);
+            var query = from u in userOrders
+                        join d in orderDetail.GetOrderlist()
+                        on u.Id equals d.OrderID
+                        join pro in product.GetProducts()
+                        on d.ProductID equals pro.id
+                        where u.State == state
+                        orderby u.Id
+                        select new
+                        {
+                            pro.id,
+                            u.DisCountD,
+                            u.State,
+                            d.BuyNumber,
+                            d.RealPrice,
+                            pro.ProductImage,
+                            pro.ProductName,
+                        };
+            //query = query.Where(r => r.State == 3);
+            return Json<dynamic>(query);
+        }
         #endregion
 
         #region 支付

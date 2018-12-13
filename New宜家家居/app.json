@@ -1,22 +1,39 @@
 {
   "pages": [
-    
+
+   
     "pages/index/index",
-    "pages/commodity details_spxiangqing/index",
+        "pages/newAddress/newAddress",
+
     "pages/shoppingcar/index",
-    "pages/my_coupon_youhuiquan/index",    
+
     "pages/order/order",
-    "pages/newAddress/newAddress",
-    "pages/manageAddress/manageAddress",
     "pages/user/index",
     "pages/logs/logs",
-    "pages/coupon_youhuiquan/index", 
+    "pages/coupon_youhuiquan/index",   
+
+    "pages/commodity details_spxiangqing/index",
+
+  
+
+
+    "pages/manageAddress/manageAddress",
+
+   
+
     "pages/collect_shouchang/index",
     "pages/bed_chuang/index",
     "pages/sofa_shafa/index",
     "pages/chair_yizi/index",
-    "pages/hot sale_remai/index",    
+
+    "pages/hot sale_remai/index",
+    "pages/my_coupon_youhuiquan/index",
+    
+    "pages/UpdateAddress/index",
+
+
     "pages/userdata/index"
+
   ],
   "window": {
     "backgroundTextStyle": "light",

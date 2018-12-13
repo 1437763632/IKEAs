@@ -55,5 +55,18 @@ namespace IKEA.Services
                 return i;
             }
         }
+        /// <summary>
+        /// 查看所有订单
+        /// </summary>
+        /// <returns></returns>
+        public IEnumerable<TOrderDetail> GetOrderlist()
+        {
+            using (System.Data.IDbConnection conn = DapperHelper.GetConnString())
+            {
+                string sql = string.Format("select * from TOrderDetail");
+                var i = conn.Query<TOrderDetail>(sql, null).ToList();
+                return i;
+            }
+        }
     }
 }

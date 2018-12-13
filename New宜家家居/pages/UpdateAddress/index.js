@@ -15,7 +15,7 @@ Page({
     value: [0, 0, 0],
     values: [0, 0, 0],
     condition: false,
-    userInfo: {}
+    userInfo: {},
   },
   bindChange: function (e) {
     //console.log(e);
@@ -80,7 +80,8 @@ Page({
       condition: !this.data.condition
     })
   },
-  onLoad: function () {
+  onLoad: function (resd) {
+    console.log(resd.ID) 
     console.log("onLoad");
     var that = this;
 
@@ -125,18 +126,35 @@ Page({
         })
       }
     });
+  
+  // 根据主键获取地址信息     
+    var id = resd.ID;
+    console.log(id)
+    wx.request({
+      url: 'http://localhost:8765/ShoppingCar/GetAdderssID?ID=' + id,
+      method: 'get',
+      success: function (res) {
+        console.log(res.data);
+        var addressArray=res.data.AddressName.split('-');
+        console.log(addressArray)
+        that.setData({
+          addressID: res.data,
+          address: addressArray
+        })
+      }
+    })  
   },
-
-  // 添加地址
+  // 修改地址
   addressSubmit: function (add) {
     var userName = add.detail.value.userName;
     var phone = add.detail.value.phone;
     var delivery_address = add.detail.value.delivery_address;
     var detailAddress = add.detail.value.detailAddress;
+    var ID = add.detail.value.ID;
     if (userName == '') {
       util.showFailToast({
         title: '请输入收货人',
-     
+        icon: Error,
       });
       return;
     }
@@ -144,7 +162,7 @@ Page({
     if (phone == '') {
       util.showFailToast({
         title: '请输入手机号码',
-   
+        icon: Error,
       });
       return;
     }
@@ -169,35 +187,36 @@ Page({
     if (detailAddress == '') {
       util.showFailToast({
         title: '请输入详细地址',
-  
+        icon: Error,
       });
       return;
-    } 
-    
-    
-    
+    }
+
+
+
     wx.request({
-      url: 'http://localhost:8765/ShoppingCar/AddAddress',
-      method:'post',
-      data:{
+      url: 'http://localhost:8765/ShoppingCar/UpdateAddres',
+      method: 'post',
+      data: {
+        Id: ID,
         UserName: userName,
-         Phone: phone,
+        Phone: phone,
         AddressName: delivery_address,
         DetailAddress: detailAddress,
       },
       success: function (data) {
-        // console.log(data)
-        wx.showToast({
-            title: '保存成功!', 
-            icon:'success'  ,           
-            success: function () {
-             // wx.navigateBack();
-              wx.redirectTo({
-                url: '/pages/manageAddress/manageAddress',
-              })    
-            }  
-          })
-        }        
+         console.log(data)
+        wx.showToast({      
+          title: '修改成功!',
+          icon: 'success',
+          success: function () {
+           // wx.navigateBack();
+            wx.redirectTo({
+              url: '/pages/manageAddress/manageAddress',
+            })    
+          }
+        })
+      }
     })
   },
 

@@ -20,6 +20,10 @@ namespace IKEA.Model
         /// </summary>
         public int UserID { get; set; }
         /// <summary>
+        /// 用户名称
+        /// </summary>
+        public string UserName{ get; set; }
+        /// <summary>
         /// 地址名
         /// </summary>
         public string AddressName { get; set; }
@@ -27,5 +31,9 @@ namespace IKEA.Model
         /// 联系电话
         /// </summary>
         public string Phone { get; set; }
+        /// <summary>
+        ///详细地址
+        /// </summary>
+        public string DetailAddress { get; set; }
     }
 }
