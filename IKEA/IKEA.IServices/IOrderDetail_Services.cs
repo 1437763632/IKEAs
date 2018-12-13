@@ -30,5 +30,10 @@ namespace IKEA.IServices
         /// <param name="orderDetail">订单详情实体</param>
         /// <returns>int</returns>
         int Update(TOrderDetail orderDetail);
+        /// <summary>
+        /// 查看所有订单
+        /// </summary>
+        /// <returns></returns>
+        IEnumerable<TOrderDetail> GetOrderlist();
     }
 }

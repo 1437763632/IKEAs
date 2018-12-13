@@ -171,20 +171,32 @@ namespace IKEA.Api.Controllers
         public IHttpActionResult SSS(int productID)
         {
 
-            var query = from p in productDetail.GetTProductDetails( )
-                        join c in color.GetColors()
+            var query = from p in productDetail.GetTProductDetails()//产品详情
+                        join c in color.GetColors()//颜色
                         on p.colorID equals c.Id
-                        join t in Product_Texture.GetProduct_Textures()
+                        join t in Product_Texture.GetProduct_Textures()//材质
                         on p.ProductTextureID equals t.Id
-
-
+                        join s in Product_Size.GetProduct_Sizes()//尺寸
+                        on p.ProductSizeID equals s.Id
+                        join i in image.GetImages()
+                        on p.Id equals i.ProductDetailID
+                        join du in product.GetProducts()
+                        on p.ProductID equals du.id
                         select new
                         {
-                            Id = p.Id,
-                            Colorname = c.Colorname,
-                            Texture = t.Texture
+                            Id = p.Id,//产品详情id
+                            ProductID=p.ProductID,//产品id
+                            ProductName=du.ProductName,//产品名称
+                            Price=p.Price,//标注价格
+                            RealPrice=p.RealPrice,//实际价格
+                            Inventory=p.Inventory,//库存
+                            ReservedInventory=p.ReservedInventory,//预留库存
+                            Colorname = c.Colorname,//颜色
+                            Texture = t.Texture,//材质
+                            ProductSize=s.ProductSize,//尺寸
+                            imgge=i.ImageUrl,//图片
                         };
-            // query.Where(r => r.p.ProductID.Equals(1));
+            query = query.Where(r => r.ProductID.Equals(productID)).ToList();
             return Json<dynamic>(query);
 
         }

@@ -37,9 +37,9 @@ Page({
 
     // 跳转至详情页
     navigateDetail: function(e) {
-      var id = e.currentTarget.dataset.id;//获取显示界面的Id值
+      var id = e.currentTarget.dataset.aid;//获取显示界面的Id值
       wx.navigateTo({
-        url: '../commodity details_spxiangqing/index?id='+ e.currentTarget.dataset.id
+        url: '../commodity details_spxiangqing/index?id='+ e.currentTarget.dataset.aid
       })
     },
 
@@ -128,9 +128,6 @@ Page({
     wx.request({
       url: 'http://localhost:8765/TProduct/GetProducts',
       method: 'GET',
-      data: {
-        Id: 1,
-      },
       success: function (res) {
         console.log(res.data)
         that.setData({
@@ -147,22 +144,25 @@ Page({
 
   //跳转到床的页面
   bed: function () {
+    var id = 1;//获取显示界面的Id值
     wx.navigateTo({
       url: '/pages/bed_chuang/index'
     })
   },
 
-
+//跳转沙发的页面
   sofa: function () {
     wx.navigateTo({
       url: '/pages/sofa_shafa/index',
     })
   },
+  //跳转椅子的页面
   chair_yizi: function () {
     wx.navigateTo({
       url: '/pages/chair_yizi/index',
     })
   },
+  //跳转热卖的页面
   sale_remai: function () {
     wx.navigateTo({
       url: '/pages/hot sale_remai/index',

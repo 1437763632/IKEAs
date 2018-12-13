@@ -60,12 +60,12 @@ namespace IKEA.Services
         /// </summary>
         /// <param name="ProductDetailID"></param>
         /// <returns></returns>
-        public IEnumerable<TImage> GetImages(int ProductDetailID)
+        public IEnumerable<TImage> GetImages( )
         {
             using (MySqlConnection conn = DapperHelper.GetConnString())
             {
-                string sql = string.Format("SELECT * FROM timage where ProductDetailID=@ProductDetailID");
-                var result = conn.Query<TImage>(sql, new { ProductDetailID = ProductDetailID }).ToList();
+                string sql = string.Format("SELECT * FROM timage");
+                var result = conn.Query<TImage>(sql, null ).ToList();
                 return result;
             }
         }

@@ -14,7 +14,7 @@ Page({
   onLoad: function () {
     var that = this;
     wx.request({
-      url: 'http://localhost:8765/TDisCount/GetDisCount?id=3',
+      url: 'http://localhost:8765/TDisCount/GetDisCounts',
       method: 'get',
       success: function (q) {
         console.log(q)

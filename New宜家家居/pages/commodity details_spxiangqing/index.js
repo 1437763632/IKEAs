@@ -23,15 +23,13 @@ Page({
 
   //=========================
 
-  onLoad: function () {
+  onLoad: function (options) {
     var that = this;
-    //获取产品尺寸
+    var id = parseInt(options.id);
+    //获取产品详情
     wx.request({
-      url: 'http://localhost:8765/ShoppingCar/GetProduct_Sizes',
+      url: 'http://localhost:8765/wyTProductDetail/SSS?productID='+id,
       method:'get',
-      // data: {
-      //   Id: 2,
-      // },
       success:function(res){
         console.log(res);
         that.setData({
@@ -40,36 +38,7 @@ Page({
       }
     })         
 
-     //获取价格
-        wx.request({
-          url: 'http://localhost:8765/TProduct/GetProduct',
-          method: 'GET',
-          data: {
-            Id: 2,
-          },
-          success: function (res) {
-            console.log(res.data)
-            that.setData({
-              itemPrice: res.data
-            })
-          }
-        })   
-
-    //获取类型
-    wx.request({
-      url: 'http://localhost:8765/ShoppingCar/getProductType',
-      method: 'GET',
-      data: {
-        ProductTypeID: 2,
-      },
-      success: function (res) {
-        console.log(res.data)
-        that.setData({
-          itemType: res.data
-        })
-      }
-    })
-
+    
 },
 
   //详情
