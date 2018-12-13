@@ -128,11 +128,9 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PermissionFive.cs" />
-
+    <Compile Include="Controllers\RBACController.cs" />
     <Compile Include="Controllers\ShoppingCarController.cs" />
-
     <Compile Include="Controllers\TDisCountController.cs" />
-
     <Compile Include="Controllers\testController.cs" />
     <Compile Include="Controllers\TManagerController.cs" />
     <Compile Include="Controllers\TProductController.cs" />

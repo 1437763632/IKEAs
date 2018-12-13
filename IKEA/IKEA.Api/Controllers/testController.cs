@@ -482,6 +482,7 @@ namespace IKEA.Api.Controllers
         #region 权限
         [Dependency]
         public IRight_Services right { get; set; }
+
         #endregion
 
         #region 权限角色关联表
