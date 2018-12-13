@@ -128,9 +128,6 @@ Page({
     wx.request({
       url: 'http://localhost:8765/TProduct/GetProducts',
       method: 'GET',
-      data: {
-        Id: 1,
-      },
       success: function (res) {
         console.log(res.data)
         that.setData({
