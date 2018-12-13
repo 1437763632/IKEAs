@@ -24,7 +24,7 @@ namespace IKEA.Services
         {
             using (MySqlConnection conn = DapperHelper.GetConnString())
             {
-                string sql = string.Format("insert INTO tadderss(UserID,AddressName,Phone) VALUES(@UserID,@AddressName,@Phone)");
+                string sql = string.Format("insert INTO tadderss(UserID,AddressName,Phone,UserName,DetailAddress) VALUES(@UserID,@AddressName,@Phone,@UserName,@DetailAddress)");
                 int i = conn.Execute(sql, adderss);
                 return i;
             }
@@ -81,7 +81,7 @@ namespace IKEA.Services
         {            
                 using (MySqlConnection conn = DapperHelper.GetConnString())
                 {
-                string sql = string.Format("UPDATE tadderss SET UserID=@UserID , AddressName=@AddressName,  Phone=@Phone where Id =@Id");
+                string sql = string.Format("UPDATE tadderss SET UserID=@UserID , AddressName=@AddressName,UserName=@UserName,DetailAddress=@DetailAddress,  Phone=@Phone where Id =@Id");
                 int i = conn.Execute(sql, adderss);
                 return i;
             }

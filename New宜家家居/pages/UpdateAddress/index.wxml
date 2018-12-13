@@ -1,15 +1,18 @@
 <!--manageAddress.wxml-->
 <form bindsubmit='addressSubmit'>
 <view class="user_input">
-	<view class="users_detail flexRowBetween">
+  	<view class="users_detail flexRowBetween">
+   <view hidden='hidden'>
+     <input name="ID" value='{{addressID.Id}}'></input>
+   </view> 
 		<view class="input_note">收货人:</view>
-		<input  name="userName" placeholder="请输入收货人"></input>
+		<input  name="userName" placeholder="请输入收货人" value='{{addressID.UserName}}'></input>
 	</view>
 </view>
 <view class="user_input">
 	<view class="users_detail flexRowBetween">
 		<view class="input_note">手机号码:</view>
-		<input name="phone" placeholder="请输入手机号码" style="width:64%;"></input>
+		<input name="phone" placeholder="请输入手机号码" style="width:64%;" value='{{addressID.Phone}}'></input>
 		<view class="address_right" style="width:13%;">
 			<text>+86</text>
 			<image src="/images/next_page.jpg"></image>
@@ -21,17 +24,15 @@
 		<view class="input_note">所在地区:</view>
       <!-- 显示地区 -->
  <view class="weui-cell__bd">
-          <input placeholder="选择" name="delivery_address" value="{{province}}-{{city}}-{{county}}" focus="{{focus}}" bindfocus="open" />
+          <input placeholder="选择" name="delivery_address" value="{{address[0]}}-{{address[1]}}-{{address[2]}}" focus="{{focus}}" bindfocus="open" ></input>
+          <!-- <input placeholder="选择" name="delivery_address" value="{{province}}-{{city}}-{{county}}" focus="{{focus}}" bindfocus="open" /> -->
     </view>
   </view>     
 	</view>
-
-
-
 <view class="user_input">
 	<view class="users_detail flexRowBetween">
 		<view class="input_note">详细地址:</view>
-		<input name="detailAddress" placeholder="如街道，门牌号"></input>
+		<input name="detailAddress" placeholder="如街道，门牌号" value='{{addressID.DetailAddress}}'></input>
 	</view>
 </view>
 <view class="user_input flexRowBetween">
@@ -64,7 +65,7 @@
 <!-- 弹出选择地区联动结束 -->
 
  <view class="footer">
-<button class="footer-add" formType="submit">保存</button>
+<button class="footer-add" bindtap="backAddress" formType="submit">保存</button>
     </view>
 </form>
 
