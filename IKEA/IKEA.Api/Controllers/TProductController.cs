@@ -22,7 +22,10 @@ namespace IKEA.Api.Controllers
         public IProductDetail_Services ProductDetail { get; set; }
         [Unity.Attributes.Dependency]
         public IProduct_Size_Services Product_Sizes{ get; set; }
-
+        [Unity.Attributes.Dependency]
+        public ITrolley_Services Trolley_Services { get; set; }
+        [Unity.Attributes.Dependency]
+        public ITrolleyDetail_Services trolleyDetail_Services { get; set; }
         /// <summary>
         /// 添加产品
         /// </summary>
@@ -123,6 +126,56 @@ namespace IKEA.Api.Controllers
                         };
             return Json<dynamic>(query);
 
+        }
+        /// <summary>
+        /// 获取用户所有订单信息
+        /// </summary>
+        /// <param name="userid"></param>
+        /// <returns></returns>
+        [Route("GetCart")]
+        [HttpGet]
+        public IHttpActionResult GetCart(int userid=1)
+        {
+            ///获取用户所有订单
+            var query =  Trolley_Services.GetTrolleys().Where(u=>u.UserID.Equals(userid));
+            //联查获取订单详情信息
+            var query1 = from q in query
+                    join d in trolleyDetail_Services.GetTrolleyDetails()
+                    on q.Id equals d.TrolleyID
+                    select new
+                    {
+                        q.SumNumber,
+                        q.p_Sum,
+                        d.Id,
+                        d.Price,
+                        d.ProductDetailID,
+                        d.ProductID,
+                        d.RealPrice,
+                        d.TrolleyID
+                    };
+            //联查获取所需信息
+            var query2 = from q in query1
+                         join p in Product.GetProducts()
+                         on q.ProductID equals p.id
+                         join d in ProductDetail.GetTProductDetails()
+                         on q.ProductDetailID equals d.Id
+                         select new
+                         {
+                             q.Id,
+                             q.Price,
+                             q.ProductDetailID,
+                             q.ProductID,
+                             q.RealPrice,
+                             q.SumNumber,
+                             q.TrolleyID,
+                             p.ProductImage,
+                             p.ProductName,
+                             d.ProductSizeID,
+                             d.ProductTextureID,
+                             
+                         };
+            var resault = Json<dynamic>(query2);
+            return resault;
         }
     }
 }
