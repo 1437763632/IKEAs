@@ -16,326 +16,155 @@
 		待评价
 	</view>
 </view>
+
 <view class="order_list">
 	<view class="order_all  {{currentTap ==0?'order_show':''}}">	
-			<view class="order_tlt flexRowBetween">
-				<view class="tlt_left">
-					<text >交易时间:</text>
-					<text>2018-9-9</text>
-				</view>
-				<view class="tlt_right" style="color:#21c3d4">
-					等待商家付款
-				</view>
-			</view>
-			<view class="same_stroe">
+			<view class="same_stroe" >
+       <block wx:for='{{lists}}' wx:key="item.Id">  
 				<view class="flexRowBetween orderlistShow">
 					<view class="all_select" style="width:8%;text-align:left;overflow:hidden;">
-						<image src="/images/select.png"></image>
 					</view>
-					<view class="order_left"><image src="/images/床02.jpg"></image></view>
+            <icon wx:if="{{item.selected}}" type="success" color="red" data-index="{{index}}" data-id="{{item.id}}" class="cart-pro-select" bindtap="select" />
+             <icon wx:else type="circle" class="cart-pro-select" data-index="{{index}}" data-id="{{item.id}}" bindtap="select" />
+					<view class="order_left"><image src='{{item.ProductImage}}' class='image' bindtap="navigateDetail" data-id="{{item.id}}"></image></view>
 					<view class="order_name">
-						<view class="text1">高端网站建设(含小程序）</view>
+						<text>{{item.ProductName}}</text>
 						<view class="orders flexRowBetween">
-							<text class="order_number" id="num">X1</text>
+              <text class="order_number" id="num">X{{item.BuyNumber}}</text>
 							<text class="order_type">2.0*2.0</text>
-							<text class="order_price">¥3999</text>
+              <text class="order_price">最终价格{{item.RealPrice}}</text> 
 						</view>
+           <text>优惠券：{{item.DisCountD}}</text> 
 					</view>
 				</view>
-			</view>
-			<view class="same_stroe">
-				<view class="flexRowBetween orderlistShow">
-					<view class="all_select" style="width:8%;text-align:left;overflow:hidden;">
-						<image src="/images/select.png"></image>
+        	<view class="flexRowBetween">
+						<view class="handle_orders comment_order" bindtap="commentOrder">去评价</view>
 					</view>
-					<view class="order_left"><image src="/images/床03.jpg"></image></view>
-					<view class="order_name">
-						<view class="text1">高端网站建设(含小程序）</view>
-						<view class="orders flexRowBetween">
-							<text class="order_number">X1</text>
-							<text class="order_type">一对一vip定制</text>
-							<text class="order_price">¥3999</text>
-						</view>
-					</view>
-				</view>
+        </block>
 			</view>
 			<view class="handle">
 				<view class="total_order">
 					<view class="flexRowBetween">
-						<view class="total_money">
-							<text>合计:</text>
-							<text class="text2">¥3999</text>
-						</view>
-						<view class="user_discount">
-							（优惠券：-¥10.00）
-						</view>
 					</view>
 				</view>
 				<view class="handle_order">
 					<view class="flexRowBetween">
-						<view class="handle_orders delete_order">删除订单</view>
-						<view class="handle_orders comment_order" bindtap="commentOrder">去评价</view>
-					</view>
-				</view>
-			</view>
-
-		<view class="order_tlt flexRowBetween">
-				<view class="tlt_left">
-					<text >交易时间:</text>
-					<text>2018-9-9</text>
-				</view>
-				<view class="tlt_right" style="color:#21c3d4">
-					等待商家付款
-				</view>
-			</view>
-		
-			<view class="same_stroe">
-				<view class="flexRowBetween orderlistShow">
-					<view class="all_select" style="width:8%;text-align:left;overflow:hidden;">
-						<image src="/images/select.png"></image>
-					</view>
-					<view class="order_left"><image src="/images/床04.jpg"></image></view>
-					<view class="order_name">
-						<view class="text1">高端网站建设(含小程序）</view>
-						<view class="orders flexRowBetween">
-							<text class="order_number">X1</text>
-							<text class="order_type">一对一vip定制</text>
-							<text class="order_price">¥3999</text>
-						</view>
-					</view>
-				</view>
-			</view>
-			<view class="handle">
-				<view class="total_order">
-					<view class="flexRowBetween">
-						<view class="total_money">
-							<text>合计:</text>
-							<text class="text2">¥3999</text>
-						</view>
-						<view class="user_discount">
-							（优惠券：-¥10.00）
-						</view>
-					</view>
-				</view>
-				<view class="handle_order">
-					<view class="flexRowBetween">
-						<view class="handle_orders delete_order">删除订单</view>
-						<view class="handle_orders comment_order" bindtap="commentOrder">去评价</view>
+						<view class="handle_orders delete_order" bindtap='selectAll'>全选</view>
+            <text class="cart-toatl-price">￥{{totalPrice}}</text> 
 					</view>
 				</view>
 			</view>
 	</view>
 	<view class="order_all {{currentTap ==1?'order_show':''}}">
 		<view class="order_tlt flexRowBetween">
-				<view class="tlt_left">
+				<!-- <view class="tlt_left">
 					<text >交易时间:</text>
 					<text>2018-9-9</text>
 				</view>
 				<view class="tlt_right" style="color:#21c3d4">
 					等待商家付款
-				</view>
+				</view> -->
 			</view>
-			<view class="same_stroe">
+			<view class="same_stroe" bindtap="navigateDetail" data-aid="{{item.id}}">
+      <block wx:for='{{daifu}}'> 
 				<view class="flexRowBetween orderlistShow">
-					<view class="all_select" style="width:8%;text-align:left;overflow:hidden;">
-						<image src="/images/select.png"></image>
-					</view>
-					<view class="order_left"><image src="/images/床04.jpg"></image></view>
+					<view class="order_left"><image src='{{item.ProductImage}}' class='image'></image></view>
 					<view class="order_name">
-						<view class="text1">高端网站建设(含小程序）</view>
+						<text>{{item.ProductName}}</text>
 						<view class="orders flexRowBetween">
-							<text class="order_number">X1</text>
+							 <text class="order_number" id="num">X{{item.BuyNumber}}</text>
 							<text class="order_type">一对一vip定制</text>
-							<text class="order_price">¥3999</text>
+						<text class="order_price">最终价格{{item.RealPrice}}</text> 
 						</view>
+             <text>优惠券：{{item.DisCountD}}</text>
 					</view>
 				</view>
+        
+        </block>
 			</view>
 			
 			<view class="handle">
 				<view class="total_order">
 					<view class="flexRowBetween">
 						<view class="total_money">
-							<text>合计:</text>
-							<text class="text2">¥3999</text>
-						</view>
-						<view class="user_discount">
-							（优惠券：-¥10.00）
 						</view>
 					</view>
 				</view>
 				<view class="handle_order">
 					<view class="flexRowBetween">
-						<view class="handle_orders delete_order">删除订单</view>
-						<view class="handle_orders comment_order" bindtap="commentOrder">去评价</view>
+            <view class="handle_orders comment_order" bindtap="commentOrder">去付款</view>
 					</view>
 				</view>
 			</view>
-
-		<view class="order_tlt flexRowBetween">
-				<view class="tlt_left">
-					<text >交易时间:</text>
-					<text>2018-9-9</text>
-				</view>
-				<view class="tlt_right" style="color:#21c3d4">
-					等待商家付款
-				</view>
-			</view>
-		
-			<view class="same_stroe">
-				<view class="flexRowBetween orderlistShow">
-					<view class="all_select" style="width:8%;text-align:left;overflow:hidden;">
-						<image src="/images/select.png"></image>
-					</view>
-					<view class="order_left"><image src="/images/床04.jpg"></image></view>
-					<view class="order_name">
-						<view class="text1">高端网站建设(含小程序）</view>
-						<view class="orders flexRowBetween">
-							<text class="order_number">X1</text>
-							<text class="order_type">一对一vip定制</text>
-							<text class="order_price">¥3999</text>
-						</view>
-					</view>
-				</view>
-			</view>
-			<view class="handle">
-				<view class="total_order">
-					<view class="flexRowBetween">
-						<view class="total_money">
-							<text>合计:</text>
-							<text class="text2">¥3999</text>
-						</view>
-						<view class="user_discount">
-							（优惠券：-¥10.00）
-						</view>
-					</view>
-				</view>
-				<view class="handle_order">
-					<view class="flexRowBetween">
-						<view class="handle_orders delete_order">删除订单</view>
-						<view class="handle_orders comment_order" bindtap="commentOrder">去评价</view>
-					</view>
-				</view>
-			</view>
+			
 	</view>
+  <!--代发货-->
 	<view class="order_all {{currentTap ==2?'order_show':''}}">
 		<view class="order_tlt flexRowBetween">
-				<view class="tlt_left">
-					<text >交易时间:</text>
-					<text>2018-9-9</text>
-				</view>
-				<view class="tlt_right" style="color:#21c3d4">
-					等待商家付款
-				</view>
+			
 			</view>
-			<view class="same_stroe">
+			<view class="same_stroe" bindtap="navigateDetail" data-aid="{{item.id}}">
+      <block wx:for='{{daifa}}'>   
 				<view class="flexRowBetween orderlistShow">
 					<view class="all_select" style="width:8%;text-align:left;overflow:hidden;">
-						<image src="/images/select.png"></image>
+		
 					</view>
-					<view class="order_left"><image src="/images/床04.jpg"></image></view>
+					<view class="order_left"><image src='{{item.ProductImage}}' class='image'></image></view>
 					<view class="order_name">
-						<view class="text1">高端网站建设(含小程序）</view>
+						<text>{{item.ProductName}}</text>
 						<view class="orders flexRowBetween">
-							<text class="order_number">X1</text>
+							<text class="order_number" id="num">X{{item.BuyNumber}}</text>
 							<text class="order_type">一对一vip定制</text>
-							<text class="order_price">¥3999</text>
+							<text class="order_price">最终价格{{item.RealPrice}}</text>
 						</view>
+            <text>优惠券：{{item.DisCountD}}</text>
 					</view>
 				</view>
+        	<view class="flexRowBetween">
+					<view class="handle_orders delete_order">联系商家</view>
+						<view class="handle_orders comment_order" bindtap="commentOrder">查看物流</view>
+					</view>
+        </block>
 			</view>
 			
 			<view class="handle">
 				<view class="total_order">
 					<view class="flexRowBetween">
 						<view class="total_money">
-							<text>合计:</text>
-							<text class="text2">¥3999</text>
-						</view>
-						<view class="user_discount">
-							（优惠券：-¥10.00）
 						</view>
 					</view>
 				</view>
 				<view class="handle_order">
-					<view class="flexRowBetween">
-						<view class="handle_orders delete_order">删除订单</view>
-						<view class="handle_orders comment_order" bindtap="commentOrder">去评价</view>
-					</view>
-				</view>
-			</view>
-
-		<view class="order_tlt flexRowBetween">
-				<view class="tlt_left">
-					<text >交易时间:</text>
-					<text>2018-9-9</text>
-				</view>
-				<view class="tlt_right" style="color:#21c3d4">
-					等待商家付款
-				</view>
-			</view>
-		
-			<view class="same_stroe">
-				<view class="flexRowBetween orderlistShow">
-					<view class="all_select" style="width:8%;text-align:left;overflow:hidden;">
-						<image src="/images/select.png"></image>
-					</view>
-					<view class="order_left"><image src="/images/床04.jpg"></image></view>
-					<view class="order_name">
-						<view class="text1">高端网站建设(含小程序）</view>
-						<view class="orders flexRowBetween">
-							<text class="order_number">X1</text>
-							<text class="order_type">一对一vip定制</text>
-							<text class="order_price">¥3999</text>
-						</view>
-					</view>
-				</view>
-			</view>
-			<view class="handle">
-				<view class="total_order">
-					<view class="flexRowBetween">
-						<view class="total_money">
-							<text>合计:</text>
-							<text class="text2">¥3999</text>
-						</view>
-						<view class="user_discount">
-							（优惠券：-¥10.00）
-						</view>
-					</view>
-				</view>
-				<view class="handle_order">
-					<view class="flexRowBetween">
-						<view class="handle_orders delete_order">删除订单</view>
-						<view class="handle_orders comment_order" bindtap="commentOrder">去评价</view>
-					</view>
+				
 				</view>
 			</view>
 	</view>
+  <!--待收货-->
 	<view class="order_all {{currentTap ==3?'order_show':''}}">
 		<view class="order_tlt flexRowBetween">
-				<view class="tlt_left">
-					<text >交易时间:</text>
-					<text>2018-9-9</text>
-				</view>
-				<view class="tlt_right" style="color:#21c3d4">
-					等待商家付款
-				</view>
+				
 			</view>
-			<view class="same_stroe">
+			<view class="same_stroe" bindtap="navigateDetail" data-aid="{{item.id}}">
+      <block wx:for='{{daishou}}'>   
 				<view class="flexRowBetween orderlistShow">
 					<view class="all_select" style="width:8%;text-align:left;overflow:hidden;">
-						<image src="/images/select.png"></image>
 					</view>
-					<view class="order_left"><image src="/images/床04.jpg"></image></view>
+					<view class="order_left"><image src='{{item.ProductImage}}' class='image'></image></view>
 					<view class="order_name">
-						<view class="text1">高端网站建设(含小程序）</view>
+						<text>{{item.ProductName}}</text>
 						<view class="orders flexRowBetween">
-							<text class="order_number">X1</text>
+							 <text class="order_number" id="num">X{{item.BuyNumber}}</text>
 							<text class="order_type">一对一vip定制</text>
-							<text class="order_price">¥3999</text>
+							<text class="order_price">最终价格{{item.RealPrice}}</text> 
 						</view>
+             <text>优惠券：{{item.DisCountD}}</text> 
 					</view>
 				</view>
+        	<view class="flexRowBetween">
+						<view class="handle_orders delete_order">联系商家</view>
+						<view class="handle_orders comment_order" bindtap="commentOrder">查看物流</view>
+					</view>
+        </block>
 			</view>
 			
 			<view class="handle">
@@ -343,158 +172,61 @@
 					<view class="flexRowBetween">
 						<view class="total_money">
 							<text>合计:</text>
-							<text class="text2">¥3999</text>
+							<text class="text2">￥5279</text>
 						</view>
-						<view class="user_discount">
-							（优惠券：-¥10.00）
-						</view>
+					
 					</view>
 				</view>
 				<view class="handle_order">
-					<view class="flexRowBetween">
-						<view class="handle_orders delete_order">删除订单</view>
-						<view class="handle_orders comment_order" bindtap="commentOrder">去评价</view>
-					</view>
-				</view>
-			</view>
-
-		<view class="order_tlt flexRowBetween">
-				<view class="tlt_left">
-					<text >交易时间:</text>
-					<text>2018-9-9</text>
-				</view>
-				<view class="tlt_right" style="color:#21c3d4">
-					等待商家付款
-				</view>
-			</view>
-		
-			<view class="same_stroe">
-				<view class="flexRowBetween orderlistShow">
-					<view class="all_select" style="width:8%;text-align:left;overflow:hidden;">
-						<image src="/images/select.png"></image>
-					</view>
-					<view class="order_left"><image src="/images/床04.jpg"></image></view>
-					<view class="order_name">
-						<view class="text1">高端网站建设(含小程序）</view>
-						<view class="orders flexRowBetween">
-							<text class="order_number">X1</text>
-							<text class="order_type">一对一vip定制</text>
-							<text class="order_price">¥3999</text>
-						</view>
-					</view>
-				</view>
-			</view>
-			<view class="handle">
-				<view class="total_order">
-					<view class="flexRowBetween">
-						<view class="total_money">
-							<text>合计:</text>
-							<text class="text2">¥3999</text>
-						</view>
-						<view class="user_discount">
-							（优惠券：-¥10.00）
-						</view>
-					</view>
-				</view>
-				<view class="handle_order">
-					<view class="flexRowBetween">
-						<view class="handle_orders delete_order">删除订单</view>
-						<view class="handle_orders comment_order" bindtap="commentOrder">去评价</view>
-					</view>
+			
 				</view>
 			</view>
 	</view>
+  <!--待评价-->
 	<view class="order_all {{currentTap ==4?'order_show':''}}">
 		<view class="order_tlt flexRowBetween">
-				<view class="tlt_left">
-					<text >交易时间:</text>
-					<text>2018-9-9</text>
-				</view>
-				<view class="tlt_right" style="color:#21c3d4">
-					等待商家付款
-				</view>
+			
 			</view>
-			<view class="same_stroe">
+			<view class="same_stroe" data-id="{{item.id}}">
+       <block wx:for='{{daiping}}'>   
 				<view class="flexRowBetween orderlistShow">
 					<view class="all_select" style="width:8%;text-align:left;overflow:hidden;">
-						<image src="/images/select.png"></image>
 					</view>
-					<view class="order_left"><image src="/images/床04.jpg"></image></view>
+          <icon wx:if="{{item.selected}}" type="success" color="red" data-index="{{index}}" data-id="{{item.id}}" class="cart-pro-select" bindtap="selectt" />
+             <icon wx:else type="circle" class="cart-pro-select" data-index="{{index}}" data-id="{{item.id}}" bindtap="selectt" />
+					<view class="order_left"><image src='{{item.ProductImage}}' class='image' bindtap="navigateDetail" data-id="{{item.id}}"></image></view>
 					<view class="order_name">
-						<view class="text1">高端网站建设(含小程序）</view>
+						<text>{{item.ProductName}}</text>
 						<view class="orders flexRowBetween">
-							<text class="order_number">X1</text>
+							<text class="order_number" id="num">X{{item.BuyNumber}}</text>
 							<text class="order_type">一对一vip定制</text>
-							<text class="order_price">¥3999</text>
+							 <text class="order_price">最终价格{{item.RealPrice}}</text> 
 						</view>
+             <text>优惠券：{{item.DisCountD}}</text> 
 					</view>
 				</view>
+        <view class="flexRowBetween">
+						<view class="handle_orders delete_order" data-id='{{item.Id}}' bindtap='shanchu'>删除订单</view>
+						<view class="handle_orders comment_order" bindtap="commentOrder">去评价</view>
+					</view>
+        </block>
 			</view>
 			
 			<view class="handle">
 				<view class="total_order">
 					<view class="flexRowBetween">
 						<view class="total_money">
-							<text>合计:</text>
-							<text class="text2">¥3999</text>
-						</view>
-						<view class="user_discount">
-							（优惠券：-¥10.00）
 						</view>
 					</view>
-				</view>
-				<view class="handle_order">
+          	<view class="handle_order">
 					<view class="flexRowBetween">
-						<view class="handle_orders delete_order">删除订单</view>
-						<view class="handle_orders comment_order" bindtap="commentOrder">去评价</view>
+						<!-- <view class="handle_orders delete_order" bindtap='selectall'>全选</view>-->
+            <text class="cart-toatl-price">金额￥{{totalPrice}}</text>
+						<!-- <view class="handle_orders comment_order" bindtap="commentOrder">删除订单</view> -->
 					</view>
 				</view>
-			</view>
-
-		<view class="order_tlt flexRowBetween">
-				<view class="tlt_left">
-					<text >交易时间:</text>
-					<text>2018-9-9</text>
 				</view>
-				<view class="tlt_right" style="color:#21c3d4">
-					等待商家付款
-				</view>
-			</view>
-		
-			<view class="same_stroe">
-				<view class="flexRowBetween orderlistShow">
-					<view class="all_select" style="width:8%;text-align:left;overflow:hidden;">
-						<image src="/images/select.png"></image>
-					</view>
-					<view class="order_left"><image src="/images/床04.jpg"></image></view>
-					<view class="order_name">
-						<view class="text1">高端网站建设(含小程序）</view>
-						<view class="orders flexRowBetween">
-							<text class="order_number">X1</text>
-							<text class="order_type">一对一vip定制</text>
-							<text class="order_price">¥3999</text>
-						</view>
-					</view>
-				</view>
-			</view>
-			<view class="handle">
-				<view class="total_order">
-					<view class="flexRowBetween">
-						<view class="total_money">
-							<text>合计:</text>
-							<text class="text2">¥3999</text>
-						</view>
-						<view class="user_discount">
-							（优惠券：-¥10.00）
-						</view>
-					</view>
-				</view>
-				<view class="handle_order">
-					<view class="flexRowBetween">
-						<view class="handle_orders delete_order">删除订单</view>
-						<view class="handle_orders comment_order" bindtap="commentOrder">去评价</view>
-					</view>
-				</view>
+			
 			</view>
 	</view>
 </view>

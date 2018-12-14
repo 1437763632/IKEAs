@@ -13,12 +13,18 @@
         </view>
     </radio-group>
     <!-- 优惠券部署事件 -->
-    <view class="item addto" bindtap="coupon">
+    <view>
+      <block wx:for="{{Pricec}}" wx:for-item="item">     
+      <image src='{{item.Image}}' class="section_image" bindtap="settlement"></image>
+      <!-- <text class="lable" bindtap="settlement"  >领取</text>   -->
+      </block>
+    </view>
+    <!-- <view class="item addto" bindtap="coupon">
         <image src="../../images/优惠券1.png"/>
         <text class="lable" bindtap="settlement"  >领取</text>       
-    </view>
+    </view> -->
 
-     <view class="item addto" bindtap="coupon">
+     <!-- <view class="item addto" bindtap="coupon">
         <image src="../../images/优惠券2.png"/>
         <text class="lable">领取</text>       
     </view>
@@ -41,6 +47,6 @@
      <view class="item">
         <image src="../../images/优惠券2.png"/>
         <text class="lable">领取</text>       
-    </view>
+    </view> -->
     
 </view>
