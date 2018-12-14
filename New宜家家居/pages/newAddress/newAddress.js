@@ -136,7 +136,7 @@ Page({
     if (userName == '') {
       util.showFailToast({
         title: '请输入收货人',
-        icon: Error,
+     
       });
       return;
     }
@@ -144,7 +144,7 @@ Page({
     if (phone == '') {
       util.showFailToast({
         title: '请输入手机号码',
-        icon: Error,
+   
       });
       return;
     }
@@ -169,7 +169,7 @@ Page({
     if (detailAddress == '') {
       util.showFailToast({
         title: '请输入详细地址',
-        icon: Error,
+  
       });
       return;
     } 

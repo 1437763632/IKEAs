@@ -58,7 +58,7 @@ function showSuccessToast(config) {
 function showFailToast(config) {
   wx.showToast({
     title: config.title,
-    image: '../../images/info.png',
+    image: '/images/警告.png',
     mask: true,
     duration: constant.duration,
     success: config.success
