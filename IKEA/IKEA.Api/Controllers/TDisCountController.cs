@@ -30,5 +30,17 @@ namespace IKEA.Api.Controllers
             var result = this.DisCount.GetDisCount(id);
             return result;
         }
+
+        /// <summary>
+        /// 获取所有优惠券优惠劵
+        /// </summary>        
+        /// <returns>IEnumerable<TPayment></returns>
+        [Route("GetDisCounts")]
+        [HttpGet]
+        public IEnumerable< TDisCount> GetDisCounts()
+        {
+            var result = this.DisCount.GetDisCounts();
+            return result;
+        }
     }
 }
