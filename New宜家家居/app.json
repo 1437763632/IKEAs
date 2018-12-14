@@ -1,8 +1,10 @@
 {
   "pages": [
+    "pages/commodity details_spxiangqing/index",
 "pages/shoppingcar/index",
+  
     "pages/cart/cart",
-   "pages/home/home",
+    "pages/home/home",
     "pages/home-details/home-details",
 "pages/collect_shouchang/index",
      
@@ -14,7 +16,7 @@
     "pages/logs/logs",
     "pages/coupon_youhuiquan/index",   
 
-    "pages/commodity details_spxiangqing/index",
+   
 
 
     "pages/manageAddress/manageAddress", 

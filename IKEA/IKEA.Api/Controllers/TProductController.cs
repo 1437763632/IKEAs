@@ -185,5 +185,25 @@ namespace IKEA.Api.Controllers
             var resault = Json<dynamic>(query2);
             return resault;
         }
+
+
+        public int DeleteCarts(int ID)
+        {
+            //var detail = trolleyDetail_Services.GetTTrolleyDetail(ID);
+            //detail.BuyNumber
+            //var i = this.trolleyDetail_Services.Delete(ID);
+            return 1;
+        }
+        /// <summary>
+        /// 加入购物车
+        /// </summary>
+        /// <returns></returns>
+        [Route("AddCarts")]
+        [HttpPost]
+        public int AddCarts(TTrolleyDetail trolleyDetail)
+        {
+            int i = this.trolleyDetail_Services.Add(trolleyDetail);
+            return i;
+        }
     }
 }

@@ -8,13 +8,16 @@
           <icon type="circle" size="23" wx:if="{{!good.checked}}"></icon>
           <icon type="success" size="23" wx:if="{{good.checked}}"></icon>
         </label>
-        <image class='cover' src='{{good.ProductImage}}'></image>
+        <image bindtap='commodity' class='cover' src='{{good.ProductImage}}'></image>
         <view class='content'>
           <view class='text name'>{{good.ProductName}}</view>
           <view class='text author'>{{good.ProductSize}}</view>
           <view class='text desc'>{{good.Texture}}</view>
           <view class='text price'>¥{{good.Price}}</view>
         </view>
+        <view class='right'>
+                  <image src='/image/删除.png' bindtap='shanchu' data-index="{{index}}"></image>
+              </view>
         <view class='stepper'>
           <view class='subtract {{good.SumNumber == 1 ? "disabled": ""}}' data-index='{{index}}' catchtap='subtracttap'>-</view>
           <input class='count' type='number' value='{{good.SumNumber}}'></input>
@@ -22,10 +25,13 @@
         </view>
       </view>
     </checkbox-group>
+    
   </view>
 
 
-
+  <!-- <view class='cart-pay'>
+                <text class='cart_pay' bindtap="go" data-id="{{good.Id}}">清空购物车</text>
+              </view> -->
 
   <view class='section-bottom'>
     <checkbox-group bindchange="selectalltap">
@@ -44,7 +50,7 @@
         <text>¥{{totalPrice}}</text>
       </view>
     </view>
-    <view class='btn {{totalCount > 0 ? "btn-primary" : "btn-default"}}'>去结算</view>
+    <view bindtap='order' class='btn {{totalCount > 0 ? "btn-primary" : "btn-default"}}'>去结算</view>
   </view>
 </view>
 

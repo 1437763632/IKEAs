@@ -7,35 +7,6 @@ Page({
    */
 
   data: {
-
-    // goodList: [
-    //   {
-    
-    //     'name': 'goodList.ProductName',
-    //     'author': '余光中，林清玄，白先勇 等 著',
-    //     //'isbn': '9787535482051',
-    //     'cover': '/images/床02.jpg',
-    //     'desc': '缅怀乡愁诗人余光中。余光中、林清玄、白先勇联手巨献，重温经典，送别先生。总有一天，你会明白，孤独才是生命的常态。一部直击现代人孤独的精神献礼。中国散文协会推荐！',
-    //     'press': '长江文艺出版社',
-    //     'price': 8888,
-    //     'count': 1
-       
-    //   },
-      // {
-
-      //   'name': 'goodList.ProductName',
-      //   'author': '余光中，林清玄，白先勇 等 著',
-      //   'isbn': '9787535482058',
-      //   'cover': '/images/床02.jpg',
-      //   'desc': '缅怀乡愁诗人余光中。余光中、林清玄、白先勇联手巨献，重温经典，送别先生。总有一天，你会明白，孤独才是生命的常态。一部直击现代人孤独的精神献礼。中国散文协会推荐！',
-      //   'press': '长江文艺出版社',
-      //   'price': 888,
-      //   'count': 1,
-      //   'checked': false
-      // },
-     
-    //],
-
    
     hasList: false, // 列表是否有数据
     'checked': false,
@@ -55,12 +26,61 @@ Page({
         // console.data(res.data);
         that.setData({
           goodList: res.data,
-         // hasList:true,
+         // hasList:true,length
         })
-
       }
+      
+    })
+  
+  },
+  // onShow: function () {
+  //   var goodList = wx.getStorageSync("goodList")
+  //   this.setData({
+  //     cartList: false,
+  //     goodList: goodList
+  //   })
+  //   this.cartItems
+
+  // },
+
+  //删除购物车单个缓存
+  shanchu: function (e) {
+    var goodList = this.data.goodList  //获取购物车列表
+    var index = e.currentTarget.dataset.index  //获取当前点击事件的下标索引
+    goodList.splice(index, 1)
+    this.setData({
+      goodList: goodList
+    });
+    if (goodList.length) {
+      this.setData({
+        cartList: false
+      });
+    }
+    this.calculateTotal()
+    wx.setStorageSync("goodList", goodList)
+  },
+  //提示
+  // go: function (e) {
+  //   this.setData({
+  //     goodList: []
+  //   })
+  //   wx.setStorageSync("goodList", [])
+  // },
+
+//
+  order:function(){
+    wx.navigateTo({
+      url:"/pages/order/order",
     })
   },
+
+  commodity: function (e) {
+    wx.navigateTo({
+      url: "/pages/commodity details_spxiangqing/index",
+    })
+  },
+
+
 
 
   //  * 计算商品总数
@@ -82,14 +102,6 @@ Page({
       'totalPrice': totalPrice
     })
   },
-
-
-
-
-
-
-
-
 
 
   /**
@@ -182,9 +194,6 @@ Page({
     });
     this.calculateTotal();
   }
-
-
-
 
 })
 

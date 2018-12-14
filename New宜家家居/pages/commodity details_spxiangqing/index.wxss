@@ -194,8 +194,7 @@ width: 100%
 	overflow:hidden;
 }
 .shoppingCart{
-	width:50%;
-	
+	width:50%;	
 	background:orange;
 	text-align:center;
 	}
@@ -297,7 +296,7 @@ width: 100%
   margin-right: 10rpx;
 }
 .choose_number{
-	height:126rpx;
+	height:106rpx;
 	align-items:center;
 }
 .number_txt{
@@ -354,9 +353,16 @@ video{
 .fouhao{
   width: 100%;
 
-    height: 80rpx;
-    line-height: 80rpx;
-
+    height: 60rpx;
+    line-height: 60rpx;
+}
+.eded{
+   height: 80rpx;
+width: 80%;
+line-height: 80rpx;
+border-radius: 20rpx;
+margin-top: 85rpx;
+background-color: rgb(140, 241, 245);
 }
 .jian{
   background-color: #EEECEC;
@@ -375,7 +381,7 @@ video{
 } 
 .num{
   display: inline-block;
-  margin-left: 20rpx;
+  margin-left: 10rpx;
 	font-size:30rpx;
 	color:#444;
 }
