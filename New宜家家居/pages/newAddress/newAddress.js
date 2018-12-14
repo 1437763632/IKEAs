@@ -173,32 +173,42 @@ Page({
       });
       return;
     } 
+     wx.getStorage({
+       key: 'token',
+       success: function(res) {         
+        wx.request({
+          url: 'http://localhost:8765/ShoppingCar/AddAddress',
+          method: 'post',
+           header: {
+           'content-type': 'application/json',
+           'Authorization': 'BasicAuth ' + res.data
+           },
+          data: {
+            UserName: userName,
+            Phone: phone,
+            AddressName: delivery_address,
+            DetailAddress: detailAddress,
+          },
+          success: function (data) {
+            // console.log(data)
+            wx.showToast({
+              title: '保存成功!',
+              icon: 'success',
+              success: function () {
+                // wx.navigateBack();
+                wx.redirectTo({
+                  url: '/pages/manageAddress/manageAddress',
+                })
+              }
+            })
+          }
+        })
+  },
+     
+   })
     
     
-    
-    wx.request({
-      url: 'http://localhost:8765/ShoppingCar/AddAddress',
-      method:'post',
-      data:{
-        UserName: userName,
-         Phone: phone,
-        AddressName: delivery_address,
-        DetailAddress: detailAddress,
-      },
-      success: function (data) {
-        // console.log(data)
-        wx.showToast({
-            title: '保存成功!', 
-            icon:'success'  ,           
-            success: function () {
-             // wx.navigateBack();
-              wx.redirectTo({
-                url: '/pages/manageAddress/manageAddress',
-              })    
-            }  
-          })
-        }        
-    })
+   
   },
 
 

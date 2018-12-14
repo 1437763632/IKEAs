@@ -26,6 +26,8 @@ namespace IKEA.Api.Controllers
         public ITrolley_Services Trolley_Services { get; set; }
         [Unity.Attributes.Dependency]
         public ITrolleyDetail_Services trolleyDetail_Services { get; set; }
+        [Unity.Attributes.Dependency]
+        public IProduct_Texture_Services product_Texture_Services { get; set; }
         /// <summary>
         /// 添加产品
         /// </summary>
@@ -159,6 +161,10 @@ namespace IKEA.Api.Controllers
                          on q.ProductID equals p.id
                          join d in ProductDetail.GetTProductDetails()
                          on q.ProductDetailID equals d.Id
+                         join s in Product_Sizes.GetProduct_Sizes()
+                         on d.ProductSizeID equals s.Id
+                         join t in product_Texture_Services.GetProduct_Textures()
+                         on d.ProductTextureID equals t.Id
                          select new
                          {
                              q.Id,
@@ -171,8 +177,10 @@ namespace IKEA.Api.Controllers
                              p.ProductImage,
                              p.ProductName,
                              d.ProductSizeID,
+                             s.ProductSize,
                              d.ProductTextureID,
-                             
+                             t.Texture
+
                          };
             var resault = Json<dynamic>(query2);
             return resault;

@@ -48,6 +48,7 @@ border-radius:10rpx;
 }
 .ppp{
   margin-top: 7rpx;
+  color:  #696868;
 }
 .address_right{
 	font-size:30rpx;

@@ -2,27 +2,29 @@
  <view class='container'>
   <view class='section section-good'>
     <checkbox-group bindchange="checkboxChange">
-      <view class='good' wx:for='{{goodList}}' wx:for-item="good" wx:key="good.name">
+      <view class='good' wx:for='{{goodList}}' wx:for-item="good" wx:key="good.ProductName">
         <label class="checkbox">
-          <checkbox value="{{good.isbn}}" checked="{{good.checked}}" hidden='hidden' />
+          <checkbox value="{{good.Id}}" checked="{{good.checked}}" hidden='hidden' />
           <icon type="circle" size="23" wx:if="{{!good.checked}}"></icon>
           <icon type="success" size="23" wx:if="{{good.checked}}"></icon>
         </label>
-        <image class='cover' src='{{good.cover}}'></image>
+        <image class='cover' src='{{good.ProductImage}}'></image>
         <view class='content'>
-          <view class='text name'>{{goodLists.ProductName}}</view>
-          <view class='text author'>{{good.author}}</view>
-          <view class='text desc'>{{good.desc}}</view>
-          <view class='text price'>¥{{goodLists.ProductMaxPrice}}</view>
+          <view class='text name'>{{good.ProductName}}</view>
+          <view class='text author'>{{good.ProductSize}}</view>
+          <view class='text desc'>{{good.Texture}}</view>
+          <view class='text price'>¥{{good.Price}}</view>
         </view>
         <view class='stepper'>
-          <view class='subtract {{good.count == 1 ? "disabled": ""}}' data-index='{{index}}' catchtap='subtracttap'>-</view>
-          <input class='count' type='number' value='{{good.count}}'></input>
+          <view class='subtract {{good.SumNumber == 1 ? "disabled": ""}}' data-index='{{index}}' catchtap='subtracttap'>-</view>
+          <input class='count' type='number' value='{{good.SumNumber}}'></input>
           <view class='add' data-index="{{index}}" catchtap='addtap'>+</view>
         </view>
       </view>
     </checkbox-group>
   </view>
+
+
 
 
   <view class='section-bottom'>
@@ -46,19 +48,3 @@
   </view>
 </view>
 
-
-
-
-
-
- 
-
-
-
-<!-- <view>
-<block   wx:for="{{item}}">
-<view>
-<text >{{item.ProductName}}</text>
-</view>
-</block>
-</view> -->

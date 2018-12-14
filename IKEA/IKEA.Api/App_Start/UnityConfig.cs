@@ -88,6 +88,7 @@ namespace IKEA.Api
 
             container.RegisterType<ITrolleyDetail_Services, TrolleyDetail_Services>();// 购物车详情
 
+            container.RegisterType<IUser_Services, User_Services>();// 用户
 
         }
     }

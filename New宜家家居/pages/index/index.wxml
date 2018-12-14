@@ -4,6 +4,13 @@
 
 
 <!--index.wxml-->
+<view style='width:100%;height:px;' >
+<view class="search">
+    <input style='width:70%;display:inline-block;float:left;padding-left:20px;' placeholder-style='font-size:12px;' placeholder='搜索'></input>  
+  
+</view>
+<!-- <button class='btn'>搜索</button>    -->
+</view>
 <view class="container">
   <scroll-view class="scroll-container" upper-threshold="{{sortPanelDist}}" bindscroll="onToTop" scroll-y="true" style="height:calc(100% - 1px)">
   <!--轮播图-->

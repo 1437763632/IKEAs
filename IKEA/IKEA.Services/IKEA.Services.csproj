@@ -69,6 +69,7 @@
     <Compile Include="Role_Right_Services.cs" />
     <Compile Include="TrolleyDetail_Services.cs" />
     <Compile Include="Trolley_Services.cs" />
+    <Compile Include="User_Services.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\IKEA.Common\IKEA.Common.csproj">

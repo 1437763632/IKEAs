@@ -20,9 +20,13 @@ namespace IKEA.Model
         /// </summary>
         public string UserName { get; set; }
         /// <summary>
-        /// 密码
+        /// 秘钥
         /// </summary>
-        public string UserPass { get; set; }
+        public string session_key { get; set; }
+        /// <summary>
+        /// OpenID
+        /// </summary>
+        public string OpenId { get; set; }
         /// <summary>
         /// 昵称
         /// </summary>

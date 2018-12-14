@@ -1,66 +1,131 @@
-// pages/collect_shouchang/index.js
+var json = require('../../data/Home_data.js')
+
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
+    cartItems: [],
+    total: 0,
+    CheckAll: true
+  },
+  onLoad: function (e) {
 
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
   onShow: function () {
+    var cartItems = wx.getStorageSync("cartItems")
+    this.setData({
+      cartList: false,
+      cartItems: cartItems
+    })
+    this.getsumTotal()
 
   },
 
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
+  //选择
+  select: function (e) {
+    var CheckAll = this.data.CheckAll;
+    CheckAll = !CheckAll
+    var cartItems = this.data.cartItems
 
+    for (var i = 0; i < cartItems.length; i++) {
+      cartItems[i].selected = CheckAll
+    }
+
+    this.setData({
+      cartItems: cartItems,
+      CheckAll: CheckAll
+    })
+    this.getsumTotal()
+  },
+  add: function (e) {
+    var cartItems = this.data.cartItems   //获取购物车列表
+    var index = e.currentTarget.dataset.index //获取当前点击事件的下标索引
+    var value = cartItems[index].value  //获取购物车里面的value值
+
+    value++
+    cartItems[index].value = value;
+    this.setData({
+      cartItems: cartItems
+    });
+    this.getsumTotal()
+
+    wx.setStorageSync("cartItems", cartItems)  //存缓存
   },
 
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
+  //减
+  reduce: function (e) {
+    var cartItems = this.data.cartItems  //获取购物车列表
+    var index = e.currentTarget.dataset.index  //获取当前点击事件的下标索引
+    var value = cartItems[index].value  //获取购物车里面的value值
 
+    if (value == 1) {
+      value--
+      cartItems[index].value = 1
+    } else {
+      value--
+      cartItems[index].value = value;
+    }
+    this.setData({
+      cartItems: cartItems
+    });
+    this.getsumTotal()
+    wx.setStorageSync("cartItems", cartItems)
   },
 
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
+  // 选择
+  selectedCart: function (e) {
 
+    var cartItems = this.data.cartItems   //获取购物车列表
+    var index = e.currentTarget.dataset.index;  //获取当前点击事件的下标索引
+    var selected = cartItems[index].selected;    //获取购物车里面的value值
+
+    //取反
+    cartItems[index].selected = !selected;
+    this.setData({
+      cartItems: cartItems
+    })
+    this.getsumTotal();
+    wx.setStorageSync("cartItems", cartItems)
   },
 
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
 
+
+
+  //删除
+  shanchu: function (e) {
+    var cartItems = this.data.cartItems  //获取购物车列表
+    var index = e.currentTarget.dataset.index  //获取当前点击事件的下标索引
+    cartItems.splice(index, 1)
+    this.setData({
+      cartItems: cartItems
+    });
+    if (cartItems.length) {
+      this.setData({
+        cartList: false
+      });
+    }
+    this.getsumTotal()
+    wx.setStorageSync("cartItems", cartItems)
   },
 
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
+  //提示
+  go: function (e) {
+    this.setData({
+      cartItems: []
+    })
+    wx.setStorageSync("cartItems", [])
+  },
 
-  }
+
+  //合计
+  getsumTotal: function () {
+    var sum = 0
+    for (var i = 0; i < this.data.cartItems.length; i++) {
+      if (this.data.cartItems[i].selected) {
+        sum += this.data.cartItems[i].value * this.data.cartItems[i].price
+      }
+    }
+    //更新数据
+    this.setData({
+      total: sum
+    })
+  },
 })
