@@ -39,12 +39,12 @@ Page({
       }
     })          
 },
-  AddCarts:function(){    
+  AddCarts:function(){
           wx.request({
             url: 'http://localhost:8765/TProduct/AddCarts',
             data: '',
             header: {},
-            method: 'post',
+            method: 'GET',
             dataType: 'json',
             responseType: 'text',
             success: function(res) {},

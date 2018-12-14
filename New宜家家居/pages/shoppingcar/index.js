@@ -33,15 +33,15 @@ Page({
     })
   
   },
-  // onShow: function () {
-  //   var goodList = wx.getStorageSync("goodList")
-  //   this.setData({
-  //     cartList: false,
-  //     goodList: goodList
-  //   })
-  //   this.cartItems
+  onShow: function () {
+    var goodList = wx.getStorageSync("goodList")
+    this.setData({
+      cartList: false,
+      goodList: goodList
+    })
+    this.cartItems
 
-  // },
+  },
 
   //删除购物车单个缓存
   shanchu: function (e) {
@@ -76,7 +76,7 @@ Page({
 
   commodity: function (e) {
     wx.navigateTo({
-      url: "/pages/commodity details_spxiangqing/index",
+      url: "/pages/commodity details_spxiangqing/index?id",
     })
   },
 

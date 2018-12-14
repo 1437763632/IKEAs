@@ -8,7 +8,7 @@
           <icon type="circle" size="23" wx:if="{{!good.checked}}"></icon>
           <icon type="success" size="23" wx:if="{{good.checked}}"></icon>
         </label>
-        <image bindtap='commodity' class='cover' src='{{good.ProductImage}}'></image>
+        <image bindtap='commodity' class='cover' src='{{good.ProductImage}}' ></image>
         <view class='content'>
           <view class='text name'>{{good.ProductName}}</view>
           <view class='text author'>{{good.ProductSize}}</view>
