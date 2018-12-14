@@ -39,55 +39,19 @@ Page({
       }
     })          
 },
-//添加购物车
-  // AddCarts:function(){    
-  //         wx.request({
-  //           url: 'http://localhost:8765/TProduct/AddCarts',
-  //           data: '',
-  //           header: {},
-  //           method: 'post',
-  //           dataType: 'json',
-  //           responseType: 'text',
-  //           success: function(res) {},
-  //           fail: function(res) {},
-  //           complete: function(res) {},
-  //         })
-  // },
-
-
-  addcart: function (e) {
-    var goodList = wx.getStorageSync("goodList") || []
-    var exist = goodList.find(function (el) {
-      return el.Id == e.target.dataset.Id
-    })
-
-    //如果购物车里面有该商品那么他的数量每次加一
-    if (exist) {
-      exist.value = parseInt(exist.value) + 1
-    } else {
-      goodList.push({
-        Id: e.target.dataset.Id,
-        ProductName: e.target.dataset.ProductName,
-        ProductImage: e.target.dataset.ProductImage,
-        Texture: e.target.dataset.Texture,
-        Price: e.target.dataset.Price,  
-        value: 1,
-        selected: true
-      })
-    }
-
-    wx.showToast({
-      title: "加入购物车成功！",
-      duration: 1000
-    })
-
-    //更新缓存数据
-    wx.setStorageSync("goodList", goodList)
-
+  AddCarts:function(){    
+          wx.request({
+            url: 'http://localhost:8765/TProduct/AddCarts',
+            data: '',
+            header: {},
+            method: 'post',
+            dataType: 'json',
+            responseType: 'text',
+            success: function(res) {},
+            fail: function(res) {},
+            complete: function(res) {},
+          })
   },
-
-
-
 
   //详情
   select_this: function (e) {
@@ -99,13 +63,13 @@ Page({
   },
 
 
-  // //购买
-  // goBuy: function () {
-  //   var isShow = !this.data.isShow;
-  //   this.setData({
-  //     isShow: isShow
-  //   })
-  // },
+  //购买
+  goBuy: function () {
+    var isShow = !this.data.isShow;
+    this.setData({
+      isShow: isShow
+    })
+  },
   //关闭
   close: function () {
     this.setData({

@@ -1,6 +1,6 @@
 <!--pages/commodity details_spxiangqing/index.wxml-->
 
-<form bindsubmit='AddCarts'>
+
 <!-- 轮播图开始位置 -->
 <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
   <block wx:for="{{itemSize}}">
@@ -22,15 +22,15 @@
       <view class="name_share flexRowBetween" style="align-items:center;">
       
         <view style="width:100%;text-align:center;">
-        <text style='tex' name="ProductName">{{itemSize[0].ProductName}}</text> 
+        <text style='tex'>{{itemSize[0].ProductName}}</text> 
         </view>
       </view>
     <view class="guarantee flexRowBetween">
       <text>518587188453818</text><text>热卖推荐</text> 	 <!-- 热卖推荐 -->
       </view> 
       <view class="price_sale flexRowBetween">
-        <view class="price" >
-               <text> ¥{{itemSize[0].RealPrice}}</text>
+        <view class="price">
+                ¥{{itemSize[0].RealPrice}}
             <p class="product-price-old">原价￥{{itemSize[0].Price}}</p> 
         </view>
         <view class="sale">
@@ -126,19 +126,18 @@
 			<view class="text1">收藏</view>
 		</view>
     
-		<view class="go_buy flexRowBetween" >
-			<view bindtap="444" class="shoppingCart"  data-Id="{{data.Id}}" data-ProductName="{{data.ProductName}}" data-ProductImage="{{data.ProductImage}}" data-Texture="{{data.Texture}}" data-image="{{data.Price}}">
+		<view class="go_buy flexRowBetween" bindtap="goBuy">
+			<view class="shoppingCart">
 				加入购物车
-			</view>      
-			<view class="go_pay" bindtap='order'>
+			</view>
+			<view class="go_pay">
 				立即购买
-
 			</view>
 		</view>
 	</view>
 </view>
 
-</form>
+
 
 
 <!-- 加入购物车弹窗开始-->
@@ -186,18 +185,16 @@
 		</bolck>  
 	</view>
   <!--购买数量-->
- <!--	<view class="choose_number flexRowBetween">
-         <view class='fouhao'>
+	<view class="choose_number flexRowBetween">
+
+    <view class='fouhao'>
         <view class='num'>购买数量</view>
           <label class='jian' id="reduce" bindtap="buyCount">-</label>
               <text>{{buyCount}}</text>
           <label class='jia' id="add" bindtap="buyCount">+</label>
-        </view>  
-       
-    </view>-->
-   <view>
-            <button formType="submit" class='eded'>确定</button>
-         </view>
+        </view>
+    </view>
+  
 </view>
 <!-- 加入购物车弹窗结束 -->
 

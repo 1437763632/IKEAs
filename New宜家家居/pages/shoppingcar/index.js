@@ -23,7 +23,7 @@ Page({
         Id: 1,
       },
       success: function (res) {
-        // console.data(res.data);
+         //console.log(res.data);
         that.setData({
           goodList: res.data,
          // hasList:true,length
