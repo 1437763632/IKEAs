@@ -11,8 +11,7 @@ Page({
       // "/images/床03.jpg",
       // "/images/床04.jpg",
       // "/images/沙发02.jpg",
-      // "/images/沙发01.jpg",    
-
+      // "/images/沙发01.jpg",   
     ],
     indicatorDots: true, //是否显示面板指示点
     autoplay: true, //是否自动切换

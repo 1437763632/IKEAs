@@ -15,7 +15,7 @@
         <block wx:for="{{imgUrls}}">
             <swiper-item>
             <view id='rrrr'>
-                <image src="{{item}}" class="slide-image" style="height:{{windowWidth * 1.875}}px !important"/>
+                <image src="{{item}}" class="slide-image" style="height:{{windowWidth * 0.575}}px !important"/>
                 </view>
             </swiper-item>
             
@@ -57,7 +57,7 @@
                 <!--image-->
                 <view class="section_image" bindtap="navigateDetail" data-id="{{item.id}}" >
                 <block>
-                    <image  src="{{item.ProductImage}}" ></image>
+                    <image  src="{{item.ProductImage}}" bindtap="navigateDetail" data-aid="{{item.id}}" ></image>
                 </block>
                 </view>
                 <!--content-->

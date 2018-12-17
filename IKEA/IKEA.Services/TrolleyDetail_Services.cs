@@ -39,7 +39,7 @@ namespace IKEA.Services
             {
 
                 string sql = string.Format("delete from TTrolleyDetail where Id=@id");
-                int i = conn.Execute(sql, id);
+                int i = conn.Execute(sql, new { Id = id });
                 return i;
             }
         }

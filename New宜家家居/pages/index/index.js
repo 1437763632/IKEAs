@@ -70,10 +70,28 @@ Page({
         me.setData({ windowWidth: res.windowWidth })
       }
     });
-
-
     console.log('onLoad');
   },
+
+    //添到购物车s
+  bookTap:function(){
+    wx.request({
+      url: 'http://localhost:8765/Product/AddCarts',
+    
+      method: 'post',
+      data:{
+        
+      },
+      success: function (res) {
+        wx.showToast({
+          title: '添加成功',
+          icon: '',
+
+        })
+      },
+    })
+  },
+
   startNotice: function () {
     var me = this;
     var notices = me.data.notices || [];

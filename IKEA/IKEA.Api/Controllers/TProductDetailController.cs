@@ -171,6 +171,8 @@ namespace IKEA.Api.Controllers
         public IHttpActionResult SSS(int productID)
         {
 
+
+            #region linq 错误的
             var query = from p in productDetail.GetTProductDetails()//产品详情
                         join c in color.GetColors()//颜色
                         on p.colorID equals c.Id
@@ -178,6 +180,7 @@ namespace IKEA.Api.Controllers
                         on p.ProductTextureID equals t.Id
                         join s in Product_Size.GetProduct_Sizes()//尺寸
                         on p.ProductSizeID equals s.Id
+
                         join i in image.GetImages()
                         on p.Id equals i.ProductDetailID
                         join du in product.GetProducts()
@@ -185,18 +188,41 @@ namespace IKEA.Api.Controllers
                         select new
                         {
                             Id = p.Id,//产品详情id
-                            ProductID=p.ProductID,//产品id
-                            ProductName=du.ProductName,//产品名称
-                            Price=p.Price,//标注价格
-                            RealPrice=p.RealPrice,//实际价格
-                            Inventory=p.Inventory,//库存
-                            ReservedInventory=p.ReservedInventory,//预留库存
+                            ProductID = p.ProductID,//产品id
+                            ProductName = du.ProductName,//产品名称
+                            Price = p.Price,//标注价格
+                            RealPrice = p.RealPrice,//实际价格
+                            Inventory = p.Inventory,//库存
+                            ReservedInventory = p.ReservedInventory,//预留库存
                             Colorname = c.Colorname,//颜色
                             Texture = t.Texture,//材质
-                            ProductSize=s.ProductSize,//尺寸
-                            imgge=i.ImageUrl,//图片
+                            ProductSize = s.ProductSize,//尺寸
+                            imgge = i.ImageUrl,//图片
                         };
             query = query.Where(r => r.ProductID.Equals(productID)).ToList();
+
+
+
+            #endregion
+            //var query1 = productDetail.GetTProductDetails().Where(r => r.ProductID.Equals(productID));
+            //var showProductDetails = new List<ShowProductDetail>();
+            //ShowProductDetail showProductDetail = new ShowProductDetail();
+            //foreach (var item in query1)
+            //{
+            //    showProductDetail.Id = item.Id;
+            //    showProductDetail.Price = item.Price;
+            //    showProductDetail.ProductID = item.ProductID;
+            //    showProductDetail.ProductSizeID = item.ProductSizeID;
+            //    showProductDetail.product_Sizes = Product_Size.GetProduct_Sizes().Where(r => r.Id.Equals(item.ProductSizeID)).ToList();
+            //    showProductDetail.ProductTextureID = item.ProductTextureID;
+            //    showProductDetail.product_Textures=
+            //}
+            //Model.Id
+
+            //    model.ImagesList = uery.quer("slect  * fom imge ewere pid = ")
+            //    model.ColorList = uery.Where(r => r.ProductID.Equals(productID)).ToList(); re(r => r.ProductID.Equals(productID)).ToList();
+
+
             return Json<dynamic>(query);
 
         }

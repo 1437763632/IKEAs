@@ -1,37 +1,28 @@
 {
   "pages": [
     "pages/shoppingcar/index",
-    "pages/commodity details_spxiangqing/index",
+    "pages/aaaaa/index",
 
-  
+    "pages/commodity details_spxiangqing/index",
+    "pages/index/index",
     "pages/cart/cart",
     "pages/home/home",
     "pages/home-details/home-details",
-"pages/collect_shouchang/index",
-     
-    "pages/index/index",
-        "pages/newAddress/newAddress",   
-
+    "pages/collect_shouchang/index",
+    "pages/newAddress/newAddress",
     "pages/order/order",
     "pages/user/index",
     "pages/logs/logs",
-    "pages/coupon_youhuiquan/index",   
-
-   
-
-
-    "pages/manageAddress/manageAddress", 
-
-    
+    "pages/coupon_youhuiquan/index",
+    "pages/manageAddress/manageAddress",
     "pages/bed_chuang/index",
     "pages/sofa_shafa/index",
     "pages/chair_yizi/index",
-
     "pages/hot sale_remai/index",
-    "pages/my_coupon_youhuiquan/index",    
+    "pages/my_coupon_youhuiquan/index",
     "pages/UpdateAddress/index",
-        "pages/userdata/index"
-
+    "pages/userdata/index"
+  
   ],
   "window": {
     "backgroundTextStyle": "light",

@@ -2,25 +2,26 @@
  <view class='container'>
   <view class='section section-good'>
     <checkbox-group bindchange="checkboxChange">
-      <view class='good' wx:for='{{goodList}}' wx:for-item="good" wx:key="good.ProductName">
+      <view class='good' wx:for='{{goodList}}' wx:key="good.Id" wx:for-item="good" >
         <label class="checkbox">
           <checkbox value="{{good.Id}}" checked="{{good.checked}}" hidden='hidden' />
           <icon type="circle" size="23" wx:if="{{!good.checked}}"></icon>
           <icon type="success" size="23" wx:if="{{good.checked}}"></icon>
         </label>
-        <image bindtap='commodity' class='cover' src='{{good.ProductImage}}' ></image>
-        <view class='content'>
-          <view class='text name'>{{good.ProductName}}</view>
-          <view class='text author'>{{good.ProductSize}}</view>
+        <image bindtap="navigateDetail"  data-aid="{{good.Id}}" class='cover' src='{{good.ProductImage}}' ></image>
+        <view class='content' bindtap="navigateDetail" data-aid="{{good.Id}}">
+          <view hidden='hidden' class='text name'>{{good.ProductID}}</view>
+          <view class='text name' >{{good.ProductName}}</view>
+          <view class='text author' >{{good.ProductSize}}</view>
           <view class='text desc'>{{good.Texture}}</view>
-          <view class='text price'>¥{{good.Price}}</view>
+          <view class='text price' >¥{{good.Price}}</view>
         </view>
         <view class='right'>
-                  <image src='/image/删除.png' bindtap='shanchu' data-index="{{index}}"></image>
+                   <image src='/image/删除.png' bindtap='shanchu' data-index="{{index}}" data-aid='{{good.Id}}'></image>
               </view>
         <view class='stepper'>
           <view class='subtract {{good.SumNumber == 1 ? "disabled": ""}}' data-index='{{index}}' catchtap='subtracttap'>-</view>
-          <input class='count' type='number' value='{{good.SumNumber}}'></input>
+          <input class='count' type='number' value='{{good.BuyNumber}}'></input>
           <view class='add' data-index="{{index}}" catchtap='addtap'>+</view>
         </view>
       </view>

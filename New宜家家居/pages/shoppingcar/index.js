@@ -1,52 +1,63 @@
 // pages/shopcart/shopcart.js
 
-var goodList= [];//购物车
+var goodList = []; //购物车
 Page({
   /**
    * 页面的初始数据
    */
 
   data: {
-   
+
     hasList: false, // 列表是否有数据
     'checked': false,
-    'checkAll': false,// 全选状态，默认全选
+    'checkAll': false, // 全选状态，默认全选
     'totalCount': 0,
-   'totalPrice': 0
+    'totalPrice': 0
   },
-  onLoad: function () {
+  onLoad: function() {
     var that = this;
+    
     wx.request({
       url: 'http://localhost:8765/TProduct/GetCart',
       method: 'GET',
       data: {
         Id: 1,
       },
-      success: function (res) {
-         //console.log(res.data);
+      success: function(res) {
         that.setData({
           goodList: res.data,
-         // hasList:true,length
+          // hasList:true,length
         })
       }
-      
+
     })
-  
-  },
-  onShow: function () {
-    var goodList = wx.getStorageSync("goodList")
-    this.setData({
-      cartList: false,
-      goodList: goodList
-    })
-    this.cartItems
+
+
 
   },
+  // onShow: function () {
+  //   var goodList = wx.getStorageSync("goodList")
+  //   this.setData({
+  //     cartList: false,
+  //     goodList: goodList
+  //   })
+  //   this.cartItems
+
+  // },
 
   //删除购物车单个缓存
-  shanchu: function (e) {
-    var goodList = this.data.goodList  //获取购物车列表
-    var index = e.currentTarget.dataset.index  //获取当前点击事件的下标索引
+  shanchu: function(e) {
+
+    var goodList = this.data.goodList //获取购物车列表
+    var index = e.currentTarget.dataset.index //获取当前点击事件的下标索引
+    var id = e.currentTarget.dataset.aid
+    wx.request({
+      url: 'http://localhost:8765/TProduct/DeleteCarts?Id=' + id,
+      type: 'GET',
+      success: function(res) {
+
+      }
+    })
     goodList.splice(index, 1)
     this.setData({
       goodList: goodList
@@ -58,6 +69,10 @@ Page({
     }
     this.calculateTotal()
     wx.setStorageSync("goodList", goodList)
+
+
+
+
   },
   //提示
   // go: function (e) {
@@ -67,16 +82,19 @@ Page({
   //   wx.setStorageSync("goodList", [])
   // },
 
-//
-  order:function(){
+  //
+  order: function() {
     wx.navigateTo({
-      url:"/pages/order/order",
+      url: "/pages/order/order",
     })
   },
 
-  commodity: function (e) {
+  // 跳转至详情页
+  navigateDetail: function (e) {
+    var id = e.currentTarget.dataset.aid;//获取显示界面的Id值
+console.log(id);
     wx.navigateTo({
-      url: "/pages/commodity details_spxiangqing/index?id",
+      url: '../commodity details_spxiangqing/index?id=' + e.currentTarget.dataset.aid
     })
   },
 
@@ -85,15 +103,15 @@ Page({
 
   //  * 计算商品总数
 
-  calculateTotal: function () {
+  calculateTotal: function() {
     var goodList = this.data.goodList;
     var totalCount = 0;
     var totalPrice = 0;
     for (var i = 0; i < goodList.length; i++) {
       var good = goodList[i];
       if (good.checked) {
-        totalCount += good.SumNumber;
-        totalPrice += good.SumNumber * good.Price;
+        totalCount += good.BuyNumber;
+        totalPrice += good.BuyNumber * good.Price;
       }
     }
     totalPrice = totalPrice.toFixed(2);
@@ -107,14 +125,14 @@ Page({
   /**
    * 用户点击商品减1
    */
-  subtracttap: function (e) {
+  subtracttap: function(e) {
     var index = e.target.dataset.index;
     var goodList = this.data.goodList;
-    var count = goodList[index].SumNumber;
+    var count = goodList[index].BuyNumber;
     if (count <= 1) {
       return;
     } else {
-      goodList[index].SumNumber--;
+      goodList[index].BuyNumber--;
       this.setData({
         'goodList': goodList
       });
@@ -126,11 +144,11 @@ Page({
   /**
    * 用户点击商品加1
    */
-  addtap: function (e) {
+  addtap: function(e) {
     var index = e.target.dataset.index;
     var goodList = this.data.goodList;
-    var count = goodList[index].SumNumber;
-    goodList[index].SumNumber++;
+    var count = goodList[index].BuyNumber;
+    goodList[index].BuyNumber++;
     this.setData({
       'goodList': goodList
     });
@@ -139,9 +157,7 @@ Page({
   /**
    * 用户选择购物车商品
    */
-  checkboxChange: function (e) {
-    console.log(123)
-    console.log('checkbox发生change事件，携带value值为：', e.detail.value);   
+  checkboxChange: function(e) {
     var checkboxItems = this.data.goodList;
     var values = e.detail.value;
     for (var i = 0; i < checkboxItems.length; ++i) {
@@ -172,8 +188,7 @@ Page({
   /**
    * 用户点击全选
    */
-  selectalltap: function (e) {
-    console.log('用户点击全选，携带value值为：', e.detail.value);
+  selectalltap: function(e) {
     var value = e.detail.value;
     var checkAll = false;
     if (value && value[0]) {

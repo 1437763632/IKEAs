@@ -149,6 +149,7 @@ namespace IKEA.Api.Controllers
                         q.SumNumber,
                         q.p_Sum,
                         d.Id,
+                        d.BuyNumber,
                         d.Price,
                         d.ProductDetailID,
                         d.ProductID,
@@ -164,7 +165,7 @@ namespace IKEA.Api.Controllers
                          join s in Product_Sizes.GetProduct_Sizes()
                          on d.ProductSizeID equals s.Id
                          join t in product_Texture_Services.GetProduct_Textures()
-                         on d.ProductTextureID equals t.Id
+                         on d.ProductTextureID equals t.Id 
                          select new
                          {
                              q.Id,
@@ -179,20 +180,26 @@ namespace IKEA.Api.Controllers
                              d.ProductSizeID,
                              s.ProductSize,
                              d.ProductTextureID,
+                             q.BuyNumber,
                              t.Texture
+
 
                          };
             var resault = Json<dynamic>(query2);
             return resault;
         }
 
-
-        public int DeleteCarts(int ID)
+        /// <summary>
+        /// 删除购物车订单
+        /// </summary>
+        /// <param name="ID"></param>
+        /// <returns></returns>
+        [Route("DeleteCarts")]
+        [HttpGet]
+        public int DeleteCarts(int Id)
         {
-            //var detail = trolleyDetail_Services.GetTTrolleyDetail(ID);
-            //detail.BuyNumber
-            //var i = this.trolleyDetail_Services.Delete(ID);
-            return 1;
+            var i = this.trolleyDetail_Services.Delete(Id);
+            return i;
         }
         /// <summary>
         /// 加入购物车
