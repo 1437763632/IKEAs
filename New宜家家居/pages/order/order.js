@@ -30,7 +30,7 @@ Page({
             daifu: q.data,
           })
         }
-      }),
+      })
       wx.request({
         url: 'http://localhost:8765/test/GetOrdrepayment?userid=1&state=1',
         method: 'get',
@@ -58,9 +58,9 @@ Page({
           console.log(q)
           that.setData({
             daiping: q.data,
-          })
-        }
-      })
+           })
+         }
+       })
   },
   shanchu: function (e) {
     var that = this;

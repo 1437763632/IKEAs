@@ -25,8 +25,7 @@
           <view class='add' data-index="{{index}}" catchtap='addtap'>+</view>
         </view>
       </view>
-    </checkbox-group>
-    
+    </checkbox-group>    
   </view>
 
 

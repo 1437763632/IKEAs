@@ -8,13 +8,16 @@ using System.Net.Http;
 using System.Runtime.CompilerServices;
 using System.Web.Http;
 using IKEA.Services;
-using Unity.Attributes;
+
 
 namespace IKEA.Api.Controllers
 {
+    using Unity.Attributes;
     [RoutePrefix("TProduct")]
     public class TProductController : ApiController
     {
+
+
         [Unity.Attributes.Dependency]
         public IProduct_Services Product { get; set; }
 
@@ -28,6 +31,11 @@ namespace IKEA.Api.Controllers
         public ITrolleyDetail_Services trolleyDetail_Services { get; set; }
         [Unity.Attributes.Dependency]
         public IProduct_Texture_Services product_Texture_Services { get; set; }
+        /// <summary>
+        /// 图片
+        /// </summary>Unity.Attributes.
+        [Dependency]
+        public IImage_Services image { get; set; }
         /// <summary>
         /// 添加产品
         /// </summary>
@@ -99,7 +107,15 @@ namespace IKEA.Api.Controllers
             return result;
         }
 
+        [Route("GetProductName")]
+        [HttpGet]
+        public IEnumerable<TProduct> GetProductName(string productName)
+        {
+            var result = this.Product.GetProductName(productName);
+            return result;
+        }
 
+        //http://localhost:61530/TProduct/GetProductName?ProductName=%E6%B2%99%E5%8F%91
         [Route("GetCarList")]
         [HttpGet]
         public IHttpActionResult GetCarList()
@@ -210,7 +226,17 @@ namespace IKEA.Api.Controllers
         public int AddCarts(TTrolleyDetail trolleyDetail)
         {
             int i = this.trolleyDetail_Services.Add(trolleyDetail);
+
             return i;
         }
+
+
+        #region 多图片上传
+        public int Postimage(IEnumerable<TImage> images)
+        {
+            var i = this.image.Add(images);
+            return i;
+        }
+        #endregion
     }
 }

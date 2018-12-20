@@ -9,10 +9,9 @@ Page({
       "/images/沙发02.jpg",
       "/images/沙发01.jpg",
       '/images/椅子02.jpg',
-
-
     ],
 
+    inputValue:'',
 
 
 
@@ -43,11 +42,20 @@ Page({
       })
     },
 
-   
+//搜索跳转
+  findShop:function(e){  
 
-
-
-
+    console.log(this.data.inputValue);
+wx.navigateTo({
+   url: '/pages/FindShop/index?ProductName=' +this.data.inputValue 
+})
+  },
+//文本框的值
+  searchtext: function (e) {   
+    this.setData({
+      inputValue: e.detail.value
+    })
+  },
 
   type: function () {
     wx.navigateTo({
@@ -73,11 +81,10 @@ Page({
     console.log('onLoad');
   },
 
-    //添到购物车s
+    //添到购物车
   bookTap:function(){
     wx.request({
-      url: 'http://localhost:8765/Product/AddCarts',
-    
+      url: 'http://localhost:8765/Product/AddCarts',    
       method: 'post',
       data:{
         
@@ -85,13 +92,11 @@ Page({
       success: function (res) {
         wx.showToast({
           title: '添加成功',
-          icon: '',
-
+          icon: 'success',
         })
       },
     })
   },
-
   startNotice: function () {
     var me = this;
     var notices = me.data.notices || [];

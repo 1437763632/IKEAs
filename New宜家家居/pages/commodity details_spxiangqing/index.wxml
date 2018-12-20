@@ -187,13 +187,14 @@
   <!--购买数量-->
 	<view class="choose_number flexRowBetween">
 
-    <view class='fouhao'>
+    <!-- <view class='fouhao'>
         <view class='num'>购买数量</view>
           <label class='jian' id="reduce" bindtap="buyCount">-</label>
               <text>{{buyCount}}</text>
           <label class='jia' id="add" bindtap="buyCount">+</label>
-        </view>
-    </view>
+        </view>-->
+        <button class='btns' bindtap='AddCarts'>确定</button>
+  </view> 
   
 </view>
 <!-- 加入购物车弹窗结束 -->

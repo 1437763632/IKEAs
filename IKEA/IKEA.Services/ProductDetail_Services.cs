@@ -25,7 +25,9 @@ namespace IKEA.Services
 
                 string sql = string.Format("insert into TProductDetail(ProductID,ProductTypeID,ProductSizeID,ProductTextureID,colorID,Price,RealPrice,Inventory,ReservedInventory) value(@ProductID,@ProductTypeID,@ProductSizeID,@ProductTextureID,@colorID,@Price,@RealPrice,@Inventory,@ReservedInventory)");
                 int i = conn.Execute(sql, productDetail);
-                return i;
+                string sql2 = string.Format("SELECT LAST_INSERT_ID()");//获取商品详情ID
+                var result = conn.Query(sql2, null).FirstOrDefault();
+                return int.Parse( result.Values.FirstOrDefault().ToString());
             }
         }
 

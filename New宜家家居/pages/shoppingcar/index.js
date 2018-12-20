@@ -31,10 +31,8 @@ Page({
       }
 
     })
-
-
-
   },
+  
   // onShow: function () {
   //   var goodList = wx.getStorageSync("goodList")
   //   this.setData({

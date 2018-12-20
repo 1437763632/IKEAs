@@ -42,6 +42,12 @@ namespace IKEA.IServices
         /// <returns>IEnumerable<TPayment></returns>
         IEnumerable<TProduct> GetProducts();
         /// <summary>
+        /// 模糊查询产品信息
+        /// </summary>
+        /// <param name="productName"></param>
+        /// <returns></returns>
+        IEnumerable<TProduct> GetProductName(string productName);
+        /// <summary>
         /// 获取所有椅子
         /// </summary>
         /// <returns></returns>

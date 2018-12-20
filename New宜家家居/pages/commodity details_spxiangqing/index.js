@@ -42,13 +42,14 @@ Page({
           wx.request({
             url: 'http://localhost:8765/TProduct/AddCarts',
             data: '',
-            header: {},
-            method: 'GET',
-            dataType: 'json',
-            responseType: 'text',
-            success: function(res) {},
-            fail: function(res) {},
-            complete: function(res) {},
+            method: 'post',
+            success: function(res) {
+            that.setData({
+
+            })
+
+            },
+       
           })
   },
 

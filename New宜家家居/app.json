@@ -1,11 +1,8 @@
 {
   "pages": [
-    "pages/shoppingcar/index",
-    "pages/aaaaa/index",
-
-    "pages/commodity details_spxiangqing/index",
     "pages/index/index",
-    "pages/cart/cart",
+    "pages/shoppingcar/index",
+    "pages/commodity details_spxiangqing/index",
     "pages/home/home",
     "pages/home-details/home-details",
     "pages/collect_shouchang/index",
@@ -21,8 +18,8 @@
     "pages/hot sale_remai/index",
     "pages/my_coupon_youhuiquan/index",
     "pages/UpdateAddress/index",
-    "pages/userdata/index"
-  
+    "pages/userdata/index",
+    "pages/FindShop/index"
   ],
   "window": {
     "backgroundTextStyle": "light",

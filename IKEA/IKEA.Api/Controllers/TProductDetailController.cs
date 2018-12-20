@@ -63,20 +63,39 @@ namespace IKEA.Api.Controllers
         public ITrolleyDetail_Services trolleyDetail { get; set; }
 
         #endregion
-       
+
 
         #region 产品详情
         /// <summary>
         /// 添加产品详情
         /// </summary>
         /// <param name="productDetail"></param>
-        /// <returns>int</returns>
+        /// <param name="imagesUrls"></param>
+        /// <returns></returns>
         [Route("Add")]
         [HttpPost]
-        public int Add(TProductDetail productDetail)
+        public int Add(TProductDetail productDetail,string imagesUrls)
         {
             var i = this.productDetail.Add(productDetail);
-            return i;
+            //切割字符串
+            string[] strs = imagesUrls.Split(',');
+            TImage itemImage = new TImage();
+            //实例化list集合
+            List<TImage> listImages = new List<TImage>();
+            //循环形成对象
+            foreach (var item in strs)
+            {
+                itemImage.ProductDetailID = i;
+                itemImage.ImageUrl = item;
+                itemImage.isUsed = true;
+                itemImage.ProductID = productDetail.ProductID;
+                listImages.Add(itemImage);
+            }
+
+            //添加到数据库
+            int resault = image.Add(listImages);
+
+            return resault;
         }
 
         /// <summary>

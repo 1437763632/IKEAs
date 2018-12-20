@@ -13,7 +13,14 @@ swiper-item image {
   height: 100%;
 }
 
-
+.btns{
+  line-height: 30px;
+  font-size: 15px;
+  background-color: #ceebf7;
+  margin-bottom: -30px;
+  width:80%;
+  height:30px;
+}
 
 
 

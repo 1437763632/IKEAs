@@ -9,6 +9,9 @@ using IKEA.IServices;
 using IKEA.Model;
 using MySql.Data.MySqlClient;
 
+using JiebaNet.Analyser;
+using JiebaNet.Segmenter;
+
 namespace IKEA.Services
 {
     public class Product_Services : IProduct_Services
@@ -69,6 +72,24 @@ namespace IKEA.Services
                 string sql = string.Format("select * from TProduct");
                 var i = conn.Query<TProduct>(sql, null).ToList();
                 return i;
+            }
+        }
+        /// <summary>
+        ///搜索商品名称获取模糊商品信息
+        /// </summary>
+        /// <param name="productName"></param>
+        /// <returns></returns>
+        public IEnumerable<TProduct> GetProductName(string productName)
+        {
+            var segmenter = new JiebaSegmenter();
+
+            //productName = segmenter.Cut(productName,cutAll:true).ToString();
+            using (System.Data.IDbConnection conn = DapperHelper.GetConnString())
+            {
+                string sql = string.Format("select * from TProduct where ProductName like @ProductName");
+                //IEnumerable <string> sql = segmenter.Cut(string.Format("select * from TProduct where ProductName  like  @ProductName"), cutAll:true);
+                var result = conn.Query<TProduct>(sql, new { ProductName ="%"+ productName+"%" }).ToList();
+                return result;
             }
         }
         /// <summary>

@@ -1,0 +1,27 @@
+<view class="nav_section">
+    <!-- <view wx:if="{{vabage[curIndex]}}"> -->
+        <block wx:for="{{vabage}}" wx:key="item.Id">
+            <view class="nav_section_items" >
+                <!--image-->
+                <view class="section_image" bindtap="navigateDetail" data-id="{{item.id}}" >
+                <block>
+                    <image  src="{{item.ProductImage}}" bindtap="navigateDetail" data-aid="{{item.id}}" ></image>
+                </block>
+                </view>
+                <!--content-->
+                <view class="section_cont" bindtap="navigateDetail" data-aid="{{item.id}}">
+                <view class="section_cont_sub">
+                        <text>{{item.ProductName}}</text>
+                    </view>
+                    <view class="section_cont_price">价格：{{item.ProductMinPrice}}</view>
+                    <!-- <text>{{item.Remark}}</text> -->
+                </view>
+                <!--book-->
+                <view class="section_book" bindtap="bookTap" data-aid="{{item.id}}">
+                <text>添到购物车</text>
+                </view>
+            </view>
+        </block>
+    <!-- </view> -->
+    </view>
+<!--数据信息 end-->

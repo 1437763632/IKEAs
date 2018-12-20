@@ -40,6 +40,12 @@ namespace IKEA.Api.Controllers
         /// </summary>
         [Dependency]
         public IAddress_Services address { get; set; }
+        /// <summary>
+        /// 图片
+        /// </summary>
+        [Dependency]
+        public IImage_Services image { get; set; }
+
         #region  产品尺寸信息
         /// <summary>
         /// 添加产品尺寸信息
@@ -187,11 +193,8 @@ namespace IKEA.Api.Controllers
             var result = this.address.Update(uptAddress);
             return result;
         }
-
-       
-
-
-
         #endregion
+
+   
     }
 }
