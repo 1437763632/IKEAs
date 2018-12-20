@@ -9,42 +9,62 @@ Page({
 
   onLoad: function () {
     var that =this;
-    // 根据用户ID获取地址信息   
-    wx.request({
-      url: 'http://localhost:8765/ShoppingCar/GetAddress',
-      method:'get',
-      data:{
-       UserID:0,
-      },
-      success:function(res){
-         console.log(res.data);
-           that.setData({
-             address:res.data
-           })     
+    // 根据用户ID获取地址信息 
+    wx.getStorage({
+      key: 'token',
+      success: function(res) {
+        wx.request({
+          url: 'http://localhost:8765/ShoppingCar/GetAddress',
+          method: 'get',
+          header:{
+              'content-type': 'application/json',
+              'Authorization': 'BasicAuth ' + res.data
+          },
+          data: {
+            UserID: 0,
+          },
+          success: function (res) {
+            console.log(res.data);
+            that.setData({
+              address: res.data
+            })
+          }
+        })
       }
     })
+    
   },
 // 根据主键ID删除地址信息   
   DelAddress: function (e) {
     var id = e.currentTarget.dataset.aid
     console.log(id)
-    wx.request({
-      url: 'http://localhost:8765/ShoppingCar/DelAddress?ID='+id,
-      method: 'get',
-    
-      success: function () {
-        wx.showToast({
-          title: '删除成功',          
-          success: function (res) {
-            console.log(res.data);
-            wx.redirectTo({
-              url: '/pages/manageAddress/manageAddress',
-            })          
+    wx.getStorage({
+      key: 'token',
+      success: function(res) {
+        wx.request({
+          url: 'http://localhost:8765/ShoppingCar/DelAddress?ID=' + id,
+          method: 'get',
+          header:{
+            'content-type':'applicatio/json',
+            'Authorization': 'BasicAuth ' + res.data
+          },
+          success: function () {
+            wx.showToast({
+              title: '删除成功',
+              success: function (res) {
+                console.log(res.data);
+                wx.redirectTo({
+                  url: '/pages/manageAddress/manageAddress',
+                })
+              }
+            })
+
           }
         })
-
-      }
+      },
+    
     })
+   
   },
 
 

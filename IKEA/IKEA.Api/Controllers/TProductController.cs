@@ -8,13 +8,16 @@ using System.Net.Http;
 using System.Runtime.CompilerServices;
 using System.Web.Http;
 using IKEA.Services;
-using Unity.Attributes;
+
 
 namespace IKEA.Api.Controllers
 {
+    using Unity.Attributes;
     [RoutePrefix("TProduct")]
     public class TProductController : ApiController
     {
+
+
         [Unity.Attributes.Dependency]
         public IProduct_Services Product { get; set; }
 
@@ -22,7 +25,17 @@ namespace IKEA.Api.Controllers
         public IProductDetail_Services ProductDetail { get; set; }
         [Unity.Attributes.Dependency]
         public IProduct_Size_Services Product_Sizes{ get; set; }
-
+        [Unity.Attributes.Dependency]
+        public ITrolley_Services Trolley_Services { get; set; }
+        [Unity.Attributes.Dependency]
+        public ITrolleyDetail_Services trolleyDetail_Services { get; set; }
+        [Unity.Attributes.Dependency]
+        public IProduct_Texture_Services product_Texture_Services { get; set; }
+        /// <summary>
+        /// 图片
+        /// </summary>Unity.Attributes.
+        [Dependency]
+        public IImage_Services image { get; set; }
         /// <summary>
         /// 添加产品
         /// </summary>
@@ -94,7 +107,15 @@ namespace IKEA.Api.Controllers
             return result;
         }
 
+        [Route("GetProductName")]
+        [HttpGet]
+        public IEnumerable<TProduct> GetProductName(string productName)
+        {
+            var result = this.Product.GetProductName(productName);
+            return result;
+        }
 
+        //http://localhost:61530/TProduct/GetProductName?ProductName=%E6%B2%99%E5%8F%91
         [Route("GetCarList")]
         [HttpGet]
         public IHttpActionResult GetCarList()
@@ -124,5 +145,98 @@ namespace IKEA.Api.Controllers
             return Json<dynamic>(query);
 
         }
+        /// <summary>
+        /// 获取用户所有订单信息
+        /// </summary>
+        /// <param name="userid"></param>
+        /// <returns></returns>
+        [Route("GetCart")]
+        [HttpGet]
+        public IHttpActionResult GetCart(int userid=1)
+        {
+            ///获取用户所有订单
+            var query =  Trolley_Services.GetTrolleys().Where(u=>u.UserID.Equals(userid));
+            //联查获取订单详情信息
+            var query1 = from q in query
+                    join d in trolleyDetail_Services.GetTrolleyDetails()
+                    on q.Id equals d.TrolleyID
+                    select new
+                    {
+                        q.SumNumber,
+                        q.p_Sum,
+                        d.Id,
+                        d.BuyNumber,
+                        d.Price,
+                        d.ProductDetailID,
+                        d.ProductID,
+                        d.RealPrice,
+                        d.TrolleyID
+                    };
+            //联查获取所需信息
+            var query2 = from q in query1
+                         join p in Product.GetProducts()
+                         on q.ProductID equals p.id
+                         join d in ProductDetail.GetTProductDetails()
+                         on q.ProductDetailID equals d.Id
+                         join s in Product_Sizes.GetProduct_Sizes()
+                         on d.ProductSizeID equals s.Id
+                         join t in product_Texture_Services.GetProduct_Textures()
+                         on d.ProductTextureID equals t.Id 
+                         select new
+                         {
+                             q.Id,
+                             q.Price,
+                             q.ProductDetailID,
+                             q.ProductID,
+                             q.RealPrice,
+                             q.SumNumber,
+                             q.TrolleyID,
+                             p.ProductImage,
+                             p.ProductName,
+                             d.ProductSizeID,
+                             s.ProductSize,
+                             d.ProductTextureID,
+                             q.BuyNumber,
+                             t.Texture
+
+
+                         };
+            var resault = Json<dynamic>(query2);
+            return resault;
+        }
+
+        /// <summary>
+        /// 删除购物车订单
+        /// </summary>
+        /// <param name="ID"></param>
+        /// <returns></returns>
+        [Route("DeleteCarts")]
+        [HttpGet]
+        public int DeleteCarts(int Id)
+        {
+            var i = this.trolleyDetail_Services.Delete(Id);
+            return i;
+        }
+        /// <summary>
+        /// 加入购物车
+        /// </summary>
+        /// <returns></returns>
+        [Route("AddCarts")]
+        [HttpPost]
+        public int AddCarts(TTrolleyDetail trolleyDetail)
+        {
+            int i = this.trolleyDetail_Services.Add(trolleyDetail);
+
+            return i;
+        }
+
+
+        #region 多图片上传
+        public int Postimage(IEnumerable<TImage> images)
+        {
+            var i = this.image.Add(images);
+            return i;
+        }
+        #endregion
     }
 }

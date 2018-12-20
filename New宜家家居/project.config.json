@@ -13,13 +13,8 @@
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.4.1",
-
-	"appid": "wxf916500f23fab6cf",
+	"appid": "wx4daf482e49e02caa",
 	"projectname": "IKEA%E5%AE%B6%E5%B1%85",
-
-	"appid": "wx22796434a4742700",
-	"projectname": "new%E5%AE%9C%E5%AE%B6%E5%AE%B6%E5%B1%85",
-
 	"debugOptions": {
 		"hidedInDevtools": []
 	},

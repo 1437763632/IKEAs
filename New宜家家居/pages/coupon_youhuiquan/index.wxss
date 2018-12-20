@@ -22,7 +22,14 @@
 .lable{
   padding:35px 25px 30px 5px;
 }
-
+ .section_image{
+    width:95%;
+    height:200rpx;
+}
+ .section_image image{
+    width:100%;
+    height:100%;
+}
 
 
 

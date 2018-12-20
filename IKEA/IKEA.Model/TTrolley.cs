@@ -23,6 +23,10 @@ namespace IKEA.Model
         /// 总数量
         /// </summary>
         public int SumNumber { get; set; }
+        /// <summary>
+        /// 总价格
+        /// </summary>
+        public decimal p_Sum { get; set; } 
 
     }
 }

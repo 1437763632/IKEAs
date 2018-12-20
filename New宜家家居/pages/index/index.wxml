@@ -1,17 +1,25 @@
 
 
 
-
-
 <!--index.wxml-->
+<!-- <view style='width:80%;' > -->
+<view class="search">
+    <input value='{{inputValue}}'   style='width:70%;padding-left:20px;display:inline-block;float:left;' placeholder-style='font-size:12px;' placeholder='搜索' bindinput='searchtext'></input>
+    <button class='ddd' id='{{inputValue}}' bindtap='findShop'>搜索</button>
+</view>
+<!-- </view> -->
+
 <view class="container">
   <scroll-view class="scroll-container" upper-threshold="{{sortPanelDist}}" bindscroll="onToTop" scroll-y="true" style="height:calc(100% - 1px)">
   <!--轮播图-->
     <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
         <block wx:for="{{imgUrls}}">
             <swiper-item>
-                <image src="{{item}}" class="slide-image" style="height:{{windowWidth * 0.375}}px !important"/>
+            <view id='rrrr'>
+                <image src="{{item}}" class="slide-image" style="height:{{windowWidth * 0.575}}px !important"/>
+                </view>
             </swiper-item>
+            
         </block>
     </swiper>
     
@@ -50,15 +58,15 @@
                 <!--image-->
                 <view class="section_image" bindtap="navigateDetail" data-id="{{item.id}}" >
                 <block>
-                    <image  src="{{item.ProductImage}}" ></image>
+                    <image  src="{{item.ProductImage}}" bindtap="navigateDetail" data-aid="{{item.id}}" ></image>
                 </block>
                 </view>
                 <!--content-->
                 <view class="section_cont" bindtap="navigateDetail" data-aid="{{item.id}}">
                 <view class="section_cont_sub">
-                        <text>{{item.ProductName}}</text>
+                        <text value='{{item.ProductName}}'>{{item.ProductName}}</text>
                     </view>
-                    <view class="section_cont_price">价格：{{item.ProductMinPrice}}</view>
+                    <view class="section_cont_price" value='{{item.ProductName}}'>价格：{{item.ProductMinPrice}}</view>
                     <!-- <text>{{item.Remark}}</text> -->
                 </view>
                 <!--book-->

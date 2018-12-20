@@ -9,6 +9,23 @@ App({
     // 登录
     wx.login({
       success: res => {
+        wx.request({
+          url: 'http://localhost:8765/User/Login',
+          data: {
+            code:res.code
+          },
+          method: 'GET',
+          success: function(res) {
+            console.log(res.data)
+            wx.setStorage({
+              key: 'token',
+              data: res.data.session_key,
+              success: function(res) {
+
+              },
+            })
+          },
+        })
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
       }
     })

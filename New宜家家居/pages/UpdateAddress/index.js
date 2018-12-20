@@ -166,15 +166,15 @@ Page({
       });
       return;
     }
-    //  else {
-    //   if (!util.isPhone(phone)) {
-    //     util.showFailToast({
-    //       title: '手机格式不对'
-    //     });
+     else {
+      if (!util.isPhone(phone)) {
+        util.showFailToast({
+          title: '手机格式不对'
+        });
 
-    //     return;
-    //   }
-    // }
+        return;
+      }
+    }
     if (this.data.area == '') {
       util.showFailToast({
         title: '请选择省市区'

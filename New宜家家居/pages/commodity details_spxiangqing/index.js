@@ -11,8 +11,7 @@ Page({
       // "/images/床03.jpg",
       // "/images/床04.jpg",
       // "/images/沙发02.jpg",
-      // "/images/沙发01.jpg",    
-
+      // "/images/沙发01.jpg",   
     ],
     indicatorDots: true, //是否显示面板指示点
     autoplay: true, //是否自动切换
@@ -26,6 +25,7 @@ Page({
   onLoad: function (options) {
     var that = this;
     var id = parseInt(options.id);
+    console.log(id);
     //获取产品详情
     wx.request({
       url: 'http://localhost:8765/wyTProductDetail/SSS?productID='+id,
@@ -36,10 +36,22 @@ Page({
            itemSize: res.data, 
            })
       }
-    })         
-
-    
+    })          
 },
+  AddCarts:function(){
+          wx.request({
+            url: 'http://localhost:8765/TProduct/AddCarts',
+            data: '',
+            method: 'post',
+            success: function(res) {
+            that.setData({
+
+            })
+
+            },
+       
+          })
+  },
 
   //详情
   select_this: function (e) {
@@ -97,16 +109,14 @@ Page({
   },
 
 
+  order:function(){
+   wx.navigateTo({
+     url: "/pages/order/order",
+   })
+  },
 
 
 
-
-  // // 跳到购物车
-  // addCar() {
-  //   wx.switchTab({
-  //     url: '/pages/detailAAA/detail'
-  //   })
-  // },
   // // 立即购买
   // immeBuy() {
   //   wx.showToast({
