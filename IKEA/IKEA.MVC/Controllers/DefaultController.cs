@@ -92,7 +92,7 @@ namespace IKEA.MVC.Controllers
             return View();
         }
         /// <summary>
-        /// 管理员列表
+        /// 管理员管理
         /// </summary>
         /// <returns></returns>
         [LoginFatier]
