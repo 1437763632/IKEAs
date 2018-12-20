@@ -26,12 +26,23 @@ namespace IKEA.IServices
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        TRole GetRole(int id);
+       IEnumerable<ShowRole> GetRole(int id);
         /// <summary>
         /// 删除角色信息
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
         int Delete(int id);
+        /// <summary>
+        /// 获取全部角色信息
+        /// </summary>
+        IEnumerable<ShowRole> GetRoles();
+        /// <summary>
+        /// 多表修改角色信息
+        /// </summary>
+        /// <param name="role"></param>
+        /// <param name="roleid"></param>
+        /// <returns></returns>
+        int RoleUpdate(TRole role);
     }
 }

@@ -6,10 +6,7 @@ using System.Threading.Tasks;
 
 namespace IKEA.Model
 {
-    /// <summary>
-    /// 管理员表
-    /// </summary>
-   public class TManage
+   public class ShowManage
     {
         /// <summary>
         /// 用户ID
@@ -27,7 +24,6 @@ namespace IKEA.Model
         /// 密码
         /// </summary>
         public string ManagePass { get; set; }
-            
         /// <summary>
         /// 创建时间
         /// </summary>
@@ -35,6 +31,10 @@ namespace IKEA.Model
         /// <summary>
         /// 角色id
         /// </summary>
-        public string RoleID { get; set; }
+        public int RoleID { get; set; }
+        /// <summary>
+        /// 角色名
+        /// </summary>
+        public string RoleName { get; set; }
     }
 }

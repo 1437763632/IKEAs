@@ -92,7 +92,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="css\login.css" />
     <Content Include="Global.asax" />
+    <Content Include="images\aiwrap.png" />
+    <Content Include="images\web_login_bg.jpg" />
     <Content Include="lib\datatables\1.10.0\jquery.dataTables.min.js" />
     <Content Include="lib\DD_belatedPNG_0.0.8a-min.js" />
     <Content Include="lib\echarts\3.4.0\echarts.common.min.js" />
@@ -1155,6 +1158,7 @@
     <Content Include="temp\Thumb\weishengjian2.jpg" />
     <Content Include="temp\Thumb\woshi.jpg" />
     <Content Include="temp\Thumb\youyongchi.jpg" />
+    <Content Include="Views\Home\demo.html" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -1172,6 +1176,7 @@
     <Compile Include="lib\ueditor\1.4.3\net\App_Code\NotSupportedHandler.cs" />
     <Compile Include="lib\ueditor\1.4.3\net\App_Code\PathFormater.cs" />
     <Compile Include="lib\ueditor\1.4.3\net\App_Code\UploadHandler.cs" />
+    <Compile Include="Models\LoginFatier.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -1196,12 +1201,13 @@
     <Content Include="lib\webuploader\0.1.5\images\icons.psd" />
     <Content Include="lib\webuploader\0.1.5\images\progress.psd" />
     <Content Include="lib\webuploader\0.1.5\README.md" />
+    <Content Include="images\Thumbs.db" />
     <None Include="packages.config" />
     <Content Include="temp\Thumbs.db" />
     <Content Include="Views\Default\admin_list.cshtml" />
     <Content Include="Views\Default\admin_permission.cshtml" />
     <Content Include="Views\Default\admin_role.cshtml" />
-    <Content Include="Views\Default\admin_role_add.cshtml" />
+    <Content Include="Views\Default\admin_permission_add.cshtml" />
     <Content Include="Views\Default\article_list.cshtml" />
     <Content Include="Views\Default\charts_1.cshtml" />
     <Content Include="Views\Default\charts_2.cshtml" />
@@ -1224,6 +1230,12 @@
     <Content Include="Views\Default\product_category.cshtml" />
     <Content Include="Views\Default\product_list.cshtml" />
     <Content Include="Views\Default\welcome.cshtml" />
+    <Content Include="Views\Default\admin_permission_upt.cshtml" />
+    <Content Include="Views\Default\admin_role_add.cshtml" />
+    <Content Include="Views\Default\admin_role_upt.cshtml" />
+    <Content Include="Views\Default\admin_list_add.cshtml" />
+    <Content Include="Views\Default\admin_list_upt.cshtml" />
+    <Content Include="Views\Home\Login.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -1233,8 +1245,16 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
-    <Folder Include="Views\Home\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\IKEA.Model\IKEA.Model.csproj">
+      <Project>{96b93b8c-c067-4f4e-b049-010ac6972c4c}</Project>
+      <Name>IKEA.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IKEA.Services\IKEA.Services.csproj">
+      <Project>{a50f4042-56e4-4402-8f65-b4c8d5079d24}</Project>
+      <Name>IKEA.Services</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

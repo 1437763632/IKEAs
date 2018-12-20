@@ -32,5 +32,10 @@ namespace IKEA.IServices
         /// <returns></returns>
         TRight GetRight(int id);
 
+        /// <summary>
+        /// 权限显示
+        /// </summary>
+        /// <returns></returns>
+        IEnumerable<TRight> GetRights();
     }
 }

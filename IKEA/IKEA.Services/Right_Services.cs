@@ -23,7 +23,7 @@ namespace IKEA.Services
             using (System.Data.IDbConnection conn = DapperHelper.GetConnString())
             {
 
-                string sql = string.Format("insert into TRight(RightName) value(@RightName)");
+                string sql = string.Format("insert into TRight(RightName,URL,IsUser) value(@RightName,@URL,@IsUser)");
                 int i = conn.Execute(sql, right);
                 return i;
             }
@@ -44,6 +44,20 @@ namespace IKEA.Services
                 return i;
             }
         }
+        /// <summary>
+        /// 显示权限
+        /// </summary>
+        /// <returns></returns>
+        public IEnumerable<TRight> GetRights()
+        {
+            using (System.Data.IDbConnection conn = DapperHelper.GetConnString())
+            {
+
+                string sql = string.Format("select * from TRight");
+                var i = conn.Query<TRight>(sql, null).ToList();
+                return i;
+            }
+        }
 
         /// <summary>
         /// 修改权限信息
@@ -54,7 +68,7 @@ namespace IKEA.Services
         {
             using (System.Data.IDbConnection conn = DapperHelper.GetConnString())
             {
-                string sql = string.Format("update TRight set RightName=@RightName where Id=@Id");
+                string sql = string.Format("update TRight set RightName=@RightName,URL=@URL,IsUser=@IsUser where Id=@Id");
                 var i = conn.Execute(sql, right);
                 return i;
             }

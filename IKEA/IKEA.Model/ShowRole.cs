@@ -7,24 +7,27 @@ using System.Threading.Tasks;
 namespace IKEA.Model
 {
     using System.ComponentModel.DataAnnotations.Schema;
-    /// <summary>
-    /// 角色表
-    /// </summary>
-    public class TRole
+   public class ShowRole
     {
         /// <summary>
         /// 角色ID
         /// </summary>
+        [NotMapped]
         public int Id { get; set; }
         /// <summary>
         /// 角色名称
         /// </summary>
+        [NotMapped]
         public string RoleName { get; set; }
         /// <summary>
         /// 权限ID
         /// </summary>
-        public string RightID { get; set; }
         [NotMapped]
-        public string RightNames { get; set; }
+        public string RightID { get; set; }
+        /// <summary>
+        /// 权限名称
+        /// </summary>
+        [NotMapped]
+        public string RightName { get; set; }
     }
 }

@@ -1,4 +1,4 @@
-@charset "utf-8";
+﻿@charset "utf-8";
 /* -----------H-ui前端框架-------------
 * H-ui.css v3.1.5
 * http://www.h-ui.net/
@@ -1164,7 +1164,7 @@ table th{text-align:left; font-weight:400}
 /*带水平线*/
 .table th{font-weight:bold}
 .table th,.table td{padding:8px;line-height:20px;word-break:break-all}
-.table td{text-align:left}
+.table td{text-align:center}
 .table tbody tr.success > td{background-color:#dff0d8}
 .table tbody tr.error > td{background-color:#f2dede}
 .table tbody tr.warning > td{background-color:#fcf8e3}

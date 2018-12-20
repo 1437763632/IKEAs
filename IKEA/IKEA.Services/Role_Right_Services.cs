@@ -60,6 +60,20 @@ namespace IKEA.Services
                 return i;
             }
         }
+        /// <summary>
+        /// 显示关联所有数据
+        /// </summary>
+        /// <returns></returns>
+        public IEnumerable<TRole_Right> role_Rights()
+        {
+            using (System.Data.IDbConnection conn = DapperHelper.GetConnString())
+            {
+
+                string sql = string.Format("select * from TRole_Right ");
+                var i = conn.Query<TRole_Right>(sql, null).ToList();
+                return i;
+            }
+        }
 
         /// <summary>
         /// 修改关联信息

@@ -221,7 +221,7 @@ namespace IKEA.Api.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public TManage GetManagea(int id)
+        public IEnumerable<ShowManage> GetManagea(int id)
         {
             var i = manager.GetManage(id);
             return i;
@@ -233,7 +233,7 @@ namespace IKEA.Api.Controllers
         /// 根据角色获取
         /// </summary>
         /// <returns></returns>
-        public IEnumerable<TManage> GetManages()
+        public IEnumerable<ShowManage> GetManages()
         {
             var i = manager.GetManages();
             return i;

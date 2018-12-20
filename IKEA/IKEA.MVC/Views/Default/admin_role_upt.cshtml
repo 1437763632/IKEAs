@@ -1,4 +1,9 @@
-﻿<!--_meta 作为公共模版分离出去-->
+﻿
+@{
+    Layout = null;
+}
+
+<!--_meta 作为公共模版分离出去-->
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -40,8 +45,8 @@
             </div>
             <div class="row cl">
                 <label class="form-label col-xs-4 col-sm-3">权限：</label>
-                <div class="formControls col-xs-8 col-sm-9"  id="dl1">
-                    
+                <div class="formControls col-xs-8 col-sm-9" id="dl1">
+
                 </div>
             </div>
             <div class="row cl">
@@ -60,23 +65,44 @@
 <script type="text/javascript">
     $(function () {
         Show();
+        //反填
+            $.ajax({
+            url: 'http://localhost:8765/rbac/GetRole?id='+@Request.QueryString["id"] ,
+                type:'get',
+               // async:false,
+                success: function (data) {
+                    $("input[name=RoleName]").val(data[0].RoleName)
+                    $(data).each(function (index,data) {
+                        $("input[name=RightName][value=" + data.RightID + "]").prop("checked", true)
+                    })
+                }
+                //var falvas = new Array(data.RightID);
+                //$.each(falvas, function (i, item) {
+                //    $("checkbox[name=RightID][value='" + item + "']").attr("checked", "checked");
+
+                //    //$("input:checkbox[value='" +item+"']").attr('checked', 'true')
+                //});
+        })
+
+        //修改
         $("#add").click(function () {
-            
+
             var ids = [];
             $("input[name=RightName]:checked").each(function () {
                 ids.push($(this).val())
             })
             alert(ids)
+            console.log($("[name=RoleName]").val())
             $.ajax({
-                url: 'http://localhost:8765/rbac/RoleAdd?RoleName=' + $("[name=RoleName]").val() + '&RightID=' + ids,
+                url: 'http://localhost:8765/rbac/RoleUpdate?RoleName=' + $("[name=RoleName]").val() + '&RightID=' + ids +'&Id='+@Request.QueryString["id"],
                 type: 'post',
                 success: function (data) {
                     
                     if (data > 0) {
-                        alert("添加成功");
+                        alert("修改成功");
                     }
                     else {
-                        alert("添加失败");
+                        alert("修改失败");
                     }
                 }
             })
@@ -87,6 +113,7 @@
         $.ajax({
             url: 'http://localhost:8765/rbac/Getrights',
             type: 'get',
+            async: false,
             success: function (data) {
                 var list = '<dl class="permission-list" ><dd>';
                 $(data).each(function (index, data) {
@@ -97,5 +124,5 @@
             }
         })
     }
-    
+
 </script>

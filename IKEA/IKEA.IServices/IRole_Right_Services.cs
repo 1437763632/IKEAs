@@ -36,5 +36,11 @@ namespace IKEA.IServices
         /// <param name="id"></param>
         /// <returns></returns>
         int Delete(int id);
+        /// <summary>
+        /// 显示关联表数据
+        /// </summary>
+        /// <returns></returns>
+        IEnumerable<TRole_Right> role_Rights();
+        
     }
 }

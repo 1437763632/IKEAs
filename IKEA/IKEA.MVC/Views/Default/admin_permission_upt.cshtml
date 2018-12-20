@@ -9,7 +9,10 @@
     <meta http-equiv="Cache-Control" content="no-siteapp" />
     <link rel="Bookmark" href="/favicon.ico">
     <link rel="Shortcut Icon" href="/favicon.ico" />
-
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="lib/html5shiv.js"></script>
+    <script type="text/javascript" src="lib/respond.min.js"></script>
+    <![endif]-->
     <link rel="stylesheet" type="text/css" href="~/static/h-ui/css/H-ui.min.css" />
     <link rel="stylesheet" type="text/css" href="~/static/h-ui.admin/css/H-ui.admin.css" />
     <link rel="stylesheet" type="text/css" href="~/lib/Hui-iconfont/1.0.8/iconfont.css" />
@@ -25,77 +28,71 @@
     <script type="text/javascript" src="~/lib/jquery.validation/1.14.0/validate-methods.js"></script>
     <script type="text/javascript" src="~/lib/jquery.validation/1.14.0/messages_zh.js"></script>
 
-    <title>新建网站角色 - 管理员管理 - H-ui.admin v3.1</title>
-    <meta name="keywords" content="H-ui.admin v3.1,H-ui网站后台模版,后台模版下载,后台管理系统模版,HTML后台模版下载">
-    <meta name="description" content="H-ui.admin v3.1，是一款由国人开发的轻量级扁平化网站后台模板，完全免费开源的网站后台管理系统模版，适合中小型CMS后台系统。">
+    
+
 </head>
 <body>
     <article class="page-container">
-        <form action="" method="post" class="form form-horizontal" id="form-admin-role-add">
+        <form action="" method="post" class="form form-horizontal" id="form1">
+            <input type="hidden" name="Id" value="@Request.QueryString["id"]" />
             <div class="row cl">
-                <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>角色名称：</label>
+                <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>权限名称：</label>
                 <div class="formControls col-xs-8 col-sm-9">
-                    <input type="text" class="input-text" value="" placeholder="" id="roleName" name="RoleName">
+                    <input type="text" class="input-text" name="RightName">
                 </div>
             </div>
             <div class="row cl">
-                <label class="form-label col-xs-4 col-sm-3">权限：</label>
-                <div class="formControls col-xs-8 col-sm-9"  id="dl1">
-                    
+                <label class="form-label col-xs-4 col-sm-3">URL：</label>
+                <div class="formControls col-xs-8 col-sm-9">
+                    <input type="text" class="input-text" name="URL">
                 </div>
             </div>
+            <div class="row cl">
+                <label class="form-label col-xs-4 col-sm-3">是否启用：</label>
+                <div class="formControls col-xs-8 col-sm-9">
+                    <input type="radio" name="IsUser" value="true" checked="checked" />是
+                    <input type="radio" name="IsUser" value="false" />否
+                </div>
+            </div>
+
             <div class="row cl">
                 <div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-3">
-                    <button type="button" class="btn btn-success radius" id="add" name="admin-role-save"><i class="icon-ok"></i> 确定</button>
+                    <button type="button" class="btn btn-success radius" id="btnupt">修改</button>
                 </div>
             </div>
         </form>
+        
     </article>
 
 
-
-    <!--/请在上方写此页面业务相关的脚本-->
 </body>
 </html>
-<script type="text/javascript">
+<script>
     $(function () {
-        Show();
-        $("#add").click(function () {
-            
-            var ids = [];
-            $("input[name=RightName]:checked").each(function () {
-                ids.push($(this).val())
-            })
-            alert(ids)
+         //反填
             $.ajax({
-                url: 'http://localhost:8765/rbac/RoleAdd?RoleName=' + $("[name=RoleName]").val() + '&RightID=' + ids,
-                type: 'post',
+                url: 'http://localhost:8765/rbac/rightGetId?id='+@Request.QueryString["id"],
+                async:false,
                 success: function (data) {
-                    
-                    if (data > 0) {
-                        alert("添加成功");
-                    }
-                    else {
-                        alert("添加失败");
-                    }
+                    $("input[name=RightName]").val(data.RightName)
+                    $("input[name=URL]").val(data.URL)
+                    $("input[name=IsUser][value='"+ data.IsUser+"']").attr("checked", "checked")
                 }
             })
-        })
-    })
-    /* 权限加载方法*/
-    function Show() {
-        $.ajax({
-            url: 'http://localhost:8765/rbac/Getrights',
-            type: 'get',
-            success: function (data) {
-                var list = '<dl class="permission-list" ><dd>';
-                $(data).each(function (index, data) {
-                    list += '<label class=""> <input type="checkbox"  name="RightName"  value="' + data.Id + '">' + data.RightName +'</label>&nbsp;&nbsp;&nbsp;&nbsp;'
+        $("#btnupt").click(function(){
+                $.ajax({
+                    url: 'http://localhost:8765/rbac/rightUpdate',
+                    type: 'post',
+                    data:$("#form1").serialize(),
+                    success: function (data) {
+                        console.log(data);
+                        if (data > 0) {
+                            alert("修改成功");
+                        } else {
+                            alert("修改失败");
+                        }
+                    }
                 })
-                list +='</dd></dl>'
-                $("#dl1").append(list);
-            }
-        })
-    }
-    
+            })
+    })
 </script>

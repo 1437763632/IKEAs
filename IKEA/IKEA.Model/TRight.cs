@@ -23,5 +23,9 @@ namespace IKEA.Model
         /// 权限路径
         /// </summary>
         public string URL { get; set; }
+        /// <summary>
+        /// 是否启用
+        /// </summary>
+        public bool IsUser { get; set; }
     }
 }

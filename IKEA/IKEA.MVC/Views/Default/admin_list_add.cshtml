@@ -1,4 +1,9 @@
-﻿<!--_meta 作为公共模版分离出去-->
+﻿
+@{
+    Layout = null;
+}
+
+<!--_meta 作为公共模版分离出去-->
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -33,15 +38,27 @@
     <article class="page-container">
         <form action="" method="post" class="form form-horizontal" id="form-admin-role-add">
             <div class="row cl">
-                <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>角色名称：</label>
+                <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>管理员账号：</label>
                 <div class="formControls col-xs-8 col-sm-9">
-                    <input type="text" class="input-text" value="" placeholder="" id="roleName" name="RoleName">
+                    <input type="text" class="input-text" value="" placeholder="" id="roleName" name="ManageNumber">
                 </div>
             </div>
             <div class="row cl">
-                <label class="form-label col-xs-4 col-sm-3">权限：</label>
-                <div class="formControls col-xs-8 col-sm-9"  id="dl1">
-                    
+                <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>管理员密码：</label>
+                <div class="formControls col-xs-8 col-sm-9">
+                    <input type="text" class="input-text" value="" placeholder="" id="roleName" name="ManagePass">
+                </div>
+            </div>
+            <div class="row cl">
+                <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>管理员昵称：</label>
+                <div class="formControls col-xs-8 col-sm-9">
+                    <input type="text" class="input-text" value="" placeholder="" id="roleName" name="ManageName">
+                </div>
+            </div>
+            <div class="row cl">
+                <label class="form-label col-xs-4 col-sm-3">角色：</label>
+                <div class="formControls col-xs-8 col-sm-9" id="dl1">
+
                 </div>
             </div>
             <div class="row cl">
@@ -61,41 +78,48 @@
     $(function () {
         Show();
         $("#add").click(function () {
-            
+
             var ids = [];
-            $("input[name=RightName]:checked").each(function () {
+            $("input[name=RoleID]:checked").each(function () {
                 ids.push($(this).val())
             })
-            alert(ids)
+            var id = ids.join(",");
+            alert(id)
             $.ajax({
-                url: 'http://localhost:8765/rbac/RoleAdd?RoleName=' + $("[name=RoleName]").val() + '&RightID=' + ids,
+                url: 'http://localhost:8765/rbac/ManageAdd',
                 type: 'post',
+                data: {
+                    ManageNumber: $("[name=ManageNumber]").val(),
+                    ManagePass: $("[name=ManagePass]").val(),
+                    ManageName: $("[name=ManageName]").val(),
+                    RoleID: id,
+                },
                 success: function (data) {
-                    
+
                     if (data > 0) {
                         alert("添加成功");
                     }
                     else {
-                        alert("添加失败");
+                        alert("已有此账号");
                     }
                 }
             })
         })
     })
-    /* 权限加载方法*/
+    /* 角色加载方法*/
     function Show() {
         $.ajax({
-            url: 'http://localhost:8765/rbac/Getrights',
+            url: 'http://localhost:8765/rbac/GetRoles',
             type: 'get',
             success: function (data) {
                 var list = '<dl class="permission-list" ><dd>';
                 $(data).each(function (index, data) {
-                    list += '<label class=""> <input type="checkbox"  name="RightName"  value="' + data.Id + '">' + data.RightName +'</label>&nbsp;&nbsp;&nbsp;&nbsp;'
+                    list += '<label class=""> <input type="checkbox"  name="RoleID"  value="' + data.Id + '">' + data.RoleName +'</label>&nbsp;&nbsp;&nbsp;&nbsp;'
                 })
                 list +='</dd></dl>'
                 $("#dl1").append(list);
             }
         })
     }
-    
+
 </script>
