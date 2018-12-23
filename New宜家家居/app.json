@@ -1,11 +1,10 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/pay/pay",
+        "pages/collect_shouchang/index",
     "pages/shoppingcar/index",
     "pages/commodity details_spxiangqing/index",
-    "pages/home/home",
-    "pages/home-details/home-details",
-    "pages/collect_shouchang/index",
     "pages/newAddress/newAddress",
     "pages/order/order",
     "pages/user/index",
@@ -20,6 +19,7 @@
     "pages/UpdateAddress/index",
     "pages/userdata/index",
     "pages/FindShop/index"
+ 
   ],
   "window": {
     "backgroundTextStyle": "light",

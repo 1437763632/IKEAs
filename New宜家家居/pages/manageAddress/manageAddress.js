@@ -99,4 +99,9 @@ Page({
       url: '/pages/UpdateAddress/index?ID=' + id,
     })
   },
+  backPay: function () {
+    wx.navigateTo({
+      url: '/pages/pay/pay',
+    })
+    },
 })

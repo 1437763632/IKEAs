@@ -39,18 +39,30 @@ Page({
     })          
 },
   AddCarts:function(){
-          wx.request({
+           wx.request({
             url: 'http://localhost:8765/TProduct/AddCarts',
             data: '',
             method: 'post',
             success: function(res) {
-            that.setData({
-
-            })
-
-            },
-       
-          })
+            // that.setData({
+            // })
+              // wx.showToast({
+              //   title: '修改成功!',
+              //   icon: 'success',
+              //   success: function () {
+           wx.switchTab({
+             title: '修改成功!',
+             icon: 'success',
+              //url: e.currentTarget.dataset.src,
+              url: '/pages/shoppingcar/index',
+             success: function (res) {
+              },
+              fail: function (res) { },
+              complete: function (res) { },
+                })
+             },       
+           })
+           // }
   },
 
   //详情

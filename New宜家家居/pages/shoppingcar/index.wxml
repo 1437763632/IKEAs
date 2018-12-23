@@ -17,7 +17,7 @@
           <view class='text price' >¥{{good.Price}}</view>
         </view>
         <view class='right'>
-                   <image src='/image/删除.png' bindtap='shanchu' data-index="{{index}}" data-aid='{{good.Id}}'></image>
+                   <image src='/images/删除.png' bindtap='shanchu' data-index="{{index}}" data-aid='{{good.Id}}'></image>
               </view>
         <view class='stepper'>
           <view class='subtract {{good.SumNumber == 1 ? "disabled": ""}}' data-index='{{index}}' catchtap='subtracttap'>-</view>
