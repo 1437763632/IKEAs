@@ -59,10 +59,11 @@ namespace IKEA.MVC.Controllers
             }
             for (int i = 0; i < num; i++)
             {
-                HttpPostedFile file = System.Web.HttpContext.Current.Request.Files[i];               
-                string savePath = Path.Combine(path, Guid.NewGuid().ToString() + file.FileName);
+                HttpPostedFile file = System.Web.HttpContext.Current.Request.Files[i];
+                string strPath = Guid.NewGuid().ToString() + file.FileName;
+                string savePath = Path.Combine(path,strPath);
                 file.SaveAs(savePath);
-                pathList.Add(path);
+                pathList.Add("/Img/"+ strPath);
                
             }
             return Json(pathList);

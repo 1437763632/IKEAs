@@ -20,9 +20,10 @@ namespace IKEA.Services
         /// <returns></returns>
         public int Add(IEnumerable<TImage> imageList)
         {
-            using (MySqlConnection conn = DapperHelper.GetConnString())
+            using (System.Data.IDbConnection conn = DapperHelper.GetConnString())
             {
-                string sql = string.Format("INSERT into timage(ProductID,ProductDetailID,ImageUrl,isUsed) VALUES(@ProductID,@ProductDetailID,@ImageUrl,@isUsed)");
+                conn.Open();
+                string sql = string.Format("INSERT into TImage(ProductID,ProductDetailID,ImageUrl) VALUES(@ProductID,@ProductDetailID,@ImageUrl)");
                 int i = conn.Execute(sql, imageList);
                 return i;
             }

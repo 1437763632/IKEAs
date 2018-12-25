@@ -232,8 +232,23 @@ namespace IKEA.Api.Controllers
 
 
         #region 多图片上传
-        public int Postimage(IEnumerable<TImage> images)
+        [Route("Postimages")]
+        [HttpGet]
+        public int Postimages(int ProductID, int ProductDetailID, string ImageUrl)
         {
+
+            TImage image = new TImage();
+            List<TImage> images = new List<TImage>();
+            var item = ImageUrl.Split(',');//分隔字符串
+            for (int j = 0; j < item.Length; j++)
+            {
+                image.ProductID = ProductID;
+                image.ProductDetailID = ProductDetailID;
+                image.ImageUrl = item[j];
+                images.Add(image);
+            }
+
+
             var i = this.image.Add(images);
             return i;
         }
