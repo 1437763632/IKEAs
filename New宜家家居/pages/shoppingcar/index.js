@@ -12,7 +12,8 @@ Page({
     'checked': false,
     'checkAll': false, // 全选状态，默认全选
     'totalCount': 0,
-    'totalPrice': 0
+    'totalPrice': 0,
+ 
   },
   onLoad: function() {
     var that = this;
@@ -23,7 +24,7 @@ Page({
       data: {
         Id: 1,
       },
-      success: function(res) {
+      success: function(res) {       
         that.setData({
           goodList: res.data,
           // hasList:true,length
@@ -66,10 +67,6 @@ Page({
     }
     this.calculateTotal()
     wx.setStorageSync("goodList", goodList)
-
-
-
-
   },
   //提示
   // go: function (e) {

@@ -20,7 +20,11 @@ Page({
   },
   goaddress: function () {
     wx.navigateTo({
+<<<<<<< HEAD
       url: '../../pages/address/address',
+=======
+      url: '/pages/manageAddress/manageAddress',
+>>>>>>> 1b8e28a0f2e80fff26e0233e85617fea50ea3232
     })
   },
 
@@ -71,6 +75,10 @@ Page({
         Id: 1,
       },
       success: function (res) {
+<<<<<<< HEAD
+=======
+        console.log(res.data)
+>>>>>>> 1b8e28a0f2e80fff26e0233e85617fea50ea3232
         that.setData({
           goodList: res.data,
           // hasList:true,length
@@ -91,6 +99,11 @@ Page({
       var good = goodList[i];
         //totalCount += good.BuyNumber;
         totalPrice += good.BuyNumber * good.Price;
+<<<<<<< HEAD
+=======
+      console.log(totalPrice);
+      console.log(1111);
+>>>>>>> 1b8e28a0f2e80fff26e0233e85617fea50ea3232
     }
     totalPrice = totalPrice.toFixed(2);
     this.setData({

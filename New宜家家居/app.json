@@ -1,13 +1,15 @@
 {
   "pages": [
     "pages/index/index",
+<<<<<<< HEAD
     
+=======
+    "pages/pay/pay",
+        "pages/collect_shouchang/index",
+>>>>>>> 1b8e28a0f2e80fff26e0233e85617fea50ea3232
     "pages/shoppingcar/index",
     
     "pages/commodity details_spxiangqing/index",
-    "pages/home/home",
-    "pages/home-details/home-details",
-    "pages/collect_shouchang/index",
     "pages/newAddress/newAddress",
     "pages/order/order",
     "pages/user/index",
@@ -21,8 +23,13 @@
     "pages/my_coupon_youhuiquan/index",
     "pages/UpdateAddress/index",
     "pages/userdata/index",
+<<<<<<< HEAD
     "pages/FindShop/index",
    "pages/pay/pay"
+=======
+    "pages/FindShop/index"
+ 
+>>>>>>> 1b8e28a0f2e80fff26e0233e85617fea50ea3232
   ],
   "window": {
     "backgroundTextStyle": "light",

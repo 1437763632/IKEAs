@@ -101,6 +101,13 @@
     <Content Include="Global.asax" />
     <Content Include="images\aiwrap.png" />
     <Content Include="images\web_login_bg.jpg" />
+    <Content Include="Img\001a12c3-194e-455b-9e11-5a070e444e0b优惠券元3.png" />
+    <Content Include="Img\07b0fbbd-dc46-4d17-a4c6-92db9f983ce2优惠券.png" />
+    <Content Include="Img\3170f3f4-4877-4032-97ed-88c9bc261488ding.png" />
+    <Content Include="Img\4ea03e43-749c-47f3-8280-7b2cc360134a优惠券元2.png" />
+    <Content Include="Img\5ed5ec29-877f-4a9f-a10d-3d9dee6533ab优惠券02.jpg" />
+    <Content Include="Img\6a5ae2ba-c5b3-4a13-981c-57ac42dd9152优惠券01.png" />
+    <Content Include="Img\a0418fcb-7180-48f2-abee-de0419e6dbb9坐感舒适 时尚大气 贵妃位茶几.jpg" />
     <Content Include="lib\datatables\1.10.0\jquery.dataTables.min.js" />
     <Content Include="lib\DD_belatedPNG_0.0.8a-min.js" />
     <Content Include="lib\echarts\3.4.0\echarts.common.min.js" />
@@ -922,6 +929,11 @@
     <Content Include="lib\zTree\v3\js\jquery.ztree.exedit.js" />
     <Content Include="lib\zTree\v3\js\jquery.ztree.exhide-3.5.js" />
     <Content Include="lib\zTree\v3\js\jquery.ztree.exhide-3.5.min.js" />
+    <None Include="Scripts\jquery-3.3.1.intellisense.js" />
+    <Content Include="Scripts\jquery-3.3.1.js" />
+    <Content Include="Scripts\jquery-3.3.1.min.js" />
+    <Content Include="Scripts\jquery-3.3.1.slim.js" />
+    <Content Include="Scripts\jquery-3.3.1.slim.min.js" />
     <Content Include="static\h-ui.admin\css\H-ui.admin.css" />
     <Content Include="static\h-ui.admin\css\H-ui.login.css" />
     <Content Include="static\h-ui.admin\css\style.css" />
@@ -1244,6 +1256,11 @@
     <Content Include="Views\Default\admin_list_upt.cshtml" />
     <Content Include="Views\Home\Login.cshtml" />
     <Content Include="Views\Shopping\AddShopImage.cshtml" />
+
+    <Content Include="Views\Shopping\AddProduct.cshtml" />
+    <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.3.1.min.map" />
+
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

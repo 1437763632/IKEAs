@@ -109,7 +109,7 @@ namespace IKEA.MVC.Controllers
         {
             return View();
         }
-        [LoginFatier]
+      //  [LoginFatier]
         public ActionResult admin_list_upt()
         {
             return View();
@@ -128,7 +128,7 @@ namespace IKEA.MVC.Controllers
         {
             return View();
         }
-        //[LoginFatier]
+       // [LoginFatier]
         public ActionResult charts_3()
         {
             return View();
@@ -141,9 +141,10 @@ namespace IKEA.MVC.Controllers
         //[LoginFatier]
         public ActionResult charts_5()
         {
+
             return View();
         }
-        //[LoginFatier]
+       // [LoginFatier]
         public ActionResult charts_6()
         {
             return View();

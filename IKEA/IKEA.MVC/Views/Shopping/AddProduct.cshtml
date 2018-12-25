@@ -1,0 +1,81 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>AddProduct</title>
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+   <script>
+       $(function () {
+           $("#addShop").click(function () {
+               $.ajax({
+                   url: "http://localhost:8765/TProduct/Add",
+                   type: "post",
+                   data: $("#FormShop").serialize(),
+                   success: function (data) {
+                       if (data) {
+                           alert("添加成功");
+                       }
+                   }
+
+               })
+
+           })
+
+
+       })
+   </script>
+</head>
+<body>
+    <div> 
+        <form id="FormShop"  method="post">
+            <table>
+                <tr>
+                    <td>商品类别</td>
+                    <td>
+                        <input type="text" name="ProductTypeID" />
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>商品名称：</td>
+                    <td>
+                        <input type="text" name="ProductName" />
+                    </td>
+                </tr>
+
+
+
+                <tr>                   
+                    <td>商品最低价格</td>
+                    <td>
+                        <input type="text" name="ProductMinPrice" />
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>商品原价</td>
+                    <td>
+                        <input type="text" name="ProductMaxPrice" />
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>商品图片</td>
+                    <td>
+                        <input type="text" name="ProductImage" />
+                    </td>
+                </tr>
+
+
+            </table>
+            <button id="addShop">添加</button>
+        </form>
+    </div>
+</body>
+</html>

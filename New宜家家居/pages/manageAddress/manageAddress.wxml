@@ -4,7 +4,7 @@
 <view id="address" class='address'>
 
 <block wx:for="{{address}}" wx:for-item="i" >
-        <view class='ppp'>
+        <view class='ppp'  bindtap='backPay'>
             <view class="text1 text_other">
                <view>
                 <text id="name">{{i.UserName}}</text>

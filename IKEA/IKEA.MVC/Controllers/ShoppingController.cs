@@ -22,6 +22,30 @@ namespace IKEA.MVC.Controllers
         }
 
 
+        public ActionResult GetShopping()
+        {
+            return View();
+        }
+
+        public ActionResult AddProduct()
+        {
+            return View();
+        }
+
+
+        //public string addImage()
+        //{
+        //    HttpPostedFileBase fileName = Request.Files[0];
+        //    if (!Directory.Exists(fileName))
+        //    {
+
+        //    }
+        //}
+
+        /// <summary>
+        /// 多图片上传
+        /// </summary>
+        /// <returns></returns>
         [HttpPost]
         public JsonResult GetImg()
         {

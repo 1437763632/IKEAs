@@ -1,5 +1,9 @@
 <!--pages/home/home-details/pay.wxml-->
+<<<<<<< HEAD
 <view>
+=======
+<view class='allss'>
+>>>>>>> 1b8e28a0f2e80fff26e0233e85617fea50ea3232
         <view class='main-one'>
             <text>购物清单</text>
         </view>
@@ -21,24 +25,45 @@
         </view>
      </view>   
     </view>
+<<<<<<< HEAD
 
     <view class='pay-mainTwo'>
       <view class='mianTwo-one'>
         <text>配送时间</text>
       </view>
 
+=======
+      
+    <view class='pay-mainFivess'>
+        <view bindtap='goaddress' class='mainFive-onesss' class='arrays'>
+            <text class='left'>收货地址</text>
+             <image  src='/images/right.png'></image>
+        </view>
+   </view>
+    <view class='pay-mainTwo'> 
+      <view class='mianTwo-one'>
+        <text>配送时间</text>
+      </view>
+>>>>>>> 1b8e28a0f2e80fff26e0233e85617fea50ea3232
       <view class='mainTwo-two'>
           <picker bindchange="select" value='{{index}}' range='{{array}}'>
               <view class='array'>
                   <text>{{array[index]}}</text>
+<<<<<<< HEAD
                   <image src='/image/right.png'></image>
+=======
+                  <image src='/images/right.png'></image>
+>>>>>>> 1b8e28a0f2e80fff26e0233e85617fea50ea3232
               </view> 
           </picker>
       </view>
     </view> 
+<<<<<<< HEAD
 
 
 
+=======
+>>>>>>> 1b8e28a0f2e80fff26e0233e85617fea50ea3232
     <view class='pay-mainThree'>
         <view class='mainThree-one'>
           <text>留言</text>
@@ -53,7 +78,11 @@
 
     <view class='pay-mainFive'  wx:key="good.Id" wx:for-item="good">
         <view class='mainFive-one'>
+<<<<<<< HEAD
             <text class='left'>订单金额</text>
+=======
+            <text class='left'>订单总金额</text>
+>>>>>>> 1b8e28a0f2e80fff26e0233e85617fea50ea3232
             <text class='right'>￥{{totalPrice}}</text>
         </view>
         <view class='mainFive-two'>
