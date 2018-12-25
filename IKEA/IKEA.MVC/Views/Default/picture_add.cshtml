@@ -164,15 +164,15 @@
         $("#btnadd").click(function () {
             var images = imgs.join(',');
             
-            alert(images);
+            //alert(images);
             $.ajax({
                 url: "http://localhost:8765/TProduct/Postimages",
                 type: "get",
                 data:  {
                     ProductID: parseInt($("select[name=ProductName]").val()),
                     ProductDetailID: parseInt($("select[name=ProductDiteName]").val()),
-                    ImageUrl: images,
-                },
+                    ImageUrl: images,/* "123,321,222",
+*/                },
                 success: function (data) {
                     if (data > 0) {
                         alert("添加成功");

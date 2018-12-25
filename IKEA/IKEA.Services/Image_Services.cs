@@ -20,12 +20,12 @@ namespace IKEA.Services
         /// <returns></returns>
         public int Add(IEnumerable<TImage> imageList)
         {
-            using (System.Data.IDbConnection conn = DapperHelper.GetConnString())
+            using (MySqlConnection conn = DapperHelper.GetConnString())
             {
                 conn.Open();
                 string sql = string.Format("INSERT into TImage(ProductID,ProductDetailID,ImageUrl) VALUES(@ProductID,@ProductDetailID,@ImageUrl)");
                 int i = conn.Execute(sql, imageList);
-                return i;
+                return 1;
             }
         }
         /// <summary>
@@ -61,12 +61,12 @@ namespace IKEA.Services
         /// </summary>
         /// <param name="ProductDetailID"></param>
         /// <returns></returns>
-        public IEnumerable<TImage> GetImages( )
+        public IEnumerable<TImage> GetImages()
         {
             using (MySqlConnection conn = DapperHelper.GetConnString())
             {
                 string sql = string.Format("SELECT * FROM timage");
-                var result = conn.Query<TImage>(sql, null ).ToList();
+                var result = conn.Query<TImage>(sql, null).ToList();
                 return result;
             }
         }
