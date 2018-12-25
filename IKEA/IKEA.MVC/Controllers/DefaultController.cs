@@ -48,8 +48,12 @@ namespace IKEA.MVC.Controllers
         /// 图片管理
         /// </summary>
         /// <returns></returns>
-        [LoginFatier]
+       // [LoginFatier]
         public ActionResult picture_list()
+        {
+            return View();
+        }
+        public ActionResult picture_add()
         {
             return View();
         }
@@ -114,37 +118,37 @@ namespace IKEA.MVC.Controllers
         /// 系统管理
         /// </summary>
         /// <returns></returns>
-        [LoginFatier]
+        //[LoginFatier]
         public ActionResult charts_1()
         {
             return View();
         }
-        [LoginFatier]
+        //[LoginFatier]
         public ActionResult charts_2()
         {
             return View();
         }
-        [LoginFatier]
+        //[LoginFatier]
         public ActionResult charts_3()
         {
             return View();
         }
-        [LoginFatier]
+        //[LoginFatier]
         public ActionResult charts_4()
         {
             return View();
         }
-        [LoginFatier]
+        //[LoginFatier]
         public ActionResult charts_5()
         {
             return View();
         }
-        [LoginFatier]
+        //[LoginFatier]
         public ActionResult charts_6()
         {
             return View();
         }
-        [LoginFatier]
+       // [LoginFatier]
         public ActionResult charts_7()
         {
             return View();

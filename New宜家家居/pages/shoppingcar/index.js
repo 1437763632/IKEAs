@@ -53,7 +53,6 @@ Page({
       url: 'http://localhost:8765/TProduct/DeleteCarts?Id=' + id,
       type: 'GET',
       success: function(res) {
-
       }
     })
     goodList.splice(index, 1)
@@ -83,7 +82,7 @@ Page({
   //
   order: function() {
     wx.navigateTo({
-      url: "/pages/order/order",
+      url: "/pages/pay/pay",
     })
   },
 
