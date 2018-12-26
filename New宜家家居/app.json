@@ -1,9 +1,14 @@
 {
   "pages": [
     "pages/index/index",
+<<<<<<< HEAD
+    
+=======
     "pages/pay/pay",
         "pages/collect_shouchang/index",
+>>>>>>> 1b8e28a0f2e80fff26e0233e85617fea50ea3232
     "pages/shoppingcar/index",
+    
     "pages/commodity details_spxiangqing/index",
     "pages/newAddress/newAddress",
     "pages/order/order",
@@ -18,12 +23,17 @@
     "pages/my_coupon_youhuiquan/index",
     "pages/UpdateAddress/index",
     "pages/userdata/index",
+<<<<<<< HEAD
+    "pages/FindShop/index",
+   "pages/pay/pay"
+=======
     "pages/FindShop/index"
  
+>>>>>>> 1b8e28a0f2e80fff26e0233e85617fea50ea3232
   ],
   "window": {
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#F5B223",
+     "navigationBarBackgroundColor": "#F5B223",
     "navigationBarTitleText": "家具时尚",
     "navigationBarTextStyle": "#fff"
   },

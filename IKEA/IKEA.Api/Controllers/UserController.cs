@@ -21,9 +21,9 @@ namespace IKEA.Api.Controllers
         public IUser_Services user_Services { get; set; }
         [Route("Login")]
         [HttpGet]
-        public TUser Login(string code)
+        public IEnumerable<TUser> Login()
         {
-            var user = user_Services.Login(code);
+            var user = user_Services.Login();
             return user;
         }
     }

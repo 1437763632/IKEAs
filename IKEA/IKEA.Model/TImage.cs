@@ -30,6 +30,6 @@ namespace IKEA.Model
         /// <summary>
         /// 是否启用
         /// </summary>
-        public bool isUsed { get; set; }                
+        //public bool isUsed { get; set; }                
     }
 }
