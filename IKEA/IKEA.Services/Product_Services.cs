@@ -26,7 +26,7 @@ namespace IKEA.Services
             using (System.Data.IDbConnection conn = DapperHelper.GetConnString())
             {
                 //string sql = string.Format("insert into TProduct (ProductTypeID,ProductName,ProductMinPrice,ProductMaxPrice,ProductImage,IsPutaway) values(@ProductTypeID,@ProductName,@ProductMinPrice,@ProductMaxPrice,@ProductImage,@IsPutaway)");
-                string sql = string.Format("insert into TProduct (ProductTypeID,ProductName,ProductMinPrice,ProductMaxPrice,ProductImage) values(@ProductTypeID,@ProductName,@ProductMinPrice,@ProductMaxPrice,@ProductImage,)");
+                string sql = string.Format("insert into TProduct (ProductTypeID,ProductName,ProductMinPrice,ProductMaxPrice,ProductImage) values(@ProductTypeID,@ProductName,@ProductMinPrice,@ProductMaxPrice,@ProductImage)");
                 int i = conn.Execute(sql, product);
                 return i;
             }
