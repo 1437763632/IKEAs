@@ -252,6 +252,13 @@ namespace IKEA.Api.Controllers
             var i = this.image.Add(images);
             return i;
         }
+        [Route("GetImages")]
+        [HttpGet]
+        public IEnumerable<TImage> GetImages()
+        {
+            var i = this.image.GetImages();
+            return i;
+        }
         #endregion
     }
 }
