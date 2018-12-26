@@ -71,16 +71,21 @@
                 url: "http://localhost:8765/TProduct/GetProducts",
                 type: "get",
                 async: false,
+                dataType: "json", 
                 success: function (data) {
                     console.log(data);
-                    for (i = 0; i < data.length; i++) {
+                    if (data) {
+                        for (i = 0; i < data.length; i++) {
+                            console.log(data[i].ProductName);
+                            GetProducts.push(data[i].ProductName);
 
-                        ProductName[i] = data[i].ProductName;
-
-                        ProductMaxPrice[i] = data[i].ProductMaxPrice;
-                        console.log(ProductName[i]);
-                        console.log(ProductMaxPrice);
+                            //ProductName[i] = data[i].ProductName;
+                            //ProductMaxPrice[i] = data[i].ProductMaxPrice;
+                            //console.log(ProductName[i]);
+                            //console.log(ProductMaxPrice);
+                        }
                     }
+                    
 
                     GetProducts = data;
                     console.log(GetProducts);
@@ -126,20 +131,21 @@
 
                     type: 'pie',
                     name: 'Browser share',
-                    data: ProductName
-                    //    [
-                    //    ['ProductName', 45.0],
-                    //    ['IE', 26.8],
-                    //    {
-                    //        name: 'Chrome',
-                    //        y: 12.8,
-                    //        sliced: true,
-                    //        selected: true
-                    //    },
-                    //    ['Safari', 8.5],
-                    //    ['Opera', 6.2],
-                    //    ['Others', 0.7]
-                    //]
+                    data:
+           
+                        [                           
+                        ['ProductName', 45.0],
+                        ['IE', 26.8],
+                        {
+                            name: 'Chrome',
+                            y: 12.8,
+                            sliced: true,
+                            selected: true
+                        },
+                        ['Safari', 8.5],
+                        ['Opera', 6.2],
+                        ['Others', 0.7]
+                    ]
                 }]
             });
         });

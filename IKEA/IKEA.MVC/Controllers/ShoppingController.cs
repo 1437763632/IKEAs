@@ -33,14 +33,22 @@ namespace IKEA.MVC.Controllers
         }
 
 
-        //public string addImage()
-        //{
-        //    HttpPostedFileBase fileName = Request.Files[0];
-        //    if (!Directory.Exists(fileName))
-        //    {
-
-        //    }
-        //}
+        public string addImage()
+        {
+            HttpPostedFileBase fileName = Request.Files[0];
+            if (fileName!=null)
+            {
+                string images = Server.MapPath("~/images/");
+                if (!Directory.Exists(images))
+                {
+                    Directory.CreateDirectory(images);
+                }
+                string newImg = Path.Combine(images, fileName.FileName);
+                fileName.SaveAs(newImg);
+                return "/images/" + fileName.FileName;
+            }
+            return null;
+        }
 
         /// <summary>
         /// 多图片上传
