@@ -1,0 +1,182 @@
+﻿
+@{
+    Layout = null;
+}
+
+
+@{
+    Layout = null;
+}
+
+<!--_meta 作为公共模版分离出去-->
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <link rel="Bookmark" href="/favicon.ico">
+    <link rel="Shortcut Icon" href="/favicon.ico" />
+
+    <link rel="stylesheet" type="text/css" href="~/static/h-ui/css/H-ui.min.css" />
+    <link rel="stylesheet" type="text/css" href="~/static/h-ui.admin/css/H-ui.admin.css" />
+    <link rel="stylesheet" type="text/css" href="~/lib/Hui-iconfont/1.0.8/iconfont.css" />
+    <link rel="stylesheet" type="text/css" href="~/static/h-ui.admin/skin/default/skin.css" id="skin" />
+    <link rel="stylesheet" type="text/css" href="~/static/h-ui.admin/css/style.css" />
+    <!--_footer 作为公共模版分离出去-->
+    <script type="text/javascript" src="~/lib/jquery/1.9.1/jquery.min.js"></script>
+    <script type="text/javascript" src="~/lib/layer/2.4/layer.js"></script>
+    <script type="text/javascript" src="~/static/h-ui/js/H-ui.min.js"></script>
+    <script type="text/javascript" src="~/static/h-ui.admin/js/H-ui.admin.js"></script> <!--/_footer 作为公共模版分离出去-->
+    <!--请在下方写此页面业务相关的脚本-->
+    <script type="text/javascript" src="~/lib/jquery.validation/1.14.0/jquery.validate.js"></script>
+    <script type="text/javascript" src="~/lib/jquery.validation/1.14.0/validate-methods.js"></script>
+    <script type="text/javascript" src="~/lib/jquery.validation/1.14.0/messages_zh.js"></script>
+
+    <title>新建网站角色 - 管理员管理 - H-ui.admin v3.1</title>
+    <meta name="keywords" content="H-ui.admin v3.1,H-ui网站后台模版,后台模版下载,后台管理系统模版,HTML后台模版下载">
+    <meta name="description" content="H-ui.admin v3.1，是一款由国人开发的轻量级扁平化网站后台模板，完全免费开源的网站后台管理系统模版，适合中小型CMS后台系统。">
+</head>
+<body>
+    <article class="page-container">
+        <form action="" method="post" class="form form-horizontal" id="form-admin-role-add">
+            <div class="row cl">
+                <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>产品名称：</label>
+                <div class="formControls col-xs-8 col-sm-9">
+                    <select name="ProductName" class="select" id="selects"></select>
+                </div>
+            </div>
+            
+            <div class="row cl">
+                <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>尺寸：</label>
+                <div class="formControls col-xs-8 col-sm-9">
+                    <select name="ProductSize" class="select" id="select1"></select>
+                </div>
+            </div>
+            <div class="row cl">
+                <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>材质：</label>
+                <div class="formControls col-xs-8 col-sm-9">
+                    <select name="Texture" class="select" id="select2"></select>
+                </div>
+            </div>
+            <div class="row cl">
+                <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>颜色：</label>
+                <div class="formControls col-xs-8 col-sm-9">
+                    <select name="Colorname" class="select" id="select3"></select>
+                </div>
+            </div>
+            <div class="row cl">
+                <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>初始价格：</label>
+                <div class="formControls col-xs-8 col-sm-9">
+                    <input type="text" class="input-text" name="Price">
+                </div>
+            </div>
+            <div class="row cl">
+                <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>实际价格：</label>
+                <div class="formControls col-xs-8 col-sm-9">
+                    <input type="text" class="input-text" name="RealPrice">
+                </div>
+            </div>
+            <div class="row cl">
+                <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>库存：</label>
+                <div class="formControls col-xs-8 col-sm-9">
+                    <input type="text" class="input-text" name="Inventory">
+                </div>
+            </div>
+            <div class="row cl">
+                <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>预留库存量：</label>
+                <div class="formControls col-xs-8 col-sm-9">
+                    <input type="text" class="input-text" name="ReservedInventory">
+                </div>
+            </div>
+
+            <div class="row cl">
+                <div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-3">
+                    <button type="button" class="btn btn-success radius" id="add" name="admin-role-save"><i class="icon-ok"></i> 确定</button>
+                </div>
+            </div>
+        </form>
+    </article>
+
+
+
+    <!--/请在上方写此页面业务相关的脚本-->
+</body>
+</html>
+<script type="text/javascript">
+    $(function () {
+        //产品名称加载方法
+        $.ajax({
+            url: 'http://localhost:8765/test/GetProducts',
+            type: 'get',
+            success: function (data) {
+                $(data).each(function (index, data) {
+                    var list = '<option value="' + data.id + '">' + data.ProductName + '</option>'
+                    $("#selects").append(list);
+                })
+            }
+        })
+        //尺寸加载方法
+        $.ajax({
+            url: 'http://localhost:8765/test/GetProduct_Sizes',
+            type: 'get',
+            success: function (data) {
+                $(data).each(function (index, data) {
+                    var list = '<option value="' + data.Id + '">' + data.ProductSize + '</option>'
+                    $("#select1").append(list);
+                })
+            }
+        })
+        //材质加载方法
+        $.ajax({
+            url: 'http://localhost:8765/test/GetProduct_Textures',
+            type: 'get',
+            success: function (data) {
+                $(data).each(function (index, data) {
+                    var list = '<option value="' + data.Id + '">' + data.Texture + '</option>'
+                    $("#select2").append(list);
+                })
+            }
+        })
+        //颜色加载方法
+        $.ajax({
+            url: 'http://localhost:8765/test/GetColors',
+            type: 'get',
+            success: function (data) {
+                $(data).each(function (index, data) {
+                    var list = '<option value="' + data.Id + '">' + data.Colorname + '</option>'
+                    $("#select3").append(list);
+                })
+            }
+        })
+        //添加
+        $("#add").click(function () {
+            $.ajax({
+                url: 'http://localhost:8765/wyTProductDetail/TProductDetailadd',
+                type: 'post',
+                data: {
+                    ProductID: parseInt($("select[name=ProductName]").val()),
+                    ProductTypeID:1,
+                    ProductSizeID: parseInt($("select[name=ProductSize]").val()),
+                    ProductTextureID: parseInt($("select[name=Texture]").val()),
+                    colorID: parseInt($("select[name=Colorname]").val()),
+                    Price: $("[name=Price]").val(),
+                    RealPrice: $("[name=RealPrice]").val(),
+                    Inventory: $("[name=Inventory]").val(),
+                    ReservedInventory: $("[name=ReservedInventory]").val(),
+                },
+                success: function (data) {
+                    if (data > 0) {
+                        alert("添加成功");
+                    }
+                    else {
+                        alert("添加失败");
+                    }
+                }
+            })
+        })
+    })
+</script>
+

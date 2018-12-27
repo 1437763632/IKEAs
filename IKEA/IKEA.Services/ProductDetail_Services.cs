@@ -109,5 +109,31 @@ namespace IKEA.Services
                 return i;
             }
         }
+
+        /// <summary>
+        /// 获取产品详情
+        /// </summary> 
+        /// <param name="productID"></param>
+        /// <returns> IEnumerable<TProduct></returns>
+       public IEnumerable<ShowProductDetails> productDetails()
+        {
+            using (System.Data.IDbConnection conn = DapperHelper.GetConnString())
+            {
+                string sql = string.Format(@"SELECT p.Id,c.Colorname,t.Texture,s.ProductSize,tps.ProductName,p.Price,p.RealPrice,p.Inventory
+from tproductdetail p
+join tcolor c
+on p.colorID = c.Id
+join tproduct_texture t
+on p.ProductTextureID = t.Id
+join tproduct_size s
+on p.ProductSizeID = s.Id
+join tproduct tps
+on p.ProductID = tps.Id
+");
+                var i = conn.Query<ShowProductDetails>(sql, null).ToList();
+
+                return i;
+            }
+        }
     }
 }

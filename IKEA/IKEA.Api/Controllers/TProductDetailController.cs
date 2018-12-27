@@ -198,7 +198,6 @@ namespace IKEA.Api.Controllers
                         on p.ProductTextureID equals t.Id
                         join s in Product_Size.GetProduct_Sizes()//尺寸
                         on p.ProductSizeID equals s.Id
-
                         join i in image.GetImages()
                         on p.Id equals i.ProductDetailID
                         join du in product.GetProducts()
@@ -245,7 +244,20 @@ namespace IKEA.Api.Controllers
 
         }
 
+        /// <summary>
+        /// 添加产品详情
+        /// </summary>
+        /// <param name="productDetail"></param>5
+        /// <param name="imagesUrls"></param>
+        /// <returns></returns>
+        [Route("TProductDetailadd")]
+        [HttpPost]
+        public int TProductDetailadd(TProductDetail productDetail)
+        {
+            var i = this.productDetail.Add(productDetail);
+            return i;
+        }
 
-        
     }
+
 }

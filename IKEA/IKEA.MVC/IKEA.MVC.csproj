@@ -1298,11 +1298,9 @@
     <Content Include="Views\Default\admin_list_upt.cshtml" />
     <Content Include="Views\Home\Login.cshtml" />
     <Content Include="Views\Shopping\AddShopImage.cshtml" />
-
     <Content Include="Views\Shopping\AddProduct.cshtml" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
-
     <Content Include="Scripts\jquery.form.min.js.map" />
     <Content Include="Scripts\umd\popper.min.js.map" />
     <Content Include="Scripts\umd\popper.js.map" />
@@ -1313,7 +1311,7 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
-
+    <Content Include="Views\Default\product_list_add.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

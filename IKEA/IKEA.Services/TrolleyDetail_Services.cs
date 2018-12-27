@@ -74,7 +74,6 @@ namespace IKEA.Services
                 return result.ToList<TTrolleyDetail>();
             }
         }
-
         /// <summary>
         /// 修改购物车详情
         /// </summary>

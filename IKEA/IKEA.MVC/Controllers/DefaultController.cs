@@ -11,7 +11,7 @@ namespace IKEA.MVC.Controllers
     public class DefaultController : Controller
     {
         // GET: Default
-        [LoginFatier]
+        // [LoginFatier]
         public ActionResult Index()
         {
             ViewBag.Name = Session["Name"];
@@ -24,13 +24,13 @@ namespace IKEA.MVC.Controllers
         /// 品牌管理
         /// </summary>
         /// <returns></returns>
-        [LoginFatier]
+        // [LoginFatier]
         public ActionResult product_brand()
         {
             return View();
         }
 
-        [LoginFatier]
+        // [LoginFatier]
         public ActionResult product_category()
         {
             return View();
@@ -39,8 +39,13 @@ namespace IKEA.MVC.Controllers
         /// 产品管理
         /// </summary>
         /// <returns></returns>
-        [LoginFatier]
+        // [LoginFatier]
         public ActionResult product_list()
+        {
+            return View();
+        }
+        // [LoginFatier]
+        public ActionResult product_list_add()
         {
             return View();
         }
@@ -61,17 +66,17 @@ namespace IKEA.MVC.Controllers
         /// 角色管理
         /// </summary>
         /// <returns></returns>
-        [LoginFatier]
+        // [LoginFatier]
         public ActionResult admin_role()
         {
             return View();
         }
-        [LoginFatier]
+        // [LoginFatier]
         public ActionResult admin_role_add()
         {
             return View();
         }
-        [LoginFatier]
+        // [LoginFatier]
         public ActionResult admin_role_upt()
         {
             return View();
@@ -80,17 +85,17 @@ namespace IKEA.MVC.Controllers
         /// 权限管理
         /// </summary>
         /// <returns></returns>
-        [LoginFatier]
+        // [LoginFatier]
         public ActionResult admin_permission()
         {
             return View();
         }
-        [LoginFatier]
+        // [LoginFatier]
         public ActionResult admin_permission_add()
         {
             return View();
         }
-        [LoginFatier]
+        // [LoginFatier]
         public ActionResult admin_permission_upt()
         {
             return View();
@@ -99,17 +104,17 @@ namespace IKEA.MVC.Controllers
         /// 管理员管理
         /// </summary>
         /// <returns></returns>
-        [LoginFatier]
+        // [LoginFatier]
         public ActionResult admin_list()
         {
             return View();
         }
-        [LoginFatier]
+        // [LoginFatier]
         public ActionResult admin_list_add()
         {
             return View();
         }
-      //  [LoginFatier]
+      //  // [LoginFatier]
         public ActionResult admin_list_upt()
         {
             return View();
@@ -118,12 +123,12 @@ namespace IKEA.MVC.Controllers
         /// 系统管理
         /// </summary>
         /// <returns></returns>
-        //[LoginFatier]
+        //// [LoginFatier]
         public ActionResult charts_1()
         {
             return View();
         }
-        //[LoginFatier]
+        //// [LoginFatier]
         public ActionResult charts_2()
         {
             return View();
@@ -133,12 +138,12 @@ namespace IKEA.MVC.Controllers
         {
             return View();
         }
-        //[LoginFatier]
+        //// [LoginFatier]
         public ActionResult charts_4()
         {
             return View();
         }
-        //[LoginFatier]
+        //// [LoginFatier]
         public ActionResult charts_5()
         {
 
@@ -159,37 +164,37 @@ namespace IKEA.MVC.Controllers
         /// 会员管理
         /// </summary>
         /// <returns></returns>
-        [LoginFatier]
+        // [LoginFatier]
         public ActionResult member_list()
         {
             return View();
         }
-        [LoginFatier]
+        // [LoginFatier]
         public ActionResult member_del()
         {
             return View();
         }
-        [LoginFatier]
+        // [LoginFatier]
         public ActionResult member_level()
         {
             return View();
         }
-        [LoginFatier]
+        // [LoginFatier]
         public ActionResult member_scoreoperation()
         {
             return View();
         }
-        [LoginFatier]
+        // [LoginFatier]
         public ActionResult member_record_browse()
         {
             return View();
         }
-        [LoginFatier]
+        // [LoginFatier]
         public ActionResult member_record_download()
         {
             return View();
         }
-        [LoginFatier]
+        // [LoginFatier]
         public ActionResult member_record_share()
         {
             return View();
@@ -198,7 +203,7 @@ namespace IKEA.MVC.Controllers
         /// 商品管理
         /// </summary>
         /// <returns></returns>
-        [LoginFatier]
+        // [LoginFatier]
         public ActionResult article_list()
         {
             return View();
@@ -207,7 +212,7 @@ namespace IKEA.MVC.Controllers
         /// 评论管理
         /// </summary>
         /// <returns></returns>
-        [LoginFatier]
+        // [LoginFatier]
         public ActionResult comment_list()
         {
             return View();

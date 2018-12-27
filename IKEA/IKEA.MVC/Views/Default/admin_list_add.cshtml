@@ -86,7 +86,7 @@
             var id = ids.join(",");
             alert(id)
             $.ajax({
-                url: 'c',
+                url: 'http://localhost:8765/rbac/GetRoles',
                 type: 'post',
                 data: {
                     ManageNumber: $("[name=ManageNumber]").val(),

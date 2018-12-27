@@ -329,7 +329,7 @@ namespace IKEA.Api.Controllers
         /// <returns></returns>
         [Route("GetOrdrepayment")]
         [HttpGet]
-        public IHttpActionResult GetOrdrepayment(int userid,int state)
+        public IHttpActionResult GetOrdrepayment(int userid, int state)
         {
             var userOrders = order.GetOrders(userid);
             var query = from u in userOrders
@@ -441,6 +441,22 @@ namespace IKEA.Api.Controllers
             var i = productDetail.GetTProductDetails();
             return i;
         }
+
+
+        /// <summary>
+        /// 获取产品详情
+        /// </summary> 
+        /// <param name="productID"></param>
+        /// <returns> IEnumerable<TProduct></returns>
+        [HttpGet]
+        [Route("productDetails")]
+        public IEnumerable<ShowProductDetails> productDetails()
+        {
+            var i = productDetail.productDetails();
+            return i;
+
+        }
+
         #endregion
 
         #region 产品尺寸

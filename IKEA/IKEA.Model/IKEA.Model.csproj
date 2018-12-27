@@ -53,6 +53,7 @@
   <ItemGroup>
     <Compile Include="PageBox.cs" />
     <Compile Include="ShowManage.cs" />
+    <Compile Include="ShowProductDetails.cs" />
     <Compile Include="ShowRole.cs" />
     <Compile Include="ShowProductDetail.cs" />
     <Compile Include="TAdderss.cs" />
