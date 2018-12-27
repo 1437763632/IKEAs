@@ -56,9 +56,6 @@
         </form>
     </div>
 
-
-
-
     <script src="~/lib/jquery/1.9.1/jquery.min.js"></script>
     <script src="~/lib/layer/2.4/layer.js"></script>
     <script src="~/static/h-ui/js/H-ui.min.js"></script>
@@ -77,51 +74,51 @@
         var imgs = [];
         $(function () {
             //添加数据
-            //$("#add").click(function () {
+            $("#add").click(function () {
 
-            //    //获取第一张图片
-            //   $("input[name=House_ImgUrl]").val();
-            //        //根据第一张图片路径查询商品Id，因为顺序是先将图片上传到本地项目的目录下，然后下面这个Ajax是写在添加商品的成功回调里面，所以在添加成功之后执行一个查询就可以查到
-            //    $.ajax({
-            //        url: "http://localhost:46002/wyTProductDetail/Add",
-            //        type: "post",
-            //        data: {
-            //            imgUrl: $("input[name=House_ImgUrl]").val(),
-            //        },
-            //        success: function (data) {
-            //            //根据商品Id添加图片
-            //            for (i = 0; i < imgs.length; i++) {
-            //                $.ajax({
-            //                    url: "http://localhost:46002/wyTProductDetail/Add",
-            //                    type: "post",
-            //                    data: {
-            //                        houseId: data,
-            //                        imgUrl: imgs[i].toString(),
-            //                    },
-            //                    success: function (res) {
-            //                    }
-            //                })
-            //            }
-            //        }
-            //    })
-            //})
-
-            $("#add").click(function () {                
+                //获取第一张图片
+               $("input[name=House_ImgUrl]").val();
+                    //根据第一张图片路径查询商品Id，因为顺序是先将图片上传到本地项目的目录下，然后下面这个Ajax是写在添加商品的成功回调里面，所以在添加成功之后执行一个查询就可以查到
                 $.ajax({
-                    url: "http://localhost:8765/wyTProductDetail/Add",
+                    url: "/Shopping/GetImg",
                     type: "post",
                     data: {
-                        imagesUrls: $("input[name=ImageUrl]").val(),
-                        productDetail: $("input[name=productDetail]").val(),
+                        imgUrl: $("input[name=House_ImgUrl]").val(),
                     },
                     success: function (data) {
-                        alert(1);
-                        if (data > 0) {
-                            alert("添加成功！");
+                        根据商品Id添加图片
+                        for (i = 0; i < imgs.length; i++) {
+                            $.ajax({
+                                url: "http://localhost:8765/wyTProductDetail/Add",
+                                type: "post",
+                                data: {
+                                    houseId: data,
+                                    imgUrl: imgs[i].toString(),
+                                },
+                                success: function (res) {
+                                }
+                            })
                         }
                     }
                 })
             })
+
+            //$("#add").click(function () {                
+            //    $.ajax({
+            //        url: "http://localhost:8765/wyTProductDetail/Add",
+            //        type: "post",
+            //        data: {
+            //            imagesUrls: $("input[name=ImageUrl]").val(),
+            //            productDetail: $("input[name=productDetail]").val(),
+            //        },
+            //        success: function (data) {
+            //            alert(1);
+            //            if (data > 0) {
+            //                alert("添加成功！");
+            //            }
+            //        }
+            //    })
+            //})
 
 
 

@@ -9,6 +9,6 @@ namespace IKEA.IServices
     using Model;
     public interface IUser_Services
     {
-        TUser Login(string code);
+       IEnumerable<TUser>  Login();
     }
 }

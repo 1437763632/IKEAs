@@ -423,7 +423,7 @@ namespace IKEA.Api.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns>TProduct</returns>
-        public TProductDetail GetTProductDetailId(int id)
+        public IEnumerable<TProductDetail> GetTProductDetailId(int id)
         {
             var i = productDetail.GetTProductDetailId(id);
             return i;

@@ -52,13 +52,14 @@ namespace IKEA.Services
         /// </summary>
         /// <param name="id"></param>
         /// <returns>TProduct</returns>
-        public TProductDetail GetTProductDetailId(int id)
+        public IEnumerable<TProductDetail> GetTProductDetailId(int id)
         {
             using (MySqlConnection conn = DapperHelper.GetConnString())
             {
-                
-                string sql = string.Format("select Id, ProductID, ProductTypeID, ProductSizeID, ProductTextureID, colorID, Price, RealPrice, Inventory, ReservedInventory from TProductDetail where Id = @Id");
-                var resaut = conn.Query<TProductDetail>(sql, new { Id=id}).SingleOrDefault();
+
+                //string sql = string.Format("select Id, ProductID, ProductTypeID, ProductSizeID, ProductTextureID, colorID, Price, RealPrice, Inventory, ReservedInventory from TProductDetail where Id = @Id");
+                string sql = string.Format("select * from TProductDetail where ProductID = @Id");
+                var resaut = conn.Query<TProductDetail>(sql, new { Id=id}).ToList();
                 return resaut;
             }
         }

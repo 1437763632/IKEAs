@@ -37,7 +37,7 @@ namespace IKEA.Api.Controllers
         /// <returns>IEnumerable<TPayment></returns>
         [Route("GetDisCounts")]
         [HttpGet]
-        public IEnumerable< TDisCount> GetDisCounts()
+        public IEnumerable<TDisCount> GetDisCounts()
         {
             var result = this.DisCount.GetDisCounts();
             return result;

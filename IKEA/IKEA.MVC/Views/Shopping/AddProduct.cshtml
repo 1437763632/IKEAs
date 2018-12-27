@@ -1,0 +1,118 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>AddProduct</title>
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+    <script src="~/Scripts/jquery.form.js"></script>
+
+    <script src="~/css/bootstrap.min.js"></script>
+    <script>
+        $(function () {
+            //添加图片
+            $("#file").change(function () {
+
+                $.ajax({
+                    url: "/Shopping/addImage",
+                    type: "post",
+                    contentType: false,
+                    processData: false,
+                    cache: false,
+                    data: new FormData($("#FormShop")[0]),
+                    success: function (data) {
+                        alert(data)
+                        $("#imgShow").prop("src", data);
+                        $("#hidd").val(data);
+                    }
+                })
+            })
+
+
+
+            $("#addShop").click(function () {
+                $.ajax({
+                    url: "http://localhost:8765/TProduct/Add",
+                    type: "post",
+               
+                    data: $("#FormShop").serialize(),
+                    success: function (data) {
+                        console.log(data);
+                        if (data> 0) {
+                            alert("添加成功");
+                        }
+                        else {
+                            alert("添加失败");
+                        }
+                    }
+
+                })
+
+            })
+        })
+    </script>
+</head>
+<body>
+    <div> 
+        <form id="FormShop"  method="post" enctype="multipart/form-data">
+            <table lass="table table-border" style="width:700px;margin-left:700px">
+                <tr>
+                    <td>商品类别</td>
+                    <td>
+                        <input type="text" name="ProductTypeID" />
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>商品名称：</td>
+                    <td>
+                        <input type="text" name="ProductName" />
+                    </td>
+                </tr>
+
+
+
+                <tr>
+                    <td>商品最低价格</td>
+                    <td>
+                        <input type="text" name="ProductMinPrice" />
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>商品原价</td>
+                    <td>
+                        <input type="text" name="ProductMaxPrice" />
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>商品图片</td>
+                    <td>
+                        <img src="" id="imgShow" style="width:50px;height:50px" />
+                      
+                    </td>
+                </tr>
+                <tr>
+                    <td></td><td>
+    <input id="hidd" type="hidden" name="ProductImage" />
+    <input type="file" name="ProductImage" id="file" />
+</td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <button  style="width:100px;height:30px;text-align:center" id="addShop">添加</button>
+                    </td>
+                </tr>
+                
+            </table>
+            
+        </form>
+    </div>
+</body>
+</html>

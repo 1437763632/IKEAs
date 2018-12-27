@@ -13,10 +13,17 @@ namespace IKEA.Services
     using MySql.Data.MySqlClient;
     public class User_Services: IUser_Services
     {
-        public TUser Login(string code)
+        public IEnumerable<TUser> Login()
         {
-            var user= new TokenHelper().Logins(code);
-            return user;
+            
+            using (System.Data.IDbConnection conn = DapperHelper.GetConnString())
+            {
+
+                string sql = string.Format("select * from TUser ");
+                var result = conn.Query<TUser>(sql, null);
+                return result.ToList<TUser>();
+            }
         }
+
     }
 }

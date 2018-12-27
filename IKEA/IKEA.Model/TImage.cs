@@ -20,7 +20,7 @@ namespace IKEA.Model
         /// </summary>
         public int ProductID { get; set; }              
         /// <summary>
-        /// 产品详情id
+        /// 产品详情id  
         /// </summary>
         public int ProductDetailID { get; set; }        
         /// <summary>
@@ -30,6 +30,6 @@ namespace IKEA.Model
         /// <summary>
         /// 是否启用
         /// </summary>
-        public bool isUsed { get; set; }                
+        //public bool isUsed { get; set; }                
     }
 }

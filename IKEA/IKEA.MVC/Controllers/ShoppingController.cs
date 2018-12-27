@@ -22,6 +22,38 @@ namespace IKEA.MVC.Controllers
         }
 
 
+        public ActionResult GetShopping()
+        {
+            return View();
+        }
+
+        public ActionResult AddProduct()
+        {
+            return View();
+        }
+
+
+        public string addImage()
+        {
+            HttpPostedFileBase fileName = Request.Files[0];
+            if (fileName!=null)
+            {
+                string images = Server.MapPath("~/images/");
+                if (!Directory.Exists(images))
+                {
+                    Directory.CreateDirectory(images);
+                }
+                string newImg = Path.Combine(images, fileName.FileName);
+                fileName.SaveAs(newImg);
+                return "/images/" + fileName.FileName;
+            }
+            return null;
+        }
+
+        /// <summary>
+        /// 多图片上传
+        /// </summary>
+        /// <returns></returns>
         [HttpPost]
         public JsonResult GetImg()
         {
@@ -35,10 +67,11 @@ namespace IKEA.MVC.Controllers
             }
             for (int i = 0; i < num; i++)
             {
-                HttpPostedFile file = System.Web.HttpContext.Current.Request.Files[i];               
-                string savePath = Path.Combine(path, Guid.NewGuid().ToString() + file.FileName);
+                HttpPostedFile file = System.Web.HttpContext.Current.Request.Files[i];
+                string strPath = Guid.NewGuid().ToString() + file.FileName;
+                string savePath = Path.Combine(path,strPath);
                 file.SaveAs(savePath);
-                pathList.Add(path);
+                pathList.Add("/Img/"+ strPath);
                
             }
             return Json(pathList);
