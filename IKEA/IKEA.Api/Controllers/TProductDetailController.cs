@@ -256,7 +256,7 @@ namespace IKEA.Api.Controllers
         {
             var i = this.productDetail.Add(productDetail);
             return i;
-        }
+            }
 
     }
 
