@@ -51,11 +51,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ActiveFlow.cs" />
+    <Compile Include="Approval.cs" />
+    <Compile Include="Conditions.cs" />
+    <Compile Include="FlowControlConfig.cs" />
+    <Compile Include="HistoryFlow.cs" />
+    <Compile Include="Node.cs" />
     <Compile Include="PageBox.cs" />
+    <Compile Include="ShowFlowControlConfig.cs" />
     <Compile Include="ShowManage.cs" />
     <Compile Include="ShowProductDetails.cs" />
     <Compile Include="ShowRole.cs" />
     <Compile Include="ShowProductDetail.cs" />
+    <Compile Include="State.cs" />
     <Compile Include="TAdderss.cs" />
     <Compile Include="TColor.cs" />
     <Compile Include="TDisCount.cs" />

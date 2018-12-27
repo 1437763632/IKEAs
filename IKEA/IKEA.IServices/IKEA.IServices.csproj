@@ -51,6 +51,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IAddress_Services.cs" />
+    <Compile Include="IApprovalServices.cs" />
     <Compile Include="IColor_Services.cs" />
     <Compile Include="IDisCount_Services.cs" />
     <Compile Include="IEvaluate_Services.cs" />

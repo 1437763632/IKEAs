@@ -1,0 +1,125 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>添加条件</title>
+    <link rel="Bookmark" href="/favicon.ico">
+    <link rel="Shortcut Icon" href="/favicon.ico" />
+
+    <link rel="stylesheet" type="text/css" href="~/static/h-ui/css/H-ui.min.css" />
+    <link rel="stylesheet" type="text/css" href="~/static/h-ui.admin/css/H-ui.admin.css" />
+    <link rel="stylesheet" type="text/css" href="~/lib/Hui-iconfont/1.0.8/iconfont.css" />
+    <link rel="stylesheet" type="text/css" href="~/static/h-ui.admin/skin/default/skin.css" id="skin" />
+    <link rel="stylesheet" type="text/css" href="~/static/h-ui.admin/css/style.css" />
+    <!--_footer 作为公共模版分离出去-->
+    <script type="text/javascript" src="~/lib/jquery/1.9.1/jquery.min.js"></script>
+    <script type="text/javascript" src="~/lib/layer/2.4/layer.js"></script>
+    <script type="text/javascript" src="~/static/h-ui/js/H-ui.min.js"></script>
+    <script type="text/javascript" src="~/static/h-ui.admin/js/H-ui.admin.js"></script> <!--/_footer 作为公共模版分离出去-->
+    <!--请在下方写此页面业务相关的脚本-->
+    <script type="text/javascript" src="~/lib/My97DatePicker/4.8/WdatePicker.js"></script>
+    <script type="text/javascript" src="~/lib/datatables/1.10.0/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="~/lib/laypage/1.2/laypage.js"></script>
+</head>
+<body>
+    <div>
+        <form id="formdata">
+            <table class="table table-border table-bordered " style="margin-left:50px;margin-top:100px; margin-right:100px;width:500px;">
+                <tr>
+                    <td>请选择流程</td>
+                    <td>
+                        <select name="ApprovalID">
+                            <option value="0">===请选择===</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>请选择角色信息</td>
+                    <td>
+                        <select name="RoleID">
+                            <option value="0">===请选择===</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>输入条件范围</td>
+                    <td>
+                        <input type="text" name="ConditionRange" />
+                    </td>
+                </tr>
+               
+                <tr>
+                    <td>
+                        <input type="button" value="提交" id="Submit" class="button btn btn-default " style="margin-left:50px;" />
+                    </td>
+                    <td>
+                        <input type="button" value="返回" id="Return" class="button btn btn-default " style="margin-left:50px;" />
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</body>
+</html>
+<script>
+    $(function () {
+        //获取流程信息
+        $.ajax({
+            url: 'http://localhost:8765/Approval/GetApprovals',
+            type: 'get',
+            //data: $("#formdata").serialize(),
+            success: function (data) {
+                console.log(data);
+                $("select[name=ApprovalID] option:gt(0)").remove();
+                $(data).each(function (index, data) {
+                    var str = "<option value='" + data.Id + "'>" + data.ApproveName + "</option>";
+                    $("select[name=ApprovalID]").append(str);
+                })
+            }
+        })
+        //获取角色信息
+        $.ajax({
+            url: 'http://localhost:8765/rbac/GetRoles',
+            type: 'get',
+            //data: $("#formdata").serialize(),
+            success: function (data) {
+                console.log(data);
+                $("select[name=RoleID] option:gt(0)").remove();
+                $(data).each(function (index,data) {
+                    var str = "<option value='" + data.Id + "'>" + data.RoleName + "</option>";
+                    $("select[name=RoleID]").append(str);
+                })
+            }
+        })
+        //提交点击事件
+        $("#Submit").click(function () {
+            $.ajax({
+                url: 'http://localhost:8765/Approval/AddCondition',
+                type: 'post',
+                data: $("#formdata").serialize(),
+                success: function (data) {
+                    if (data > 0) {
+                        alert('添加成功');
+
+                    }
+                    else if (data == -1) {
+                        alert('该条件已存在')
+                    }
+                    else {
+                        alert('添加失败')
+                    }
+                }
+            })
+        })
+        //提交返回事件
+        $("#Return").click(function () {
+            location.href = '/Approval/Index';
+        })
+    })
+</script>

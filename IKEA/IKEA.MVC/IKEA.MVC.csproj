@@ -1223,6 +1223,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\ApprovalController.cs" />
     <Compile Include="Controllers\DefaultController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ShoppingController.cs" />
@@ -1298,6 +1299,18 @@
     <Content Include="Views\Default\admin_list_upt.cshtml" />
     <Content Include="Views\Home\Login.cshtml" />
     <Content Include="Views\Shopping\AddShopImage.cshtml" />
+
+
+    <Content Include="Views\Approval\Index.cshtml" />
+    <Content Include="Views\Approval\Start.cshtml" />
+    <Content Include="Views\Approval\AddApproval.cshtml" />
+    <Content Include="Views\Approval\AddConditions.cshtml" />
+    <Content Include="Views\Approval\AddNode.cshtml" />
+    <Content Include="Views\Approval\AddFlowConfig.cshtml" />
+    <Content Include="Views\Approval\ShowFlow.cshtml" />
+    <Content Include="Views\Approval\Detail.cshtml" />
+    
+    
     <Content Include="Views\Shopping\AddProduct.cshtml" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />

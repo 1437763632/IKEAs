@@ -90,6 +90,8 @@ namespace IKEA.Api
 
             container.RegisterType<IUser_Services, User_Services>();// 用户
 
+            container.RegisterType<IApprovalServices, ApprovalServices>();// 流程控制
+
         }
     }
 }

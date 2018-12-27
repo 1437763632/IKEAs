@@ -1,0 +1,147 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>详情展示</title>
+    <link rel="stylesheet" type="text/css" href="~/static/h-ui/css/H-ui.min.css" />
+    <link rel="stylesheet" type="text/css" href="~/static/h-ui.admin/css/H-ui.admin.css" />
+    <link rel="stylesheet" type="text/css" href="~/lib/Hui-iconfont/1.0.8/iconfont.css" />
+    <link rel="stylesheet" type="text/css" href="~/static/h-ui.admin/skin/default/skin.css" id="skin" />
+    <link rel="stylesheet" type="text/css" href="~/static/h-ui.admin/css/style.css" />
+    <!--_footer 作为公共模版分离出去-->
+    <script type="text/javascript" src="~/lib/jquery/1.9.1/jquery.min.js"></script>
+    <script type="text/javascript" src="~/lib/layer/2.4/layer.js"></script>
+    <script type="text/javascript" src="~/static/h-ui/js/H-ui.min.js"></script>
+    <script type="text/javascript" src="~/static/h-ui.admin/js/H-ui.admin.js"></script> <!--/_footer 作为公共模版分离出去-->
+    <!--请在下方写此页面业务相关的脚本-->
+    <script type="text/javascript" src="~/lib/My97DatePicker/4.8/WdatePicker.js"></script>
+    <script type="text/javascript" src="~/lib/datatables/1.10.0/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="~/lib/laypage/1.2/laypage.js"></script>
+</head>
+<body>
+    <div>
+        <div style="border:1px solid dashed">
+
+            选择角色：
+            <select name="RoleID">
+                <option value="0">===请选择===</option>
+            </select>
+            <input type="button" value="申请端查询" id="Search" class="button btn btn-default " style="margin-left:50px;" />
+            <input type="button" value="审批端查询" id="Search1" class="button btn btn-default " style="margin-left:50px;" />
+            <input type="button" value="返回" id="Return" class="button btn btn-default " style="margin-left:50px;" />
+        </div>
+        <div>
+            <table class="table table-border table-bordered table-bg" id="tab1">
+                <thead>
+                    <tr>
+                        <th scope="col" colspan="9">配置信息展示</th>
+                    </tr>
+                    <tr class="text-c">
+                        <th width="25"><input type="checkbox" name="" value=""></th>
+                        <th width="40">ID</th>
+                        <th width="150">申请角色ID</th>
+                        <th width="50">审批名称</th>
+                        <th width="50">原因</th>
+                        <th width="150">条件</th>
+                        <th width="90">状态</th>
+                        
+                        <th width="100">操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @*<tr class="text-c">
+                        <td><input type="checkbox" value="1" name=""></td>
+                        <td>1</td>
+                        <td>admin</td>
+                        <td>13000000000</td>
+                        <td>超级管理员</td>
+                        <td>2014-6-11 11:11:42</td>
+                        <td class="td-status"><span class="label label-success radius">已启用</span></td>
+                        <td class="td-manage"><a style="text-decoration:none" onClick="admin_stop(this,'10001')" href="javascript:;" title="停用"><i class="Hui-iconfont">&#xe631;</i></a> <a title="编辑" href="javascript:;" onclick="admin_edit('管理员编辑','/Default/admin_list_upt','1','800','500')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6df;</i></a> <a title="删除" href="javascript:;" onclick="admin_del(this,'1')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a></td>
+                    </tr>*@
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
+<script>
+    $(function () {
+        //加载角色信息
+        $.ajax({
+            url: 'http://localhost:8765/rbac/GetRoles',
+            type: 'get',
+            //data: $("#formdata").serialize(),
+            success: function (data) {
+                console.log(data);
+                $("select[name=RoleID] option:gt(0)").remove();
+                $(data).each(function (index, data) {
+                    var str = "<option value='" + data.Id + "'>" + data.RoleName + "</option>";
+                    $("select[name=RoleID]").append(str);
+                })
+            }
+        });
+        //加载查询操作
+        $("#Search").click(function () {
+            $.ajax({
+                url: 'http://localhost:8765/Approval/GetActiveFlows?roleID=' + $("select[name=RoleID]").val(),
+                type: 'get',
+               
+                success: function (data) {
+                    console.log(data);
+                    $("#tab1 tbody").remove();
+                    $(data).each(function (index, data) {
+                        var str = "<tr>"
+                            + "<td><input type=\"checkbox\" name=\"cks\" value=\"" + data.Id + "\"></td>"
+                            + "<td>" + data.Id + "</td>"
+                            + "<td>" + data.RoleId + "</td>"
+                            + "<td>" + (data.ApprovalID == 1 ? "请假" : "报销") + "</td>"
+                            + "<td>" + data.Reason + "</td>"
+                            + "<td>" + data.ActualCondition + "</td>"
+                            + "<td>" + data.State + "</td>"
+                            + "<td><a title=\"编辑\" href=\"javascript: ; \" onclick=\"admin_edit('管理员编辑', '/Default/admin_list_upt', '" + data.Id + "', '800', '500')\" class=\"ml - 5\" style=\"text - decoration: none\"><i class=\"Hui - iconfont\">&#xe6df;修改</i></a></td>"
+                            + "</tr>";
+                        // alert(str);
+                        $("#tab1").append(str);
+                    })
+                }
+            });
+        })
+        //加载查询1操作
+        $("#Search1").click(function () {
+            $.ajax({
+                url: 'http://localhost:8765/Approval/GetActiveFlowsByNode?roleID=' + $("select[name=RoleID]").val(),
+                type: 'get',
+
+                success: function (data) {
+                    console.log(data);
+                    $("#tab1 tbody").remove();
+                    $(data).each(function (index, data) {
+                        var str = "<tr>"
+                            + "<td><input type=\"checkbox\" name=\"cks\" value=\"" + data.Id + "\"></td>"
+                            + "<td>" + data.Id + "</td>"
+                            + "<td>" + data.RoleId + "</td>"
+                            + "<td>" + (data.ApprovalID == 1 ? "请假" : "报销") + "</td>"
+                            + "<td>" + data.Reason + "</td>"
+                            + "<td>" + data.ActualCondition + "</td>"
+                            + "<td>" + data.State + "</td>"
+                            + "<td><a title=\"编辑\" href=\"javascript: ; \" onclick=\"admin_edit('管理员编辑', '/Default/admin_list_upt', '" + data.Id + "', '800', '500')\" class=\"ml - 5\" style=\"text - decoration: none\"><i class=\"Hui - iconfont\">&#xe6df;操作</i></a> </td>"
+                            + "</tr>";
+                        // alert(str);
+                        $("#tab1").append(str);
+                    })
+                }
+            });
+        })
+    });
+    //提交返回事件
+    $("#Return").click(function () {
+        location.href = '/Approval/Index';
+    });
+</script>
