@@ -1168,6 +1168,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\ApprovalController.cs" />
     <Compile Include="Controllers\DefaultController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ShoppingController.cs" />
@@ -1236,16 +1237,21 @@
     <Content Include="Views\Default\product_category.cshtml" />
     <Content Include="Views\Default\product_list.cshtml" />
     <Content Include="Views\Default\welcome.cshtml" />
-
     <Content Include="Views\Default\admin_permission_upt.cshtml" />
     <Content Include="Views\Default\admin_role_add.cshtml" />
     <Content Include="Views\Default\admin_role_upt.cshtml" />
     <Content Include="Views\Default\admin_list_add.cshtml" />
     <Content Include="Views\Default\admin_list_upt.cshtml" />
     <Content Include="Views\Home\Login.cshtml" />
-
     <Content Include="Views\Shopping\AddShopImage.cshtml" />
-
+    <Content Include="Views\Approval\Index.cshtml" />
+    <Content Include="Views\Approval\Start.cshtml" />
+    <Content Include="Views\Approval\AddApproval.cshtml" />
+    <Content Include="Views\Approval\AddConditions.cshtml" />
+    <Content Include="Views\Approval\AddNode.cshtml" />
+    <Content Include="Views\Approval\AddFlowConfig.cshtml" />
+    <Content Include="Views\Approval\ShowFlow.cshtml" />
+    <Content Include="Views\Approval\Detail.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

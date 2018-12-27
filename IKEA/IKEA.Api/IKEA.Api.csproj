@@ -145,6 +145,7 @@
     <Compile Include="App_Start\UnityWebApiActivator.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Authorization\RequestAuthorize.cs" />
+    <Compile Include="Controllers\ApprovalController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PermissionFive.cs" />
     <Compile Include="Controllers\RBACController.cs" />

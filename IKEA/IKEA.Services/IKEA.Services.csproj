@@ -56,6 +56,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Address_Services.cs" />
+    <Compile Include="ApprovalServices.cs" />
     <Compile Include="ColorServices.cs" />
     <Compile Include="DisCount_Services.cs" />
     <Compile Include="Evaluate_Services.cs" />

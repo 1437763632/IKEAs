@@ -1,0 +1,78 @@
+﻿
+@{
+    /**/
+
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+
+    <link rel="stylesheet" type="text/css" href="~/static/h-ui/css/H-ui.min.css" />
+    <link rel="stylesheet" type="text/css" href="~/static/h-ui.admin/css/H-ui.admin.css" />
+    <link rel="stylesheet" type="text/css" href="~/lib/Hui-iconfont/1.0.8/iconfont.css" />
+    <link rel="stylesheet" type="text/css" href="~/static/h-ui.admin/skin/default/skin.css" id="skin" />
+    <link rel="stylesheet" type="text/css" href="~/static/h-ui.admin/css/style.css" />
+    <!--_footer 作为公共模版分离出去-->
+    <script type="text/javascript" src="~/lib/jquery/1.9.1/jquery.min.js"></script>
+    <script type="text/javascript" src="~/lib/layer/2.4/layer.js"></script>
+    <script type="text/javascript" src="~/static/h-ui/js/H-ui.min.js"></script>
+    <script type="text/javascript" src="~/static/h-ui.admin/js/H-ui.admin.js"></script> <!--/_footer 作为公共模版分离出去-->
+    <!--请在下方写此页面业务相关的脚本-->
+    <script type="text/javascript" src="~/lib/My97DatePicker/4.8/WdatePicker.js"></script>
+    <script type="text/javascript" src="~/lib/datatables/1.10.0/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="~/lib/laypage/1.2/laypage.js"></script>
+
+    <title>品牌管理</title>
+</head>
+<body>
+    <nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 流程管理 <span class="c-gray en">&gt;</span> 流程管理主界面 <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新"><i class="Hui-iconfont">&#xe68f;</i></a></nav>
+    <button class="btn btn-default" id="StartApproval">添加审批</button>
+    <button class="btn btn-default" id="StartCondition">添加条件</button>
+    <button class="btn btn-default" id="StartNode">添加节点</button>
+
+    <button class="btn btn-default" id="StartFlow">添加流程</button>
+    <button class="btn btn-default" id="ShowFlow">显示流程</button>
+    <button class="btn btn-default" id="startDemo">开始展示</button>
+    <button class="btn btn-default" id="DemoDetail">展示详情</button>
+
+    <script type="text/javascript">
+        //添加审批
+        $("#StartApproval").click(function () {
+            location.href = "/Approval/AddApproval";
+        });
+        //添加条件
+        $("#StartCondition").click(function () {
+            location.href = "/Approval/AddConditions";
+        });
+        //添加节点
+        $("#StartNode").click(function () {
+            location.href = "/Approval/AddNode";
+        });
+        //添加流程配置信息
+        $("#StartFlow").click(function () {
+            location.href = "/Approval/AddFlowConfig";
+        });
+        //显示配置信息
+        $("#ShowFlow").click(function () {
+            location.href = "/Approval/ShowFlow";
+        });
+        //开始demo
+        $("#startDemo").click(function () {
+            location.href = "/Approval/Start";
+        });
+
+        //开始demo
+        $("#DemoDetail").click(function () {
+            location.href = "/Approval/Detail";
+        });
+    </script>
+</body>
+</html>
